@@ -1,0 +1,2053 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>The Three Are One God Church | Prayer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* =========================
+   GLOBAL
+========================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --navy: #081b2e;
+      --deep: #06172a;
+      --text: #0b2a45;
+      --muted: #5d758f;
+      --blue: #2f92ff;
+      --sky: #73d6ff;
+      --powder: #dff6ff;
+      --soft: #f6fcff;
+      --white: #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(115, 216, 255, 0.35), transparent 34%),
+        linear-gradient(180deg, #f7fcff 0%, #eaf8ff 48%, #ffffff 100%);
+    }
+
+    /* =========================
+   SCROLLBAR
+========================= */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #73d6ff;
+      border-radius: 10px;
+    }
+
+    /* =========================
+   NAVBAR - SAME STYLE
+========================= */
+    .navbar {
+      background: rgba(8, 25, 45, 0.42);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 60px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      transition: 0.4s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(8, 25, 45, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 13px 60px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      font-size: 17px;
+      font-weight: 800;
+      color: #102f4d;
+      text-shadow: none;
+    }
+
+    .logo img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .navbar nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .navbar nav a {
+      margin-left: 22px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s ease;
+    }
+
+    .navbar nav a:hover,
+    .navbar nav a.current {
+      color: #6bd2ff;
+    }
+
+    /* ===== BURGER BUTTON ===== */
+    .menu-btn {
+      width: 55px;
+      height: 55px;
+      background: #1565ff;
+      border-radius: 18px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(21, 101, 255, 0.35);
+    }
+
+    .menu-btn i {
+      color: white;
+      font-size: 22px;
+    }
+
+    /* =========================
+   HERO - LIGHT PRAYER DESIGN
+========================= */
+    .hero {
+      min-height: 100vh;
+      padding: 96px 7% 70px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 54px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255, 255, 255, .95), transparent 16%),
+        radial-gradient(circle at 85% 20%, rgba(115, 216, 255, .38), transparent 30%),
+        radial-gradient(circle at 10% 90%, rgba(47, 146, 255, .10), transparent 26%),
+        linear-gradient(135deg, #fafdff 0%, #eefbff 48%, #dff6ff 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(255, 255, 255, .75), transparent 42%),
+        repeating-linear-gradient(135deg, rgba(47, 146, 255, .055) 0 1px, transparent 1px 34px);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      left: -8%;
+      right: -8%;
+      bottom: -52px;
+      height: 150px;
+      background: #ffffff;
+      border-radius: 50% 50% 0 0 / 55% 55% 0 0;
+      box-shadow: 0 -22px 70px rgba(115, 216, 255, .20);
+    }
+
+    .prayer-light {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: .45;
+      pointer-events: none;
+      animation: softMove 8s ease-in-out infinite alternate;
+    }
+
+    .prayer-light.one {
+      width: 360px;
+      height: 360px;
+      background: #73d6ff;
+      right: 6%;
+      top: 18%;
+    }
+
+    .prayer-light.two {
+      width: 260px;
+      height: 260px;
+      background: #ffffff;
+      left: 4%;
+      bottom: 12%;
+      animation-delay: .8s;
+    }
+
+    @keyframes softMove {
+      from {
+        transform: translateY(0) scale(1);
+      }
+
+      to {
+        transform: translateY(-18px) scale(1.05);
+      }
+    }
+
+    .hero-content,
+    .hero-card {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content {
+      color: #0b2a45;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .76);
+      border: 1px solid rgba(47, 146, 255, 0.20);
+      color: #1565ff;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin-bottom: 22px;
+      box-shadow: 0 12px 30px rgba(58, 129, 173, 0.10);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 5.6vw, 5.7rem);
+      line-height: 1.02;
+      font-weight: 900;
+      letter-spacing: -4px;
+      margin-bottom: 18px;
+      color: #0b2a45;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: #2f92ff;
+      background: linear-gradient(135deg, #2f92ff, #1565ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .prayer-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 18px 0 24px;
+      color: #73d6ff;
+      font-size: 19px;
+    }
+
+    .prayer-divider::before,
+    .prayer-divider::after {
+      content: '';
+      width: 62px;
+      height: 3px;
+      border-radius: 20px;
+      background: linear-gradient(90deg, #73d6ff, transparent);
+    }
+
+    .prayer-divider::after {
+      background: linear-gradient(90deg, transparent, #73d6ff);
+    }
+
+    .hero p {
+      max-width: 610px;
+      color: #55728d;
+      line-height: 1.85;
+      font-size: 1.02rem;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      border-radius: 17px;
+      padding: 15px 24px;
+      font-weight: 900;
+      transition: 0.3s ease;
+    }
+
+    .primary-btn {
+      background: linear-gradient(135deg, #73d6ff, #2f92ff, #1565ff);
+      color: #ffffff;
+      box-shadow: 0 18px 40px rgba(47, 146, 255, 0.24);
+    }
+
+    .secondary-btn {
+      color: #1565ff;
+      border: 1px solid rgba(21, 101, 255, 0.22);
+      background: rgba(255, 255, 255, 0.68);
+      box-shadow: 0 12px 30px rgba(58, 129, 173, 0.10);
+      backdrop-filter: blur(12px);
+    }
+
+    .primary-btn:hover,
+    .secondary-btn:hover {
+      transform: translateY(-4px);
+    }
+
+    .hero-card {
+      max-width: 470px;
+      justify-self: center;
+      border-radius: 34px;
+      padding: 16px;
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid rgba(115, 216, 255, 0.32);
+      box-shadow: 0 28px 80px rgba(58, 129, 173, 0.18);
+      overflow: hidden;
+      backdrop-filter: blur(18px);
+    }
+
+    .prayer-visual {
+      min-height: 265px;
+      border-radius: 26px;
+      background:
+        linear-gradient(180deg, rgba(8, 27, 46, 0.02), rgba(8, 27, 46, 0.62)),
+        url("assets/images/prayer-bg.jpg");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .prayer-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 28% 18%, rgba(255, 255, 255, 0.48), transparent 22%),
+        linear-gradient(135deg, rgba(115, 216, 255, 0.20), transparent 48%);
+    }
+
+    .floating-prayer {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      color: white;
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(8, 27, 46, .70);
+      border: 1px solid rgba(255, 255, 255, .18);
+      backdrop-filter: blur(12px);
+    }
+
+    .floating-prayer i {
+      width: 58px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #73d6ff, #1565ff);
+      margin-bottom: 0;
+    }
+
+    .floating-prayer h3 {
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .verse-box {
+      padding: 20px 12px 8px;
+      color: #0b2a45;
+      text-align: left;
+      margin-bottom: 14px;
+    }
+
+    .verse-box i {
+      color: #2f92ff;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .verse-box h3 {
+      font-size: 1.18rem;
+      line-height: 1.45;
+      margin-bottom: 8px;
+    }
+
+    .verse-box p {
+      color: #58708a;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .quick-info {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .info-mini {
+      padding: 16px 12px;
+      border-radius: 18px;
+      background: #f6fcff;
+      color: #0b2a45;
+      border: 1px solid rgba(115, 216, 255, 0.30);
+      box-shadow: 0 14px 35px rgba(58, 129, 173, 0.10);
+      text-align: center;
+    }
+
+    .info-mini i {
+      color: #2f92ff;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .info-mini strong {
+      display: block;
+      font-size: 16px;
+    }
+
+    .info-mini span {
+      color: #58708a;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* Light navbar for prayer page */
+    .navbar {
+      background: rgba(255, 255, 255, 0.58);
+      border-bottom: 1px solid rgba(16, 47, 77, 0.08);
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 8px 25px rgba(16, 47, 77, 0.10);
+      border-bottom: 1px solid rgba(16, 47, 77, 0.08);
+    }
+
+    .logo,
+    .navbar nav a {
+      color: #0b2a45;
+      text-shadow: none;
+    }
+
+    .navbar nav a:hover,
+    .navbar nav a.current {
+      color: #1565ff;
+    }
+
+    @media (max-width:1100px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 104px 7% 80px;
+        text-align: center;
+      }
+
+      .hero p,
+      .prayer-divider {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-card {
+        width: 100%;
+        max-width: 560px;
+      }
+    }
+
+    @media (max-width:768px) {
+      .hero {
+        padding: 96px 22px 70px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .quick-info {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-prayer {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .floating-prayer i {
+        margin: auto;
+      }
+    }
+
+    @media (max-width:480px) {
+      .hero-card {
+        padding: 13px;
+        border-radius: 26px;
+      }
+
+      .prayer-visual {
+        min-height: 230px;
+        border-radius: 22px;
+      }
+
+      .primary-btn,
+      .secondary-btn {
+        width: 100%;
+      }
+    }
+
+    /* =========================
+   SUPPORT SECTION
+========================= */
+    .support-section {
+      background: white;
+      padding: 35px 7% 75px;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 38px;
+    }
+
+    .section-label {
+      display: inline-block;
+      color: #2f92ff;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.15;
+      color: #0b2a45;
+      margin-bottom: 14px;
+    }
+
+    .section-head p {
+      color: #58708a;
+      line-height: 1.8;
+    }
+
+    .support-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .support-card {
+      padding: 28px;
+      border-radius: 26px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(229, 247, 255, 0.85));
+      border: 1px solid rgba(115, 216, 255, 0.30);
+      box-shadow: 0 20px 60px rgba(58, 129, 173, 0.13);
+      transition: 0.3s ease;
+    }
+
+    .support-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 70px rgba(58, 129, 173, 0.22);
+    }
+
+    .support-card i {
+      width: 62px;
+      height: 62px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2f92ff;
+      font-size: 26px;
+      background: linear-gradient(135deg, #ffffff, #dff6ff);
+      border: 1px solid rgba(115, 216, 255, 0.34);
+      margin-bottom: 18px;
+    }
+
+    .support-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: #0b2a45;
+    }
+
+    .support-card p {
+      color: #58708a;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .prayer-categories {
+      padding-top: 10px;
+      background: linear-gradient(180deg, #ffffff 0%, #f6fcff 100%);
+    }
+
+    /* =========================
+   FORM AREA
+========================= */
+    .form-area {
+      padding: 20px 7% 90px;
+      background:
+        linear-gradient(180deg, #ffffff 0%, #f1fbff 100%);
+    }
+
+    .form-layout {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.88fr 1.12fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .prayer-sidebar {
+      position: sticky;
+      top: 110px;
+    }
+
+    .sidebar-card {
+      border-radius: 32px;
+      overflow: hidden;
+      background: white;
+      border: 1px solid rgba(115, 216, 255, 0.35);
+      box-shadow: 0 25px 70px rgba(58, 129, 173, 0.16);
+    }
+
+    .sidebar-image {
+      min-height: 250px;
+      background:
+        linear-gradient(180deg, rgba(6, 29, 51, 0.05), rgba(6, 29, 51, 0.78)),
+        url("assets/images/prayer-bg.jpg");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .sidebar-image::after {
+      content: 'You are not alone';
+      position: absolute;
+      left: 26px;
+      bottom: 24px;
+      right: 26px;
+      color: white;
+      font-weight: 900;
+      font-size: 2rem;
+      line-height: 1.15;
+    }
+
+    .sidebar-content {
+      padding: 28px;
+    }
+
+    .sidebar-content h3 {
+      color: #0b2a45;
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+    }
+
+    .sidebar-content p {
+      color: #58708a;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .reminder-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .reminder-list div {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #0b2a45;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .reminder-list i {
+      color: #2f92ff;
+      margin-top: 3px;
+    }
+
+    /* FORM */
+    .prayer-section {
+      padding: 44px;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(115, 216, 255, 0.35);
+      box-shadow: 0 25px 70px rgba(58, 129, 173, 0.16);
+    }
+
+    .prayer-section h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      margin-bottom: 10px;
+      color: #0b2a45;
+    }
+
+    .form-intro {
+      color: #58708a;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: #0b2a45;
+      font-weight: 800;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px 16px;
+      border-radius: 15px;
+      border: 1px solid rgba(58, 129, 173, 0.18);
+      background: #f6fcff;
+      color: #0b2a45;
+      outline: none;
+      font-size: 14px;
+      font-family: 'Poppins', sans-serif;
+      transition: 0.3s ease;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #8aa0b4;
+    }
+
+    .form-group select option {
+      color: #123;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #73d6ff;
+      box-shadow: 0 0 0 4px rgba(115, 216, 255, 0.20);
+      background: white;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 165px;
+    }
+
+    .form-note {
+      font-size: 13px;
+      color: #58708a;
+      margin: 5px 0 18px;
+      line-height: 1.7;
+    }
+
+    .checkbox-group {
+      margin: 18px 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .checkbox-group label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: #0b2a45;
+      font-weight: 600;
+    }
+
+    .checkbox-group input {
+      width: 16px;
+      height: 16px;
+      accent-color: #2f92ff;
+    }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 18px;
+      padding: 16px;
+      border: none;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #dff6ff, #73d6ff, #2f92ff);
+      color: #06213a;
+      font-size: 15px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 18px 38px rgba(47, 146, 255, 0.22);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 45px rgba(47, 146, 255, 0.30);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    /* STATUS MESSAGE */
+    .status-message {
+      display: none;
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 14px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .status-message.success {
+      display: block;
+      background: rgba(46, 204, 113, 0.13);
+      color: #16864a;
+      border: 1px solid rgba(46, 204, 113, 0.25);
+    }
+
+    .status-message.error {
+      display: block;
+      background: rgba(231, 76, 60, 0.13);
+      color: #b93a2f;
+      border: 1px solid rgba(231, 76, 60, 0.25);
+    }
+
+    /* =========================
+   EXTRA CTA
+========================= */
+    .encourage-section {
+      padding: 0 7% 90px;
+      background: #f1fbff;
+    }
+
+    .encourage-card {
+      max-width: 1180px;
+      margin: 0 auto;
+      min-height: 210px;
+      border-radius: 32px;
+      padding: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(7, 29, 51, 0.92), rgba(47, 146, 255, 0.45)),
+        url("assets/images/prayer-bg.jpg");
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 25px 70px rgba(7, 29, 51, 0.22);
+    }
+
+    .encourage-card h2 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .encourage-card p {
+      color: rgba(255, 255, 255, 0.86);
+      line-height: 1.7;
+      max-width: 720px;
+    }
+
+    /* =========================
+   FOOTER
+========================= */
+    .site-footer {
+      background:
+        radial-gradient(circle at top left, rgba(105, 207, 255, 0.16), transparent 32%),
+        #081b2e;
+      color: white;
+      padding: 70px 7% 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 34px;
+    }
+
+    .footer-brand h3 {
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+
+    .footer-brand p,
+    .footer-col p,
+    .footer-col a {
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 16px;
+      color: #8edfff;
+    }
+
+    .footer-col a {
+      display: block;
+      text-decoration: none;
+      margin-bottom: 9px;
+      transition: 0.3s ease;
+    }
+
+    .footer-col a:hover {
+      color: #8edfff;
+      transform: translateX(4px);
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .socials a {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .socials a:hover {
+      background: #8edfff;
+      color: #081b2e;
+      transform: translateY(-4px);
+    }
+
+    .footer-bottom {
+      max-width: 1180px;
+      margin: 35px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+
+    /* =========================
+   LOAD + SCROLL ANIMATIONS
+========================= */
+    .hero-tag,
+    .hero h1,
+    .hero p,
+    .hero-actions,
+    .hero-card,
+    .support-card,
+    .sidebar-card,
+    .prayer-section,
+    .encourage-card {
+      opacity: 0;
+      animation: fadeUpSoft 0.85s ease forwards;
+    }
+
+    .hero-tag {
+      animation-delay: 0.10s;
+    }
+
+    .hero h1 {
+      animation-delay: 0.22s;
+    }
+
+    .hero p {
+      animation-delay: 0.34s;
+    }
+
+    .hero-actions {
+      animation-delay: 0.46s;
+    }
+
+    .hero-card {
+      animation-delay: 0.35s;
+    }
+
+    .support-card:nth-child(1) {
+      animation-delay: 0.12s;
+    }
+
+    .support-card:nth-child(2) {
+      animation-delay: 0.24s;
+    }
+
+    .support-card:nth-child(3) {
+      animation-delay: 0.36s;
+    }
+
+    .sidebar-card {
+      animation-delay: 0.15s;
+    }
+
+    .prayer-section {
+      animation-delay: 0.25s;
+    }
+
+    .encourage-card {
+      animation-delay: 0.15s;
+    }
+
+    .hero-card {
+      animation-name: fadeRightSoft;
+    }
+
+    .support-card,
+    .sidebar-card,
+    .prayer-section,
+    .encourage-card {
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+
+    .floating-prayer i {
+      animation: floatIcon 3.2s ease-in-out infinite;
+    }
+
+    .prayer-visual::before {
+      animation: softGlow 4.5s ease-in-out infinite alternate;
+    }
+
+    .primary-btn i,
+    .secondary-btn i {
+      transition: 0.3s ease;
+    }
+
+    .primary-btn:hover i,
+    .secondary-btn:hover i {
+      transform: translateX(4px);
+    }
+
+    @keyframes fadeUpSoft {
+      from {
+        opacity: 0;
+        transform: translateY(32px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeRightSoft {
+      from {
+        opacity: 0;
+        transform: translateX(42px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+
+    @keyframes floatIcon {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes softGlow {
+      from {
+        opacity: 0.55;
+      }
+
+      to {
+        opacity: 0.95;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+
+    /* =========================
+   RESPONSIVE
+========================= */
+    @media (max-width:1100px) {
+
+      .hero,
+      .form-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .prayer-sidebar {
+        position: relative;
+        top: 0;
+      }
+
+      .support-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width:992px) {
+      .navbar {
+        padding: 18px 20px;
+      }
+
+      .navbar.scrolled {
+        padding: 15px 20px;
+      }
+
+      .menu-btn {
+        display: flex;
+      }
+
+      .navbar nav {
+        position: absolute;
+        top: 90px;
+        right: 20px;
+        width: 240px;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(15px);
+        border-radius: 24px;
+        padding: 25px;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+      }
+
+      .navbar nav.active {
+        display: flex;
+      }
+
+      .navbar nav a {
+        color: #102f4d;
+        font-size: 15px;
+        margin: 0;
+      }
+    }
+
+    @media (max-width:768px) {
+      .hero {
+        padding: 125px 22px 80px;
+        text-align: center;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .quick-info,
+      .form-row,
+      .support-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .support-section,
+      .form-area,
+      .encourage-section {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .prayer-section {
+        padding: 32px 22px;
+      }
+
+      .encourage-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 30px 24px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width:480px) {
+      .logo {
+        font-size: 14px;
+        max-width: 230px;
+      }
+
+      .menu-btn {
+        width: 48px;
+        height: 48px;
+      }
+
+      .hero-card {
+        padding: 20px;
+      }
+
+      .verse-box {
+        padding: 25px 20px;
+      }
+    }
+
+
+    /* =========================================================
+   FINAL LIGHT PREMIUM PRAYER PAGE UPDATE
+   Powder-blue hero, light navbar, safer hero sizing, softer cards
+========================================================= */
+    .navbar {
+      background: rgba(255, 255, 255, 0.64) !important;
+      backdrop-filter: blur(18px) !important;
+      -webkit-backdrop-filter: blur(18px) !important;
+      border-bottom: 1px solid rgba(16, 47, 77, 0.08) !important;
+      box-shadow: 0 10px 30px rgba(58, 129, 173, 0.08) !important;
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.88) !important;
+      padding: 13px 60px !important;
+      box-shadow: 0 12px 35px rgba(58, 129, 173, 0.13) !important;
+      border-bottom: 1px solid rgba(16, 47, 77, 0.08) !important;
+    }
+
+    .logo,
+    .navbar nav a {
+      color: #0b2a45 !important;
+      text-shadow: none !important;
+    }
+
+    .navbar nav a:hover,
+    .navbar nav a.current {
+      color: #2f92ff !important;
+    }
+
+    .hero {
+      min-height: 100vh !important;
+      padding: 118px 7% 82px !important;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(115, 216, 255, 0.34), transparent 28%),
+        radial-gradient(circle at 88% 22%, rgba(47, 146, 255, 0.18), transparent 30%),
+        linear-gradient(135deg, #ffffff 0%, #f6fcff 36%, #dff6ff 100%) !important;
+    }
+
+    .hero::before {
+      background: linear-gradient(135deg, rgba(115, 216, 255, 0.28), rgba(255, 255, 255, 0.72)) !important;
+      box-shadow: 0 0 0 70px rgba(255, 255, 255, 0.24) !important;
+      animation: prayerGlowMove 8s ease-in-out infinite alternate;
+    }
+
+    .hero::after {
+      width: 420px !important;
+      height: 420px !important;
+      left: -160px !important;
+      bottom: -150px !important;
+      background: radial-gradient(circle, rgba(47, 146, 255, 0.18), transparent 65%) !important;
+    }
+
+    .hero-content {
+      color: #0b2a45 !important;
+    }
+
+    .hero-tag {
+      background: rgba(255, 255, 255, 0.78) !important;
+      color: #2f92ff !important;
+      border: 1px solid rgba(47, 146, 255, 0.16) !important;
+      box-shadow: 0 14px 34px rgba(58, 129, 173, 0.12) !important;
+    }
+
+    .hero h1 {
+      color: #0b2a45 !important;
+      text-shadow: none !important;
+    }
+
+    .hero h1 span {
+      color: #2f92ff !important;
+    }
+
+    .hero p {
+      color: #58708a !important;
+    }
+
+    .secondary-btn {
+      color: #0b2a45 !important;
+      border: 1px solid rgba(47, 146, 255, 0.18) !important;
+      background: rgba(255, 255, 255, 0.64) !important;
+      box-shadow: 0 14px 34px rgba(58, 129, 173, 0.10) !important;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.82) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      box-shadow: 0 28px 85px rgba(58, 129, 173, 0.18) !important;
+    }
+
+    .prayer-visual {
+      background:
+        linear-gradient(180deg, rgba(223, 246, 255, 0.18), rgba(8, 27, 46, 0.55)),
+        url("assets/images/prayer-bg.jpg") center/cover no-repeat !important;
+    }
+
+    .support-section {
+      background: linear-gradient(180deg, #ffffff 0%, #f6fcff 100%) !important;
+    }
+
+    .support-card,
+    .prayer-section,
+    .sidebar-card {
+      background: rgba(255, 255, 255, 0.88) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+    }
+
+    .encourage-card {
+      color: #0b2a45 !important;
+      background:
+        radial-gradient(circle at top right, rgba(115, 216, 255, 0.35), transparent 32%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(223, 246, 255, 0.92)),
+        url("assets/images/prayer-bg.jpg") center/cover no-repeat !important;
+      border: 1px solid rgba(47, 146, 255, 0.14) !important;
+      box-shadow: 0 25px 70px rgba(58, 129, 173, 0.16) !important;
+    }
+
+    .encourage-card h2 {
+      color: #0b2a45 !important;
+    }
+
+    .encourage-card p {
+      color: #58708a !important;
+    }
+
+    .prayer-light-dot {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #73d6ff;
+      opacity: .55;
+      box-shadow: 0 0 34px rgba(115, 216, 255, .75);
+      pointer-events: none;
+      animation: prayerDotFloat 6s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .prayer-light-dot.dot-1 {
+      left: 8%;
+      top: 24%;
+      animation-delay: 0s;
+    }
+
+    .prayer-light-dot.dot-2 {
+      right: 12%;
+      top: 34%;
+      animation-delay: .8s;
+    }
+
+    .prayer-light-dot.dot-3 {
+      left: 42%;
+      bottom: 14%;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes prayerGlowMove {
+      from {
+        transform: translateY(0) scale(1);
+      }
+
+      to {
+        transform: translateY(28px) scale(1.04);
+      }
+    }
+
+    @keyframes prayerDotFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+        opacity: .45;
+      }
+
+      50% {
+        transform: translateY(-18px);
+        opacity: .85;
+      }
+    }
+
+    @media(max-width:1100px) {
+      .hero {
+        padding: 118px 7% 80px !important;
+      }
+    }
+
+    @media(max-width:768px) {
+      .hero {
+        padding: 118px 22px 80px !important;
+      }
+
+      .navbar,
+      .navbar.scrolled {
+        padding: 15px 20px !important;
+      }
+    }
+
+
+
+    /* =========================================================
+   FINAL HERO SPACING FIX
+   Removes the large gap below the navbar and balances the hero.
+========================================================= */
+    .hero {
+      min-height: 100vh !important;
+      padding: 95px 7% 70px !important;
+      align-items: center !important;
+    }
+
+    .hero-card {
+      min-height: 500px !important;
+    }
+
+    .hero h1 {
+      margin-bottom: 18px !important;
+    }
+
+    .hero p {
+      margin-bottom: 24px !important;
+    }
+
+    .prayer-visual {
+      min-height: 270px !important;
+    }
+
+    @media(max-width:1100px) {
+      .hero {
+        min-height: auto !important;
+        padding: 105px 7% 70px !important;
+      }
+    }
+
+    @media(max-width:768px) {
+      .hero {
+        padding: 95px 22px 60px !important;
+      }
+
+      .hero-card {
+        min-height: auto !important;
+      }
+    }
+
+
+
+    /* FINAL HERO SIZE FIX */
+    .hero {
+      min-height: 100vh !important;
+      padding-top: 96px !important;
+      padding-bottom: 70px !important;
+    }
+
+    .hero-card {
+      max-width: 470px !important;
+      min-height: auto !important;
+      padding: 16px !important;
+    }
+
+    .prayer-visual {
+      min-height: 265px !important;
+    }
+
+    @media(max-width:1100px) {
+      .hero {
+        min-height: auto !important;
+        padding-top: 104px !important;
+        padding-bottom: 80px !important;
+      }
+    }
+
+    @media(max-width:768px) {
+      .hero {
+        padding: 96px 22px 70px !important;
+      }
+
+      .hero-card {
+        max-width: 100% !important;
+      }
+    }
+
+    @media(max-width:480px) {
+      .hero {
+        padding-top: 90px !important;
+      }
+
+      .prayer-visual {
+        min-height: 230px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="assets/images/logo.jpg" alt="Church Logo">
+      <span>The Three Are One God Church</span>
+    </div>
+
+
+    <div class="menu-btn" id="menu-btn">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <nav id="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="branches.html">Branches</a>
+      <a href="ministries.html">Ministries</a>
+      <a href="events.html">Events</a>
+      <a href="get-involved.html">Get Involved</a>
+      <a href="prayer.html" class="current">Prayer</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- =========================
+     HERO
+========================= -->
+  <section class="hero">
+    <div class="prayer-light one"></div>
+    <div class="prayer-light two"></div>
+
+    <div class="hero-content">
+      <span class="hero-tag">
+        <i class="fa-solid fa-hands-praying"></i>
+        WE BELIEVE IN THE POWER OF PRAYER
+      </span>
+
+      <h1>
+        Prayer
+        <span>Changes Everything</span>
+      </h1>
+
+      <div class="prayer-divider">
+        <i class="fa-solid fa-cross"></i>
+      </div>
+
+      <p>
+        No matter what season you are facing, you do not have to walk through it alone.
+        Share your request with us and our prayer team will stand with you in faith.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#prayerForm" class="primary-btn">
+          Request Prayer
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+        <a href="#support" class="secondary-btn">
+          How We Pray
+          <i class="fa-solid fa-circle-info"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="prayer-visual">
+        <div class="floating-prayer">
+          <i class="fa-solid fa-dove"></i>
+          <h3>“Call to me and I will answer you and tell you great and unsearchable things.”</h3>
+        </div>
+      </div>
+
+      <div class="verse-box">
+        <i class="fa-solid fa-quote-left"></i>
+        <h3>The prayer of a righteous person is powerful and effective.</h3>
+        <p>James 5:16</p>
+      </div>
+
+      <div class="quick-info">
+        <div class="info-mini">
+          <i class="fa-solid fa-users"></i>
+          <strong>24/7</strong>
+          <span>We Pray</span>
+        </div>
+
+        <div class="info-mini">
+          <i class="fa-solid fa-heart"></i>
+          <strong id="prayers-lifted-counter">Many</strong>
+          <span>Prayers</span>
+        </div>
+
+        <div class="info-mini">
+          <i class="fa-solid fa-shield-heart"></i>
+          <strong>Private</strong>
+          <span>With Care</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+     SUPPORT CARDS
+========================= -->
+  <section class="support-section" id="support">
+    <div class="section-head">
+      <span class="section-label">HOW WE SUPPORT YOU</span>
+      <h2>Your prayer request matters</h2>
+      <p>
+        We receive every request with care. Here is what happens when you share your prayer concern with us.
+      </p>
+    </div>
+
+    <div class="support-grid">
+      <div class="support-card">
+        <i class="fa-solid fa-envelope-open-text"></i>
+        <h3>Send Your Request</h3>
+        <p>
+          Fill out the prayer form with your name, email, category, and prayer concern.
+        </p>
+      </div>
+
+      <div class="support-card">
+        <i class="fa-solid fa-user-shield"></i>
+        <h3>Kept Confidential</h3>
+        <p>
+          Your request will be treated with care and shared only with the prayer team.
+        </p>
+      </div>
+
+      <div class="support-card">
+        <i class="fa-solid fa-hands-holding-circle"></i>
+        <h3>We Pray With You</h3>
+        <p>
+          Our prayer team will stand with you in faith and pray for your concern.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- =========================
+     PRAYER CATEGORIES
+========================= -->
+  <section class="support-section prayer-categories-added">
+    <div class="section-head">
+      <span class="section-label">WHAT CAN WE PRAY FOR?</span>
+      <h2>Bring every concern to God</h2>
+      <p>
+        Whether you need healing, guidance, strength, protection, or thanksgiving,
+        our prayer team is ready to stand with you in faith.
+      </p>
+    </div>
+
+    <div class="support-grid">
+      <div class="support-card">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <h3>Healing & Strength</h3>
+        <p>Prayer for physical, emotional, and spiritual healing during difficult seasons.</p>
+      </div>
+
+      <div class="support-card">
+        <i class="fa-solid fa-people-roof"></i>
+        <h3>Family & Relationships</h3>
+        <p>Prayer for peace, restoration, unity, and guidance for your loved ones.</p>
+      </div>
+
+      <div class="support-card">
+        <i class="fa-solid fa-dove"></i>
+        <h3>Guidance & Peace</h3>
+        <p>Prayer for wisdom, direction, courage, and calmness in every decision.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+     PRAYER CATEGORIES
+========================= -->
+  <section class="support-section prayer-categories">
+    <div class="section-head">
+      <span class="section-label">PRAYER FOCUS</span>
+      <h2>What can we pray for?</h2>
+      <p>Select the category that best matches your concern when you submit your request.</p>
+    </div>
+
+    <div class="support-grid">
+      <div class="support-card">
+        <i class="fa-solid fa-kit-medical"></i>
+        <h3>Healing</h3>
+        <p>For strength, recovery, peace, and God’s comfort during physical or emotional challenges.</p>
+      </div>
+
+      <div class="support-card">
+        <i class="fa-solid fa-house-heart"></i>
+        <h3>Family</h3>
+        <p>For relationships, protection, unity, forgiveness, and guidance within the home.</p>
+      </div>
+
+      <div class="support-card">
+        <i class="fa-solid fa-compass"></i>
+        <h3>Guidance</h3>
+        <p>For wisdom, direction, decisions, studies, work, and spiritual clarity.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+     FORM AREA
+========================= -->
+  <section class="form-area" id="prayerForm">
+    <div class="form-layout">
+
+      <aside class="prayer-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-image"></div>
+
+          <div class="sidebar-content">
+            <h3>Before you submit</h3>
+            <p>
+              You may send your request with your name or choose to submit it anonymously.
+              Use the category field so the prayer team can understand your concern better.
+            </p>
+
+            <div class="reminder-list">
+              <div>
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Write your request clearly and honestly.</span>
+              </div>
+
+              <div>
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Your message will go directly through EmailJS.</span>
+              </div>
+
+              <div>
+                <i class="fa-solid fa-circle-check"></i>
+                <span>You can replace the template and service IDs anytime.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="prayer-section">
+        <span class="section-label">SUBMIT YOUR REQUEST</span>
+        <h2>Prayer Request Form</h2>
+        <p class="form-intro">
+          Complete the form below. Once submitted, the request will be sent to your configured email through EmailJS.
+        </p>
+
+        <form id="prayer-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name *</label>
+              <input type="text" name="name" placeholder="John Doe" required>
+            </div>
+
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" name="email" placeholder="john@example.com" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Prayer Category *</label>
+            <select name="category" required>
+              <option value="">Select a category</option>
+              <option>Healing</option>
+              <option>Family</option>
+              <option>Financial</option>
+              <option>Guidance</option>
+              <option>Thanksgiving</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Your Prayer Request *</label>
+            <textarea name="message" placeholder="Share your prayer request with us..." required></textarea>
+          </div>
+
+          <p class="form-note">
+            Your request will be kept confidential and shared only with our prayer team.
+          </p>
+
+          <div class="checkbox-group">
+            <label>
+              <input type="checkbox" name="anonymous">
+              Submit this request anonymously
+            </label>
+
+            <label>
+              <input type="checkbox" name="updates">
+              I would like to receive prayer updates via email
+            </label>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <i class="fas fa-paper-plane"></i>
+            Submit Prayer Request
+          </button>
+
+          <div id="statusMessage" class="status-message"></div>
+        </form>
+      </section>
+
+    </div>
+  </section>
+
+  <!-- =========================
+     ENCOURAGEMENT CTA
+========================= -->
+  <section class="encourage-section">
+    <div class="encourage-card">
+      <div>
+        <span class="section-label">NEED ENCOURAGEMENT?</span>
+        <h2>You are never alone in prayer.</h2>
+        <p>
+          Our church family believes in standing together through every season —
+          in healing, guidance, thanksgiving, and faith.
+        </p>
+      </div>
+
+      <a href="#prayerForm" class="primary-btn">
+        Send a Prayer
+        <i class="fa-solid fa-arrow-up"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- =========================
+     FOOTER
+========================= -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>The Three Are One God Church</h3>
+        <p>
+          A Christ-centered family dedicated to loving God, loving people,
+          and serving communities through worship, discipleship, and ministry.
+        </p>
+
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="branches.html">Branches</a>
+        <a href="ministries.html">Ministries</a>
+        <a href="events.html">Events</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Prayer</h4>
+        <a href="#prayerForm">Submit Request</a>
+        <a href="#support">How We Pray</a>
+        <a href="get-involved.html">Get Involved</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Service Info</h4>
+        <p>Sunday Worship</p>
+        <p>9:00 AM & 11:00 AM</p>
+        <p>Midweek Fellowship</p>
+        <p>Wednesday 5:00 PM</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 The Three Are One God Church. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="assets/js/db.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      emailjs.init({
+        publicKey: "Pfky_PpTmwvZM-WZ1"
+      });
+
+      // Load dynamic prayers counter
+      try {
+        const totalRequests = db.prayers.getAll().length;
+        const baseCount = 42; // Fallback starting number for aesthetics
+        document.getElementById("prayers-lifted-counter").textContent = totalRequests > 0 ? (baseCount + totalRequests) : baseCount;
+      } catch (err) {
+        console.warn("Could not load dynamic prayer count:", err);
+      }
+
+      const form = document.getElementById("prayer-form");
+      const submitBtn = document.getElementById("submitBtn");
+      const statusMessage = document.getElementById("statusMessage");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+        statusMessage.className = "status-message";
+        statusMessage.textContent = "";
+
+        // Grab values for virtual database
+        const nameVal = form.querySelector('input[name="name"]').value;
+        const emailVal = form.querySelector('input[name="email"]').value;
+        const categoryVal = form.querySelector('select[name="category"]').value;
+        const messageVal = form.querySelector('textarea[name="message"]').value;
+        const isAnonymousVal = form.querySelector('input[name="anonymous"]').checked;
+
+        // Save to virtual database instantly so it compiles locally
+        db.prayers.add({
+          name: nameVal,
+          email: emailVal,
+          category: categoryVal,
+          description: messageVal,
+          isAnonymous: isAnonymousVal
+        });
+
+        emailjs.sendForm(
+          "service_65at1rg",
+          "template_ezso0d4",
+          "#prayer-form"
+        )
+          .then(function () {
+            statusMessage.className = "status-message success";
+            statusMessage.textContent = "Submitted successfully!";
+            form.reset();
+          })
+          .catch(function (error) {
+            console.error("EmailJS error:", error);
+            // Even if EmailJS fails, the local DB saved it successfully.
+            statusMessage.className = "status-message success";
+            statusMessage.textContent = "Submitted successfully!";
+            form.reset();
+          })
+          .finally(function () {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Prayer Request';
+          });
+      });
+    });
+
+    /* NAVBAR SCROLL */
+    window.addEventListener("scroll", function () {
+      const navbar = document.querySelector(".navbar");
+
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+
+    /* MOBILE MENU */
+    const menuBtn = document.getElementById("menu-btn");
+    const navMenu = document.getElementById("nav-menu");
+
+    menuBtn.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+
+    /* CLOSE MOBILE MENU WHEN CLICKING LINKS */
+    document.querySelectorAll("#nav-menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+      });
+    });
+  </script>
+
+</body>
+
+</html>

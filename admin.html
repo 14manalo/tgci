@@ -1,0 +1,2704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>TGCI Church | Admin Control Panel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- External Stylesheets -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Central Virtual Database -->
+  <script src="assets/js/db.js"></script>
+
+  <style>
+    /* =========================================================
+       GLOBAL RESET & LIGHT SLICK GLASSMORPHIC DESIGN SYSTEM
+       ========================================================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #1565ff;
+      --primary-glow: rgba(21, 101, 255, 0.15);
+      --navy: #102f4d;
+      --text: #0b2a45;
+      --soft-text: #58708a;
+      --glass-bg: rgba(255, 255, 255, 0.72);
+      --glass-border: rgba(115, 216, 255, 0.35);
+      --glass-shadow: 0 24px 65px rgba(16, 47, 77, 0.12);
+      --input-bg: rgba(255, 255, 255, 0.85);
+      --success: #10b981;
+      --success-bg: rgba(16, 185, 129, 0.12);
+      --warning: #f59e0b;
+      --warning-bg: rgba(245, 158, 11, 0.12);
+      --danger: #ef4444;
+      --danger-bg: rgba(239, 68, 68, 0.12);
+      --info: #0ea5e9;
+      --info-bg: rgba(14, 165, 233, 0.12);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.95), transparent 16%),
+        radial-gradient(circle at 85% 20%, rgba(115, 216, 255, 0.38), transparent 30%),
+        radial-gradient(circle at 10% 90%, rgba(47, 146, 255, 0.10), transparent 26%),
+        linear-gradient(135deg, #fafdff 0%, #eefbff 48%, #dff6ff 100%) !important;
+      background-attachment: fixed;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Soft entry reveal */
+    .fade-in {
+      animation: fadeInEffect 0.6s ease forwards;
+    }
+
+    @keyframes fadeInEffect {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================================================
+       LOGIN MODAL PANEL (SECURE ACCESS SCREEN)
+       ========================================================= */
+    #login-overlay {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(115, 216, 255, 0.45), transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(21, 101, 255, 0.15), transparent 42%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(238, 248, 255, 0.95) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .login-card {
+      width: min(90%, 450px);
+      background: var(--glass-bg);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid var(--glass-border);
+      border-radius: 36px;
+      padding: 45px 35px;
+      box-shadow: 0 35px 80px rgba(16, 47, 77, 0.18);
+      text-align: center;
+      transform: scale(0.9);
+      animation: zoomInCard 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes zoomInCard {
+      to {
+        transform: scale(1);
+      }
+    }
+
+    .login-brand img {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      box-shadow: 0 10px 25px rgba(21, 101, 255, 0.22);
+      margin-bottom: 18px;
+    }
+
+    .login-card h2 {
+      color: var(--navy);
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .login-card p {
+      color: var(--soft-text);
+      font-size: 13.5px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+      text-align: left;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-wrapper i {
+      position: absolute;
+      left: 18px;
+      color: var(--primary);
+      font-size: 16px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 16px 20px 16px 50px;
+      border-radius: 18px;
+      border: 1px solid rgba(115, 216, 255, 0.45);
+      background: var(--input-bg);
+      font-size: 14.5px;
+      color: var(--text);
+      font-family: inherit;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 15px rgba(16, 47, 77, 0.03);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px var(--primary-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--primary), #6bd2ff);
+      color: white;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 14px 34px rgba(21, 101, 255, 0.28);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-login:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 45px rgba(21, 101, 255, 0.38);
+    }
+
+    .login-error {
+      color: var(--danger);
+      background: var(--danger-bg);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      padding: 12px;
+      border-radius: 14px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: none;
+      animation: shake 0.3s ease;
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-8px);
+      }
+
+      75% {
+        transform: translateX(8px);
+      }
+    }
+
+    /* =========================================================
+       DASHBOARD HEADER & NAVIGATION BAR
+       ========================================================= */
+    .dashboard-header {
+      background: var(--glass-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 16px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(16, 47, 77, 0.04);
+    }
+
+    .dashboard-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .dashboard-brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--glass-border);
+    }
+
+    .dashboard-brand h1 {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .dashboard-brand span {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      background: var(--primary-glow);
+      padding: 3px 8px;
+      border-radius: 999px;
+      letter-spacing: 0.5px;
+      margin-left: 6px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .btn-action-outline {
+      padding: 10px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.5);
+      color: var(--navy);
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-action-outline:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .btn-logout {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border-color: rgba(239, 68, 68, 0.15);
+    }
+
+    .btn-logout:hover {
+      background: var(--danger);
+      border-color: var(--danger);
+      color: white;
+    }
+
+    /* =========================================================
+       DASHBOARD WRAPPER & MAIN LAYOUT
+       ========================================================= */
+    .dashboard-wrapper {
+      max-width: 1320px;
+      margin: 40px auto 80px;
+      padding: 0 4%;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 36px;
+    }
+
+    /* =========================================================
+       SIDEBAR & TAB SELECTORS
+       ========================================================= */
+    .dashboard-sidebar {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      border-radius: 30px;
+      padding: 24px;
+      height: fit-content;
+      box-shadow: var(--glass-shadow);
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .menu-item {
+      padding: 14px 18px;
+      border-radius: 16px;
+      color: var(--soft-text);
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .menu-item i {
+      font-size: 16px;
+    }
+
+    .menu-item:hover {
+      background: rgba(21, 101, 255, 0.06);
+      color: var(--primary);
+      transform: translateX(4px);
+    }
+
+    .menu-item.active {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 10px 22px rgba(21, 101, 255, 0.22);
+    }
+
+    /* =========================================================
+       CONTENT PANELS & TABS
+       ========================================================= */
+    .dashboard-content {
+      min-width: 0;
+      /* Prevents overflow issues */
+    }
+
+    .tab-panel {
+      display: none;
+      animation: fadeInEffect 0.5s ease forwards;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .panel-header h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.6px;
+    }
+
+    .panel-header p {
+      color: var(--soft-text);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    /* =========================================================
+       OVERVIEW / STATISTICS TAB
+       ========================================================= */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .stat-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: var(--glass-shadow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+    }
+
+    .stat-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .stat-info h3 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--soft-text);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .stat-info p {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    /* Stat color themes */
+    .theme-blue {
+      background: rgba(21, 101, 255, 0.08);
+      color: var(--primary);
+    }
+
+    .theme-green {
+      background: rgba(16, 185, 129, 0.08);
+      color: var(--success);
+    }
+
+    .theme-orange {
+      background: rgba(245, 158, 11, 0.08);
+      color: var(--warning);
+    }
+
+    .recent-activity-section {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      border-radius: 30px;
+      padding: 32px;
+      box-shadow: var(--glass-shadow);
+    }
+
+    .recent-activity-section h3 {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .activity-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .activity-item {
+      padding: 16px 20px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(115, 216, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .activity-main {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .activity-icon-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .activity-details h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+
+    .activity-details p {
+      font-size: 12.5px;
+      color: var(--soft-text);
+    }
+
+    .activity-time {
+      font-size: 11.5px;
+      color: var(--soft-text);
+      font-weight: 600;
+    }
+
+    /* =========================================================
+       TABLES & DATAGRID PANELS
+       ========================================================= */
+    .data-table-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      border-radius: 30px;
+      padding: 24px;
+      box-shadow: var(--glass-shadow);
+      margin-bottom: 30px;
+    }
+
+    .table-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .search-control-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: min(100%, 300px);
+    }
+
+    .search-control-wrapper i {
+      position: absolute;
+      left: 15px;
+      color: var(--soft-text);
+      font-size: 14px;
+    }
+
+    .search-control {
+      width: 100%;
+      padding: 11px 16px 11px 40px;
+      border-radius: 14px;
+      border: 1px solid rgba(115, 216, 255, 0.45);
+      background: var(--input-bg);
+      font-size: 13.5px;
+      color: var(--text);
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .search-control:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .custom-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .custom-table th {
+      padding: 15px 18px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--soft-text);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid rgba(115, 216, 255, 0.22);
+    }
+
+    .custom-table td {
+      padding: 16px 18px;
+      font-size: 13.5px;
+      color: var(--text);
+      border-bottom: 1px solid rgba(115, 216, 255, 0.15);
+      vertical-align: middle;
+    }
+
+    .custom-table tbody tr {
+      transition: background 0.25s ease;
+    }
+
+    .custom-table tbody tr:hover {
+      background: rgba(21, 101, 255, 0.03);
+    }
+
+    .event-row-pic {
+      width: 50px;
+      height: 35px;
+      border-radius: 6px;
+      object-fit: cover;
+      border: 1px solid rgba(115, 216, 255, 0.25);
+    }
+
+    /* =========================================================
+       BADGES, STATUS LABELS, BUTTONS
+       ========================================================= */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-primary {
+      background: var(--primary-glow);
+      color: var(--primary);
+    }
+
+    .badge-success {
+      background: var(--success-bg);
+      color: var(--success);
+    }
+
+    .badge-warning {
+      background: var(--warning-bg);
+      color: var(--warning);
+    }
+
+    .badge-danger {
+      background: var(--danger-bg);
+      color: var(--danger);
+    }
+
+    .badge-info {
+      background: var(--info-bg);
+      color: var(--info);
+    }
+
+    .btn-icon-group {
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+      background: white;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.25s ease;
+    }
+
+    .btn-icon:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-icon-edit:hover {
+      background: var(--info);
+      border-color: var(--info);
+      color: white;
+    }
+
+    .btn-icon-delete:hover {
+      background: var(--danger);
+      border-color: var(--danger);
+      color: white;
+    }
+
+    .btn-icon-view:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary-dashboard {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), #6bd2ff);
+      color: white;
+      font-size: 13.5px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(21, 101, 255, 0.2);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary-dashboard:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(21, 101, 255, 0.28);
+    }
+
+    /* Empty state messages */
+    .empty-state {
+      text-align: center;
+      padding: 45px 20px;
+      color: var(--soft-text);
+    }
+
+    .empty-state i {
+      font-size: 44px;
+      color: rgba(115, 216, 255, 0.5);
+      margin-bottom: 12px;
+    }
+
+    .empty-state p {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* =========================================================
+       DYNAMIC OVERLAY MODAL FORM (ADD/EDIT DIALOG)
+       ========================================================= */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 27, 46, 0.45);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-container {
+      width: min(100%, 750px);
+      max-height: 90vh;
+      background: var(--glass-bg);
+      backdrop-filter: blur(25px);
+      border: 1px solid var(--glass-border);
+      border-radius: 32px;
+      box-shadow: 0 35px 80px rgba(16, 47, 77, 0.22);
+      overflow-y: auto;
+      transform: scale(0.95);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .modal-overlay.active .modal-container {
+      transform: scale(1);
+    }
+
+    .modal-header {
+      padding: 24px 30px;
+      border-bottom: 1px solid rgba(115, 216, 255, 0.22);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h3 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .modal-close {
+      font-size: 20px;
+      color: var(--soft-text);
+      cursor: pointer;
+      transition: color 0.25s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--danger);
+    }
+
+    .modal-body {
+      padding: 30px;
+    }
+
+    .form-grid-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 680px) {
+      .form-grid-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+
+    .form-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .btn-secondary-dashboard {
+      padding: 12px 20px;
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      background: white;
+      color: var(--navy);
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary-dashboard:hover {
+      background: #f1f5f9;
+      transform: translateY(-1px);
+    }
+
+    /* Detail block list styling */
+    .details-lines-area {
+      font-family: inherit;
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* Custom inline notifications */
+    .toast-notif {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 16px 24px;
+      border-radius: 16px;
+      color: white;
+      font-size: 13.5px;
+      font-weight: 700;
+      box-shadow: 0 15px 35px rgba(16, 47, 77, 0.15);
+      z-index: 100000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .toast-notif.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast-success {
+      background: var(--success);
+    }
+
+    .toast-danger {
+      background: var(--danger);
+    }
+
+    /* =========================================================
+       SETTINGS & SYSTEM TOOLS
+       ========================================================= */
+    .settings-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    @media (max-width: 900px) {
+      .settings-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .settings-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: var(--glass-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .settings-card h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .settings-card p {
+      color: var(--soft-text);
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .tools-btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-tool {
+      padding: 12px 18px;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 12px;
+      border: 1px solid rgba(115, 216, 255, 0.4);
+      background: white;
+      color: var(--navy);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+
+    .btn-tool:hover {
+      background: var(--primary-glow);
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .btn-tool-danger {
+      color: var(--danger);
+      border-color: rgba(239, 68, 68, 0.2);
+    }
+
+    .btn-tool-danger:hover {
+      background: var(--danger-bg);
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+
+    /* Message detail modal specific */
+    .message-bubble {
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(21, 101, 255, 0.04);
+      border: 1px solid rgba(115, 216, 255, 0.15);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.7;
+      margin-top: 15px;
+      white-space: pre-wrap;
+    }
+
+    .message-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13.5px;
+      margin-bottom: 15px;
+    }
+
+    .message-meta span strong {
+      color: var(--navy);
+    }
+
+    /* =========================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================= */
+    @media (max-width: 992px) {
+      .dashboard-wrapper {
+        grid-template-columns: 1fr;
+        margin-top: 25px;
+      }
+
+      .dashboard-sidebar {
+        padding: 18px;
+      }
+
+      .sidebar-menu {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 8px;
+      }
+
+      .menu-item {
+        white-space: nowrap;
+        padding: 10px 15px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .dashboard-header {
+        padding: 14px 18px;
+      }
+
+      .dashboard-brand h1 {
+        font-size: 15px;
+      }
+
+      .dashboard-brand span {
+        display: none;
+      }
+
+      .sidebar-menu {
+        gap: 6px;
+      }
+
+      .menu-item {
+        font-size: 12.5px;
+        padding: 8px 12px;
+      }
+
+      .panel-header h2 {
+        font-size: 20px;
+      }
+
+      .table-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .search-control-wrapper {
+        width: 100%;
+      }
+
+      .btn-primary-dashboard {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       LOGIN SCREEN (FLOATING GLASS OVERLAY)
+       ========================================================= -->
+  <div id="login-overlay">
+    <div class="login-card">
+      <div class="login-brand">
+        <img src="assets/images/logo.jpg" alt="TGCI Logo">
+        <h2>TGCI Control Center</h2>
+        <p>Enter your Administrator credentials to securely access data management tools.</p>
+      </div>
+
+      <div class="login-error" id="login-error-msg">Incorrect Admin Password. Please try again!</div>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label>Security Password</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="admin-pass" class="form-control" placeholder="••••••••" required autofocus>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-login">
+          <i class="fa-solid fa-shield-halved"></i> Authenticate Access
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       MAIN DASHBOARD PANEL (HIDDEN BY DEFAULT)
+       ========================================================= -->
+  <div id="dashboard-main" style="display: none;">
+
+    <!-- HEADER NAVBAR -->
+    <header class="dashboard-header">
+      <a href="index.html" class="dashboard-brand">
+        <img src="assets/images/logo.jpg" alt="TGCI Logo">
+        <div>
+          <h1>The Three Are One God Church</h1>
+        </div>
+        <span>Admin Panel</span>
+      </a>
+
+      <div class="header-actions">
+        <a href="index.html" class="btn-action-outline">
+          <i class="fa-solid fa-globe"></i> View Website
+        </a>
+        <button onclick="logoutAdmin()" class="btn-action-outline btn-logout">
+          <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </button>
+      </div>
+    </header>
+
+    <!-- WRAPPER LAYOUT -->
+    <main class="dashboard-wrapper">
+
+      <!-- SIDEBAR -->
+      <aside class="dashboard-sidebar">
+        <ul class="sidebar-menu">
+          <li class="menu-item active" onclick="switchTab('overview')">
+            <i class="fa-solid fa-chart-line"></i> Overview
+          </li>
+          <li class="menu-item" onclick="switchTab('events')">
+            <i class="fa-solid fa-calendar-days"></i> Church Events
+          </li>
+          <li class="menu-item" onclick="switchTab('prayers')">
+            <i class="fa-solid fa-hands-praying"></i> Prayer Requests
+          </li>
+          <li class="menu-item" onclick="switchTab('messages')">
+            <i class="fa-solid fa-envelope-open-text"></i> Message Inbox
+          </li>
+          <li class="menu-item" onclick="switchTab('branches')">
+            <i class="fa-solid fa-church"></i> Chapters & Members
+          </li>
+          <li class="menu-item" onclick="switchTab('settings')">
+            <i class="fa-solid fa-sliders"></i> Settings & Tools
+          </li>
+        </ul>
+      </aside>
+
+      <!-- PANELS AREA -->
+      <section class="dashboard-content">
+
+        <!-- =========================================================
+             1. OVERVIEW TAB
+             ========================================================= -->
+        <div id="panel-overview" class="tab-panel active fade-in">
+          <div class="panel-header">
+            <div>
+              <h2>Control Center Overview</h2>
+              <p>Real-time analytics and statistics of user engagement and content records.</p>
+            </div>
+          </div>
+
+          <!-- Stats counters -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-info">
+                <h3>Scheduled Events</h3>
+                <p id="stat-total-events">0</p>
+              </div>
+              <div class="stat-icon theme-blue">
+                <i class="fa-solid fa-calendar-check"></i>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-info">
+                <h3>Active Prayers</h3>
+                <p id="stat-pending-prayers">0</p>
+              </div>
+              <div class="stat-icon theme-orange">
+                <i class="fa-solid fa-hands-praying"></i>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-info">
+                <h3>Unread Messages</h3>
+                <p id="stat-unread-messages">0</p>
+              </div>
+              <div class="stat-icon theme-green">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Inquiries -->
+          <div class="recent-activity-section">
+            <h3><i class="fa-solid fa-bell"></i> Recent Inquiries & Prayer Requests</h3>
+            <div class="activity-list" id="recent-activity-list">
+              <!-- Rendered Dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             2. CHURCH EVENTS TAB
+             ========================================================= -->
+        <div id="panel-events" class="tab-panel fade-in">
+          <div class="panel-header">
+            <div>
+              <h2>Manage Church Events</h2>
+              <p>Publish, update, or remove events displayed on the live events page.</p>
+            </div>
+            <button onclick="openEventModal()" class="btn-primary-dashboard">
+              <i class="fa-solid fa-calendar-plus"></i> Publish New Event
+            </button>
+          </div>
+
+          <div class="data-table-card">
+            <div class="table-toolbar">
+              <div class="search-control-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="event-search" oninput="filterEventsTable()" class="search-control"
+                  placeholder="Search events title or branch...">
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="custom-table">
+                <thead>
+                  <tr>
+                    <th>Cover</th>
+                    <th>Event Details</th>
+                    <th>Category</th>
+                    <th>Scheduled Date</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="events-table-body">
+                  <!-- Rendered Dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             3. PRAYER REQUESTS TAB
+             ========================================================= -->
+        <div id="panel-prayers" class="tab-panel fade-in">
+          <div class="panel-header">
+            <div>
+              <h2>Prayer Requests Hub</h2>
+              <p>Monitor, categorize, and change the spiritual care status of user requests.</p>
+            </div>
+          </div>
+
+          <div class="data-table-card">
+            <div class="table-toolbar">
+              <div class="search-control-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="prayer-search" oninput="filterPrayersTable()" class="search-control"
+                  placeholder="Search name or prayer text...">
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="custom-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Intercessor Name</th>
+                    <th>Category</th>
+                    <th>Prayer Request</th>
+                    <th>Status Badge</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="prayers-table-body">
+                  <!-- Rendered Dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             4. MESSAGE INBOX TAB
+             ========================================================= -->
+        <div id="panel-messages" class="tab-panel fade-in">
+          <div class="panel-header">
+            <div>
+              <h2>Contact Inquiry Inbox</h2>
+              <p>View, reply, and read message submissions submitted via the website.</p>
+            </div>
+          </div>
+
+          <div class="data-table-card">
+            <div class="table-toolbar">
+              <div class="search-control-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="message-search" oninput="filterMessagesTable()" class="search-control"
+                  placeholder="Search name, subject, or message...">
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="custom-table">
+                <thead>
+                  <tr>
+                    <th>Received Date</th>
+                    <th>Sender Information</th>
+                    <th>Reason</th>
+                    <th>Subject Title</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="messages-table-body">
+                  <!-- Rendered Dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             4.5. CHAPTERS & MEMBERS TAB
+             ========================================================= -->
+        <div id="panel-branches" class="tab-panel fade-in">
+          <div class="panel-header">
+            <div>
+              <h2>Chapters & Members Roster</h2>
+              <p>Manage church branches, service schedules, pastors, and individual member ministry roles.</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 320px 1fr; gap: 28px; align-items: start;">
+            <!-- Left Panel: Select Branch & Details -->
+            <div class="data-table-card" style="margin-bottom: 0;">
+              <div class="form-group">
+                <label>Select Church Chapter</label>
+                <select id="branch-select" onchange="onBranchChange()" class="form-control" style="padding-left: 15px;">
+                  <!-- Options filled dynamically -->
+                </select>
+              </div>
+
+              <div id="branch-info-card"
+                style="margin-top: 20px; border-top: 1px solid rgba(115,216,255,0.22); padding-top: 20px;">
+                <!-- Filled Dynamically -->
+              </div>
+            </div>
+
+            <!-- Right Panel: Members Table & Add Member Form -->
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+              <!-- Add Member Card -->
+              <div class="data-table-card" style="margin-bottom: 0; padding: 20px 24px;">
+                <h3
+                  style="font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                  <i class="fa-solid fa-user-plus" style="color: var(--primary);"></i> Add Ministry Member
+                </h3>
+                <form id="add-member-form" onsubmit="addBranchMember(event)"
+                  style="display: flex; gap: 15px; flex-wrap: wrap; align-items: flex-end;">
+                  <div class="form-group" style="flex: 1; min-width: 180px; margin-bottom: 0;">
+                    <label>Member Full Name *</label>
+                    <input type="text" id="member-name" class="form-control" style="padding-left: 15px;"
+                      placeholder="e.g. Juan Dela Cruz" required>
+                  </div>
+                  <div class="form-group" style="flex: 1; min-width: 180px; margin-bottom: 0;">
+                    <label>Position / Ministry Role *</label>
+                    <input type="text" id="member-position" class="form-control" style="padding-left: 15px;"
+                      placeholder="e.g. Song Leader, Guitarist" required>
+                  </div>
+                  <div class="form-group" style="width: 130px; margin-bottom: 0;">
+                    <label>Category *</label>
+                    <select id="member-category" class="form-control" style="padding-left: 10px;" required>
+                      <option value="youth">Youth</option>
+                      <option value="senior">Senior</option>
+                      <option value="toddlers">Toddlers</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn-primary-dashboard" style="height: 50px;">
+                    <i class="fa-solid fa-plus"></i> Add
+                  </button>
+                </form>
+              </div>
+
+              <!-- Members List Table -->
+              <div class="data-table-card" style="margin-bottom: 0;">
+                <div class="table-toolbar"
+                  style="margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap;">
+                  <h3 style="font-size: 16px; font-weight: 800; color: var(--navy); margin: 0;">Active Roster List</h3>
+                  <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                    <div class="search-control-wrapper" style="width: 200px; margin: 0;">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                      <input type="text" id="member-search" oninput="filterRosterTable()" class="search-control"
+                        style="padding-top: 8px; padding-bottom: 8px;" placeholder="Filter names...">
+                    </div>
+                    <button type="button" onclick="printRosterPDF()" class="btn-primary-dashboard"
+                      style="height: 38px; padding: 0 15px; font-size: 12px; background: linear-gradient(135deg, #1565ff, #85e3ff); box-shadow: none; font-weight: 700; margin: 0;">
+                      <i class="fa-solid fa-print"></i> Print / Export PDF
+                    </button>
+                  </div>
+                </div>
+
+                <div class="table-container" style="max-height: 400px; overflow-y: auto;">
+                  <table class="custom-table">
+                    <thead>
+                      <tr>
+                        <th>Member Name</th>
+                        <th>Position / Ministry Role</th>
+                        <th>Category</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="roster-table-body">
+                      <!-- Rendered dynamically -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             5. SETTINGS & SYSTEM TOOLS TAB
+             ========================================================= -->
+        <div id="panel-settings" class="tab-panel fade-in">
+          <div class="panel-header">
+            <div>
+              <h2>Settings & System Utilities</h2>
+              <p>Configure credentials, export data backups, or restore site storage settings.</p>
+            </div>
+          </div>
+
+          <div class="settings-grid">
+            <!-- Account settings -->
+            <div class="settings-card">
+              <div>
+                <h3><i class="fa-solid fa-key"></i> Update Security Credentials</h3>
+                <p>Change the dashboard password. Make sure it contains at least 4 characters for security.</p>
+
+                <form id="settings-pwd-form" onsubmit="updateAdminPassword(event)">
+                  <div class="form-group" style="margin-bottom: 15px;">
+                    <label>New Security Password</label>
+                    <input type="password" id="new-password" class="form-control" style="padding-left: 20px;"
+                      placeholder="Min. 4 characters" required>
+                  </div>
+
+                  <button type="submit" class="btn-primary-dashboard" style="width: 100%;">
+                    <i class="fa-solid fa-floppy-disk"></i> Update Security Password
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Database settings -->
+            <div class="settings-card">
+              <div>
+                <h3><i class="fa-solid fa-database"></i> Database & Backup Management</h3>
+                <p>Since this system operates completely on client browser storage, download a backup JSON file to
+                  prevent accidental loss, or upload one to sync browsers.</p>
+
+                <div class="tools-btn-group">
+                  <button onclick="exportData()" class="btn-tool">
+                    <i class="fa-solid fa-download"></i> Export Database (.JSON)
+                  </button>
+                  <button onclick="triggerImport()" class="btn-tool">
+                    <i class="fa-solid fa-upload"></i> Import Database (.JSON)
+                  </button>
+                  <input type="file" id="import-file-input" style="display: none;" onchange="importData(event)"
+                    accept=".json">
+
+                  <button onclick="confirmResetDb()" class="btn-tool btn-tool-danger"
+                    style="margin-top: 15px; width: 100%; justify-content: center;">
+                    <i class="fa-solid fa-circle-exclamation"></i> Re-initialize To System Defaults
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- EmailJS Activation Card (Full Width) -->
+            <div class="settings-card" style="grid-column: 1 / -1; margin-top: 28px;">
+              <div>
+                <h3 style="color: var(--primary); font-size: 18px; font-weight: 800;"><i
+                    class="fa-solid fa-envelope-circle-check"></i> EmailJS Production Inbox Setup Guide</h3>
+                <p style="margin-bottom: 15px;">To deliver real-time messages and prayer requests from visitors directly
+                  into your actual email inbox, follow these simple steps to hook up your own free EmailJS keys.</p>
+
+                <div
+                  style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; text-align: left;">
+                  <div
+                    style="background: rgba(21,101,255,0.03); border: 1px solid rgba(115,216,255,0.2); padding: 20px; border-radius: 18px;">
+                    <div style="font-weight: 800; font-size: 14px; color: var(--navy); margin-bottom: 8px;">
+                      <span
+                        style="background: var(--primary); color: white; border-radius: 50%; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; margin-right: 6px; font-size: 12px;">1</span>
+                      Create Free EmailJS Account
+                    </div>
+                    <p style="font-size: 12.5px; margin-bottom: 0; line-height: 1.5;">Sign up at <a
+                        href="https://www.emailjs.com" target="_blank"
+                        style="color: var(--primary); font-weight:700;">emailjs.com</a>. Add a <strong>Personal Email
+                        Service</strong> (Gmail, Outlook, Yahoo) connected to your church email inbox.</p>
+                  </div>
+
+                  <div
+                    style="background: rgba(21,101,255,0.03); border: 1px solid rgba(115,216,255,0.2); padding: 20px; border-radius: 18px;">
+                    <div style="font-weight: 800; font-size: 14px; color: var(--navy); margin-bottom: 8px;">
+                      <span
+                        style="background: var(--primary); color: white; border-radius: 50%; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; margin-right: 6px; font-size: 12px;">2</span>
+                      Configure Templates
+                    </div>
+                    <p style="font-size: 12.5px; margin-bottom: 0; line-height: 1.5;">Create Email Templates matching
+                      public page forms. Design your subject/body and capture fields: <code>{{from_name}}</code>,
+                      <code>{{from_email}}</code>, <code>{{from_phone}}</code>, <code>{{category}}</code>,
+                      <code>{{description}}</code>.</p>
+                  </div>
+
+                  <div
+                    style="background: rgba(21,101,255,0.03); border: 1px solid rgba(115,216,255,0.2); padding: 20px; border-radius: 18px;">
+                    <div style="font-weight: 800; font-size: 14px; color: var(--navy); margin-bottom: 8px;">
+                      <span
+                        style="background: var(--primary); color: white; border-radius: 50%; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; margin-right: 6px; font-size: 12px;">3</span>
+                      Insert Keys into Code
+                    </div>
+                    <p style="font-size: 12.5px; margin-bottom: 0; line-height: 1.5;">Open <strong><a
+                          href="contact.html" style="color: var(--primary); font-weight:700;">contact.html</a></strong>
+                      and <strong><a href="prayer.html"
+                          style="color: var(--primary); font-weight:700;">prayer.html</a></strong>. Find the
+                      <code>emailjs.send(...)</code> blocks at the bottom and replace the template ID, service ID, and
+                      public key placeholders with your live credentials!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <!-- =========================================================
+       DYNAMIC MODALS (DIALOG POPUPS)
+       ========================================================= -->
+
+  <!-- EVENT EDIT/ADD MODAL -->
+  <div class="modal-overlay" id="event-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 id="event-modal-title">Publish New Event</h3>
+        <i onclick="closeEventModal()" class="fa-solid fa-xmark modal-close"></i>
+      </div>
+      <div class="modal-body">
+        <form id="event-form" onsubmit="saveEventData(event)">
+          <input type="hidden" id="event-form-id">
+
+          <div class="form-grid-row">
+            <div class="form-group">
+              <label>Event Name *</label>
+              <input type="text" id="event-title" class="form-control" style="padding-left: 20px;"
+                placeholder="e.g. Discipleship Camp 2026" required>
+            </div>
+            <div class="form-group">
+              <label>Event Category *</label>
+              <select id="event-category" class="form-control" style="padding-left: 20px;" required>
+                <option value="upcoming-events">Upcoming Event</option>
+                <option value="church-wide">Church-wide Event</option>
+                <option value="branch-events">Branch Event</option>
+                <option value="past-events">Past Event</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-grid-row">
+            <div class="form-group">
+              <label>Display Month *</label>
+              <input type="text" id="event-month" class="form-control" style="padding-left: 20px;"
+                placeholder="e.g. FEB, December" required>
+            </div>
+            <div class="form-group">
+              <label>Display Day *</label>
+              <input type="text" id="event-day" class="form-control" style="padding-left: 20px;"
+                placeholder="e.g. 15, 26-27" required>
+            </div>
+          </div>
+
+          <div class="form-grid-row">
+            <div class="form-group">
+              <label>Date Box Small Text *</label>
+              <input type="text" id="event-smdate" class="form-control" style="padding-left: 20px;"
+                placeholder="e.g. 15-16, 2026" required>
+            </div>
+            <div class="form-group">
+              <label>Full Display Date *</label>
+              <input type="text" id="event-fulldate" class="form-control" style="padding-left: 20px;"
+                placeholder="e.g. February 15-16, 2026" required>
+            </div>
+          </div>
+
+          <div class="form-grid-row">
+            <div class="form-group">
+              <label>Countdown Start Timestamp *</label>
+              <input type="datetime-local" id="event-startdate" class="form-control" style="padding-left: 20px;"
+                required>
+            </div>
+            <div class="form-group">
+              <label>Service Time / Duration *</label>
+              <input type="text" id="event-time" class="form-control" style="padding-left: 20px;"
+                placeholder="e.g. 9:00 AM - 5:00 PM, 3 PM ONWARDS" required>
+            </div>
+          </div>
+
+          <div class="form-grid-row">
+            <div class="form-group">
+              <label>Location / Branch *</label>
+              <input type="text" id="event-location" class="form-control" style="padding-left: 20px;"
+                placeholder="e.g. Parañaque Branch" required>
+            </div>
+            <div class="form-group">
+              <label>Google Registration Form Link</label>
+              <input type="text" id="event-formlink" class="form-control" style="padding-left: 20px;"
+                placeholder="e.g. https://forms.gle/..." value="#">
+            </div>
+          </div>
+
+          <div class="form-grid-row" style="grid-template-columns: 1fr;">
+            <div class="form-group" style="margin-bottom: 5px;">
+              <label>Cover Image Source *</label>
+              <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                <input type="text" id="event-image" oninput="updateEventImagePreview(this.value)" class="form-control"
+                  style="padding-left: 20px; flex: 1; min-width: 250px;"
+                  placeholder="e.g. assets/images/event6.jpg or online URL or imported file..." required>
+                <select id="event-image-presets"
+                  onchange="document.getElementById('event-image').value = this.value; updateEventImagePreview(this.value);"
+                  class="form-control" style="padding-left: 10px; width: 140px; height: 50px;">
+                  <option value="" disabled selected>Presets</option>
+                  <option value="assets/images/event1.jpg">Event 1</option>
+                  <option value="assets/images/event2.jpg">Event 2</option>
+                  <option value="assets/images/event3.jpg">Event 3</option>
+                  <option value="assets/images/event4.jpg">Event 4</option>
+                  <option value="assets/images/event5.jpg">Event 5</option>
+                  <option value="assets/images/event6.jpg">Event 6</option>
+                  <option value="assets/images/event7.jpg">Event 7</option>
+                </select>
+                <div style="position: relative; overflow: hidden; display: inline-block;">
+                  <button type="button" class="btn-primary-dashboard"
+                    style="box-shadow: none; height: 50px; background: linear-gradient(135deg, #1565ff, #00d4ff); font-weight: 700;">
+                    <i class="fa-solid fa-file-image"></i> Import Picture
+                  </button>
+                  <input type="file" id="event-image-file" accept="image/*" onchange="importEventPicture(this)"
+                    style="position: absolute; font-size: 100px; opacity: 0; right: 0; top: 0; cursor: pointer;">
+                </div>
+              </div>
+              <div id="event-image-preview-wrapper"
+                style="margin-top: 10px; display: none; align-items: center; gap: 12px; background: rgba(115,216,255,0.06); padding: 10px 14px; border-radius: 16px; border: 1px solid rgba(115,216,255,0.15);">
+                <img id="event-image-preview" src=""
+                  style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(115,216,255,0.3);"
+                  alt="Preview">
+                <div style="display: flex; flex-direction: column;">
+                  <span style="font-size: 12px; color: var(--soft-text); font-weight: 700;">Image Loaded</span>
+                  <span style="font-size: 10.5px; color: rgba(115,216,255,0.7);">Ready to publish dynamically</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-grid-row" style="grid-template-columns: 1fr;">
+            <div class="form-group">
+              <label>Card Short Description *</label>
+              <input type="text" id="event-short-desc" class="form-control" style="padding-left: 20px;"
+                placeholder="A quick one-sentence outline..." required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Modal Long Description *</label>
+            <textarea id="event-desc" class="form-control" style="padding-left: 20px; min-height: 90px;"
+              placeholder="Provide complete event details and message..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Program Details & Highlights (One detail per line) *</label>
+            <textarea id="event-details" class="form-control details-lines-area" style="padding-left: 20px;"
+              placeholder="Worship Session&#10;Group Devotional Sharing&#10;Fellowship Lunch" required></textarea>
+          </div>
+
+          <div class="form-footer">
+            <button type="button" onclick="closeEventModal()" class="btn-secondary-dashboard">Cancel</button>
+            <button type="submit" class="btn-primary-dashboard">Save Event Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRAYER READ/VIEW MODAL -->
+  <div class="modal-overlay" id="prayer-modal">
+    <div class="modal-container" style="max-width: 550px;">
+      <div class="modal-header">
+        <h3>Prayer Request Details</h3>
+        <i onclick="closePrayerModal()" class="fa-solid fa-xmark modal-close"></i>
+      </div>
+      <div class="modal-body">
+        <div class="message-meta">
+          <span id="prayer-meta-date"><strong>Submitted:</strong> e.g. Date</span>
+          <span id="prayer-meta-name"><strong>Intercessor:</strong> e.g. Name</span>
+          <span id="prayer-meta-email"><strong>Email:</strong> e.g. Email</span>
+          <span id="prayer-meta-category"><strong>Category:</strong> e.g. Category</span>
+        </div>
+        <div class="message-bubble" id="prayer-meta-text">
+          <!-- Text -->
+        </div>
+        <div class="form-footer" style="margin-top: 25px;">
+          <button onclick="closePrayerModal()" class="btn-secondary-dashboard" style="width: 100%;">Close
+            Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MESSAGE READ/VIEW MODAL -->
+  <div class="modal-overlay" id="message-modal">
+    <div class="modal-container" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3>Contact Message Details</h3>
+        <i onclick="closeMessageModal()" class="fa-solid fa-xmark modal-close"></i>
+      </div>
+      <div class="modal-body">
+        <div class="message-meta">
+          <span id="msg-meta-date"><strong>Received:</strong> e.g. Date</span>
+          <span id="msg-meta-name"><strong>Sender:</strong> e.g. Name</span>
+          <span id="msg-meta-email"><strong>Email Address:</strong> e.g. Email</span>
+          <span id="msg-meta-reason"><strong>Reason for Contact:</strong> e.g. Reason</span>
+          <span id="msg-meta-subject"><strong>Subject Title:</strong> e.g. Subject</span>
+        </div>
+        <div class="message-bubble" id="msg-meta-text">
+          <!-- Text -->
+        </div>
+        <div class="form-footer" style="margin-top: 25px;">
+          <button onclick="closeMessageModal()" class="btn-secondary-dashboard" style="width: 100%;">Close
+            Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-bar" class="toast-notif"></div>
+
+  <!-- =========================================================
+       DASHBOARD INTERACTIVE CONTROLLER SCRIPT
+       ========================================================= -->
+  <script>
+    // ==========================================
+    // AUTHENTICATION LOOP
+    // ==========================================
+    const loginForm = document.getElementById("login-form");
+    const loginOverlay = document.getElementById("login-overlay");
+    const dashboardMain = document.getElementById("dashboard-main");
+    const loginError = document.getElementById("login-error-msg");
+
+    // Check if session contains active login token
+    if (db.auth.isLoggedIn()) {
+      loginOverlay.style.display = "none";
+      dashboardMain.style.display = "block";
+      initDashboard();
+    }
+
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const pwd = document.getElementById("admin-pass").value;
+
+      if (db.auth.verifyPassword(pwd)) {
+        loginError.style.display = "none";
+        loginOverlay.style.opacity = "0";
+        setTimeout(() => {
+          loginOverlay.style.display = "none";
+          dashboardMain.style.display = "block";
+          initDashboard();
+          showToast("Authentication successful! Welcome to TGCI Control Center.", "success");
+        }, 500);
+      } else {
+        loginError.style.display = "block";
+        document.getElementById("admin-pass").value = "";
+        document.getElementById("admin-pass").focus();
+      }
+    });
+
+    function logoutAdmin() {
+      db.auth.logout();
+      showToast("Logged out successfully.", "success");
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
+    }
+
+    // ==========================================
+    // TAB MANAGEMENT & CONTROL
+    // ==========================================
+    function switchTab(tabName) {
+      // Toggle sidebar items
+      document.querySelectorAll(".menu-item").forEach(el => {
+        el.classList.remove("active");
+        if (el.textContent.toLowerCase().includes(tabName) || (tabName === 'branches' && el.textContent.toLowerCase().includes('chapters'))) {
+          el.classList.add("active");
+        }
+      });
+
+      // Toggle tab panels
+      document.querySelectorAll(".tab-panel").forEach(panel => {
+        panel.classList.remove("active");
+      });
+      document.getElementById("panel-" + tabName).classList.add("active");
+
+      // Reload specific tab data
+      if (tabName === "overview") renderOverview();
+      else if (tabName === "events") renderEventsTable();
+      else if (tabName === "prayers") renderPrayersTable();
+      else if (tabName === "messages") renderMessagesTable();
+      else if (tabName === "branches") renderBranches();
+    }
+
+    // ==========================================
+    // DASHBOARD INITIALIZATION & STATS
+    // ==========================================
+    function initDashboard() {
+      renderOverview();
+      renderEventsTable();
+      renderPrayersTable();
+      renderMessagesTable();
+      renderBranches();
+    }
+
+    function renderOverview() {
+      const events = db.events.getAll();
+      const prayers = db.prayers.getAll();
+      const inquiries = db.inquiries.getAll();
+
+      // Stats numbers
+      document.getElementById("stat-total-events").textContent = events.length;
+      document.getElementById("stat-pending-prayers").textContent = prayers.filter(p => p.status === "Pending").length;
+      document.getElementById("stat-unread-messages").textContent = inquiries.filter(i => !i.read).length;
+
+      // Render recent activities combining prayers and inquiries
+      const container = document.getElementById("recent-activity-list");
+      container.innerHTML = "";
+
+      const activities = [];
+      prayers.slice(0, 5).forEach(p => {
+        activities.push({
+          type: "prayer",
+          title: "New Prayer Request",
+          subtitle: `From ${p.name || 'Anonymous'} - Category: ${p.category}`,
+          date: p.date,
+          icon: "fa-hands-praying",
+          themeClass: "theme-orange",
+          data: p
+        });
+      });
+
+      inquiries.slice(0, 5).forEach(i => {
+        activities.push({
+          type: "inquiry",
+          title: `Inquiry: ${i.subject}`,
+          subtitle: `From ${i.name} - Email: ${i.email}`,
+          date: i.date,
+          icon: "fa-envelope",
+          themeClass: "theme-green",
+          data: i
+        });
+      });
+
+      // Sort activities by date/timestamp roughly
+      activities.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      if (activities.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <i class="fa-solid fa-bell-slash"></i>
+            <p>No recent user messages or prayer requests found.</p>
+          </div>
+        `;
+        return;
+      }
+
+      activities.slice(0, 5).forEach(act => {
+        const item = document.createElement("div");
+        item.className = "activity-item fade-in";
+        item.innerHTML = `
+          <div class="activity-main">
+            <div class="activity-icon-badge ${act.themeClass}">
+              <i class="fa-solid ${act.icon}"></i>
+            </div>
+            <div class="activity-details">
+              <h4>${act.title}</h4>
+              <p>${act.subtitle}</p>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <span class="activity-time">${act.date}</span>
+            <button onclick="viewRecentActivity('${act.type}', '${act.data.id}')" class="btn-icon btn-icon-view" title="Quick View">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function viewRecentActivity(type, id) {
+      if (type === "prayer") {
+        viewPrayer(id);
+      } else {
+        viewMessage(id);
+      }
+    }
+
+    // ==========================================
+    // TOAST NOTIFICATIONS SYSTEM
+    // ==========================================
+    function showToast(text, type = "success") {
+      const toast = document.getElementById("toast-bar");
+      toast.className = "toast-notif toast-" + type;
+      toast.innerHTML = `<i class="fa-solid ${type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation'}"></i> ` + text;
+      toast.classList.add("active");
+      setTimeout(() => {
+        toast.classList.remove("active");
+      }, 3500);
+    }
+
+    // ==========================================
+    // CHURCH EVENTS MANAGEMENT
+    // ==========================================
+    let filteredEvents = [];
+
+    function renderEventsTable() {
+      const list = db.events.getAll();
+      filteredEvents = list;
+      populateEventsList(list);
+    }
+
+    function populateEventsList(list) {
+      const tbody = document.getElementById("events-table-body");
+      tbody.innerHTML = "";
+
+      if (list.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6">
+              <div class="empty-state">
+                <i class="fa-solid fa-calendar-xmark"></i>
+                <p>No church events published. Create one now!</p>
+              </div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      list.forEach(evt => {
+        const categoryLabels = {
+          "upcoming-events": "Upcoming",
+          "church-wide": "Church-wide",
+          "branch-events": "Branch Event",
+          "past-events": "Past Event"
+        };
+        const tr = document.createElement("tr");
+        tr.className = "fade-in";
+        tr.innerHTML = `
+          <td><img src="${evt.image}" class="event-row-pic" alt="cover"></td>
+          <td>
+            <div style="font-weight: 700; color: var(--navy);">${evt.title}</div>
+            <div style="font-size: 11.5px; color: var(--soft-text);">${evt.shortDescription || ''}</div>
+          </td>
+          <td><span class="badge ${evt.category === 'upcoming-events' ? 'badge-primary' : evt.category === 'church-wide' ? 'badge-success' : evt.category === 'branch-events' ? 'badge-info' : 'badge-danger'}">${categoryLabels[evt.category] || evt.category}</span></td>
+          <td>
+            <div style="font-weight: 600;">${evt.fullDate}</div>
+            <div style="font-size: 11.5px; color: var(--soft-text);">${evt.time}</div>
+          </td>
+          <td><div style="font-weight: 600; color: var(--navy);"><i class="fa-solid fa-location-dot" style="margin-right: 5px; color: var(--primary);"></i>${evt.location}</div></td>
+          <td>
+            <div class="btn-icon-group">
+              <button onclick="editEvent('${evt.id}')" class="btn-icon btn-icon-edit" title="Edit Event"><i class="fa-solid fa-pencil"></i></button>
+              <button onclick="deleteEvent('${evt.id}')" class="btn-icon btn-icon-delete" title="Delete Event"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterEventsTable() {
+      const q = document.getElementById("event-search").value.toLowerCase().trim();
+      const all = db.events.getAll();
+      const filtered = all.filter(e => e.title.toLowerCase().includes(q) || e.location.toLowerCase().includes(q) || e.shortDescription.toLowerCase().includes(q));
+      populateEventsList(filtered);
+    }
+
+    function openEventModal(id = null) {
+      const modal = document.getElementById("event-modal");
+      const title = document.getElementById("event-modal-title");
+      const form = document.getElementById("event-form");
+      form.reset();
+
+      if (id) {
+        title.textContent = "Modify Church Event Details";
+        const evt = db.events.getById(id);
+        if (evt) {
+          document.getElementById("event-form-id").value = evt.id;
+          document.getElementById("event-title").value = evt.title;
+          document.getElementById("event-category").value = evt.category;
+          document.getElementById("event-month").value = evt.month;
+          document.getElementById("event-day").value = evt.day;
+          document.getElementById("event-smdate").value = evt.smallDate;
+          document.getElementById("event-fulldate").value = evt.fullDate;
+          document.getElementById("event-startdate").value = evt.startDate ? evt.startDate.substring(0, 16) : "";
+          document.getElementById("event-time").value = evt.time;
+          document.getElementById("event-location").value = evt.location;
+          document.getElementById("event-formlink").value = evt.formLink || "#";
+          document.getElementById("event-image").value = evt.image;
+          const presetsSelect = document.getElementById("event-image-presets");
+          if ([...presetsSelect.options].some(opt => opt.value === evt.image)) {
+            presetsSelect.value = evt.image;
+          } else {
+            presetsSelect.value = "";
+          }
+          document.getElementById("event-short-desc").value = evt.shortDescription || "";
+          document.getElementById("event-desc").value = evt.description || "";
+          document.getElementById("event-details").value = Array.isArray(evt.details) ? evt.details.join("\n") : "";
+          updateEventImagePreview(evt.image);
+        }
+      } else {
+        title.textContent = "Publish New Church Event";
+        document.getElementById("event-form-id").value = "";
+        document.getElementById("event-image-presets").value = "";
+        updateEventImagePreview("");
+      }
+
+      modal.classList.add("active");
+    }
+
+    function closeEventModal() {
+      document.getElementById("event-modal").classList.remove("active");
+    }
+
+    function importEventPicture(input) {
+      const file = input.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const base64Data = e.target.result;
+        document.getElementById('event-image').value = base64Data;
+        updateEventImagePreview(base64Data);
+        showToast("Image imported successfully!", "success");
+      };
+      reader.readAsDataURL(file);
+      input.value = ""; // Clear file input
+    }
+
+    function updateEventImagePreview(src) {
+      const wrapper = document.getElementById('event-image-preview-wrapper');
+      const img = document.getElementById('event-image-preview');
+      if (src && src.trim().length > 0) {
+        img.src = src;
+        wrapper.style.display = 'flex';
+      } else {
+        wrapper.style.display = 'none';
+        img.src = '';
+      }
+    }
+
+    function saveEventData(e) {
+      e.preventDefault();
+      const id = document.getElementById("event-form-id").value;
+
+      const evtData = {
+        title: document.getElementById("event-title").value,
+        category: document.getElementById("event-category").value,
+        tag: document.getElementById("event-category").value === "upcoming-events" ? "Upcoming Event" : document.getElementById("event-category").value === "church-wide" ? "Church-wide" : document.getElementById("event-category").value === "branch-events" ? "Branch Event" : "Past Event",
+        month: document.getElementById("event-month").value,
+        day: document.getElementById("event-day").value,
+        smallDate: document.getElementById("event-smdate").value,
+        fullDate: document.getElementById("event-fulldate").value,
+        startDate: document.getElementById("event-startdate").value,
+        time: document.getElementById("event-time").value,
+        location: document.getElementById("event-location").value,
+        formLink: document.getElementById("event-formlink").value,
+        image: document.getElementById("event-image").value,
+        shortDescription: document.getElementById("event-short-desc").value,
+        description: document.getElementById("event-desc").value,
+        details: document.getElementById("event-details").value
+      };
+
+      if (id) {
+        db.events.update(id, evtData);
+        showToast("Event details successfully updated!", "success");
+      } else {
+        db.events.add(evtData);
+        showToast("New church event published successfully!", "success");
+      }
+
+      closeEventModal();
+      renderEventsTable();
+    }
+
+    function editEvent(id) {
+      openEventModal(id);
+    }
+
+    function deleteEvent(id) {
+      if (confirm("Are you sure you want to permanently delete this church event?")) {
+        db.events.delete(id);
+        showToast("Event successfully removed from system.", "success");
+        renderEventsTable();
+      }
+    }
+
+    // ==========================================
+    // PRAYER REQUESTS MANAGEMENT
+    // ==========================================
+    function renderPrayersTable() {
+      const list = db.prayers.getAll();
+      populatePrayersList(list);
+    }
+
+    function populatePrayersList(list) {
+      const tbody = document.getElementById("prayers-table-body");
+      tbody.innerHTML = "";
+
+      if (list.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6">
+              <div class="empty-state">
+                <i class="fa-solid fa-dove"></i>
+                <p>No prayer request records found.</p>
+              </div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      list.forEach(p => {
+        const textCut = p.description.length > 60 ? p.description.substring(0, 57) + "..." : p.description;
+        const statusBadgeClass = p.status === "Pending" ? "badge-warning" : p.status === "Prayed For" ? "badge-success" : "badge-primary";
+        const tr = document.createElement("tr");
+        tr.className = "fade-in";
+        tr.innerHTML = `
+          <td>${p.date}</td>
+          <td>
+            <div style="font-weight: 700; color: var(--navy);">${p.name}</div>
+            <div style="font-size: 11.5px; color: var(--soft-text);">${p.email || ''} ${p.phone || ''}</div>
+          </td>
+          <td><span class="badge badge-info">${p.category}</span></td>
+          <td><div style="font-style: italic; color: var(--soft-text); max-width: 320px;">"${textCut}"</div></td>
+          <td>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="badge ${statusBadgeClass}">${p.status}</span>
+              <select onchange="changePrayerStatus('${p.id}', this.value)" class="form-control" style="padding: 4px 8px; font-size: 11.5px; border-radius: 8px; width: auto; font-weight: 700; cursor: pointer; border-color: rgba(115,216,255,0.4)">
+                <option value="" disabled selected>Update</option>
+                <option value="Pending">Pending</option>
+                <option value="Prayed For">Prayed For</option>
+                <option value="Archived">Archive</option>
+              </select>
+            </div>
+          </td>
+          <td>
+            <div class="btn-icon-group">
+              <button onclick="viewPrayer('${p.id}')" class="btn-icon btn-icon-view" title="Read Full Prayer"><i class="fa-solid fa-eye"></i></button>
+              <button onclick="deletePrayer('${p.id}')" class="btn-icon btn-icon-delete" title="Delete Request"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterPrayersTable() {
+      const q = document.getElementById("prayer-search").value.toLowerCase().trim();
+      const all = db.prayers.getAll();
+      const filtered = all.filter(p => p.name.toLowerCase().includes(q) || p.description.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
+      populatePrayersList(filtered);
+    }
+
+    function changePrayerStatus(id, newStatus) {
+      db.prayers.updateStatus(id, newStatus);
+      showToast(`Prayer status updated to "${newStatus}"!`, "success");
+      renderPrayersTable();
+    }
+
+    function viewPrayer(id) {
+      const prayers = db.prayers.getAll();
+      const p = prayers.find(item => item.id === id);
+      if (p) {
+        document.getElementById("prayer-meta-date").innerHTML = "<strong>Submitted:</strong> " + p.date;
+        document.getElementById("prayer-meta-name").innerHTML = "<strong>Intercessor:</strong> " + p.name + (p.isAnonymous ? " <span class='badge badge-warning'>Anonymous</span>" : "");
+        document.getElementById("prayer-meta-email").innerHTML = "<strong>Email Address:</strong> " + (p.email || "Confidential/None") + (p.phone ? " | <strong>Phone:</strong> " + p.phone : "");
+        document.getElementById("prayer-meta-category").innerHTML = "<strong>Prayer Category:</strong> " + p.category;
+        document.getElementById("prayer-meta-text").textContent = p.description;
+
+        document.getElementById("prayer-modal").classList.add("active");
+      }
+    }
+
+    function closePrayerModal() {
+      document.getElementById("prayer-modal").classList.remove("active");
+    }
+
+    function deletePrayer(id) {
+      if (confirm("Are you sure you want to permanently delete this prayer request?")) {
+        db.prayers.delete(id);
+        showToast("Prayer record deleted.", "success");
+        renderPrayersTable();
+      }
+    }
+
+    // ==========================================
+    // CONTACT MESSAGES INBOX
+    // ==========================================
+    function renderMessagesTable() {
+      const list = db.inquiries.getAll();
+      populateMessagesList(list);
+    }
+
+    function populateMessagesList(list) {
+      const tbody = document.getElementById("messages-table-body");
+      tbody.innerHTML = "";
+
+      if (list.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6">
+              <div class="empty-state">
+                <i class="fa-solid fa-envelope-open"></i>
+                <p>No messages received yet.</p>
+              </div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      list.forEach(m => {
+        const textCut = m.message.length > 55 ? m.message.substring(0, 52) + "..." : m.message;
+        const readStatus = m.read
+          ? '<span class="badge badge-success"><i class="fa-solid fa-envelope-open"></i> Read</span>'
+          : '<span class="badge badge-warning"><i class="fa-solid fa-envelope"></i> Unread</span>';
+
+        const tr = document.createElement("tr");
+        tr.className = "fade-in" + (m.read ? "" : " style='background: rgba(21,101,255,0.02)'");
+        tr.innerHTML = `
+          <td>${m.date}</td>
+          <td>
+            <div style="font-weight: 700; color: var(--navy);">${m.name}</div>
+            <div style="font-size: 11.5px; color: var(--soft-text);">${m.email}</div>
+          </td>
+          <td><span class="badge badge-primary">${m.reason}</span></td>
+          <td>
+            <div style="font-weight: 700; color: var(--navy);">${m.subject}</div>
+            <div style="font-style: italic; font-size: 12px; color: var(--soft-text); max-width: 250px;">"${textCut}"</div>
+          </td>
+          <td>${readStatus}</td>
+          <td>
+            <div class="btn-icon-group">
+              <button onclick="viewMessage('${m.id}')" class="btn-icon btn-icon-view" title="Read Full Message"><i class="fa-solid fa-eye"></i></button>
+              <button onclick="deleteMessage('${m.id}')" class="btn-icon btn-icon-delete" title="Delete Message"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterMessagesTable() {
+      const q = document.getElementById("message-search").value.toLowerCase().trim();
+      const all = db.inquiries.getAll();
+      const filtered = all.filter(m => m.name.toLowerCase().includes(q) || m.subject.toLowerCase().includes(q) || m.message.toLowerCase().includes(q) || m.reason.toLowerCase().includes(q));
+      populateMessagesList(filtered);
+    }
+
+    function viewMessage(id) {
+      db.inquiries.markAsRead(id, true);
+      const inquiries = db.inquiries.getAll();
+      const m = inquiries.find(item => item.id === id);
+      if (m) {
+        document.getElementById("msg-meta-date").innerHTML = "<strong>Received Date:</strong> " + m.date;
+        document.getElementById("msg-meta-name").innerHTML = "<strong>Sender Name:</strong> " + m.name;
+        document.getElementById("msg-meta-email").innerHTML = "<strong>Email Address:</strong> <a href='mailto:" + m.email + "' style='color: var(--primary); font-weight:700;'>" + m.email + "</a>";
+        document.getElementById("msg-meta-reason").innerHTML = "<strong>Reason for Contact:</strong> " + m.reason;
+        document.getElementById("msg-meta-subject").innerHTML = "<strong>Subject Title:</strong> " + m.subject;
+        document.getElementById("msg-meta-text").textContent = m.message;
+
+        document.getElementById("message-modal").classList.add("active");
+        renderMessagesTable(); // update read/unread badge
+      }
+    }
+
+    function closeMessageModal() {
+      document.getElementById("message-modal").classList.remove("active");
+    }
+
+    function deleteMessage(id) {
+      if (confirm("Are you sure you want to permanently delete this contact inquiry message?")) {
+        db.inquiries.delete(id);
+        showToast("Inquiry message deleted.", "success");
+        renderMessagesTable();
+      }
+    }
+
+    // ==========================================
+    // SYSTEM TOOLS & CREDENTIALS
+    // ==========================================
+    function updateAdminPassword(e) {
+      e.preventDefault();
+      const newP = document.getElementById("new-password").value;
+      if (db.auth.changePassword(newP)) {
+        showToast("Administrator password updated successfully!", "success");
+        document.getElementById("new-password").value = "";
+      } else {
+        showToast("Password too short. Must be at least 4 characters.", "danger");
+      }
+    }
+
+    function exportData() {
+      const json = db.backup.exportJSON();
+      const blob = new Blob([json], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "tgci_database_backup.json";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast("Virtual database exported successfully!", "success");
+    }
+
+    function triggerImport() {
+      document.getElementById("import-file-input").click();
+    }
+
+    function importData(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function (evt) {
+        const result = db.backup.importJSON(evt.target.result);
+        if (result) {
+          showToast("Virtual database restored successfully! Page reloading...", "success");
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500);
+        } else {
+          showToast("Failed to restore. Please ensure it's a valid TGCI backup JSON file.", "danger");
+        }
+      };
+      reader.readAsText(file);
+      e.target.value = ""; // clear file
+    }
+
+    function confirmResetDb() {
+      if (confirm("⚠️ WARNING: This will erase all events, prayer requests, and contact messages, and restore the default church events list. Proceed?")) {
+        db.reset();
+        showToast("Virtual database re-initialized! Page reloading...", "success");
+        setTimeout(() => {
+          window.location.reload();
+        }, 1200);
+      }
+    }
+
+    // ==========================================
+    // CHAPTERS & MEMBERS MANAGEMENT SYSTEM
+    // ==========================================
+    let currentRosterMembers = [];
+
+    function renderBranches() {
+      const branches = db.branches.getAll();
+      const select = document.getElementById("branch-select");
+      if (!select) return;
+
+      // Populate select menu options if empty or updated
+      const currentVal = select.value;
+      select.innerHTML = branches.map(b => `<option value="${b.id}">${b.name} (${b.location})</option>`).join("");
+
+      if (currentVal && branches.some(b => b.id === currentVal)) {
+        select.value = currentVal;
+      } else if (branches.length > 0) {
+        select.value = branches[0].id;
+      }
+
+      onBranchChange();
+    }
+
+    function onBranchChange() {
+      const select = document.getElementById("branch-select");
+      if (!select || !select.value) return;
+
+      const branchId = select.value;
+      const branch = db.branches.getById(branchId);
+      if (!branch) return;
+
+      // Update info card on left
+      const infoCard = document.getElementById("branch-info-card");
+      infoCard.innerHTML = `
+        <div style="text-align: center; margin-bottom: 20px;">
+          <img src="${branch.image}" style="width: 100%; height: 130px; object-fit: cover; border-radius: 18px; border: 1px solid var(--glass-border); margin-bottom: 12px;" alt="Branch Cover">
+          <h3 style="font-size: 16px; font-weight: 800; color: var(--navy);">${branch.name}</h3>
+          <span class="badge badge-success" style="margin-top: 4px;">${branch.membersCount}</span>
+        </div>
+        <div style="font-size: 13px; color: var(--soft-text); line-height: 1.6; margin-bottom: 15px;">
+          <strong>Location:</strong> ${branch.location}<br>
+          <strong>Established:</strong> ${branch.established}<br>
+          <strong>Area Filter:</strong> <span style="text-transform: capitalize;">${branch.area}</span>
+        </div>
+        <div style="border-top: 1px dashed rgba(115,216,255,0.22); padding-top: 12px; margin-top: 12px;">
+          <h4 style="font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--navy); margin-bottom: 6px;">Lead Pastor</h4>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="${branch.pastorImage}" style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 1px solid var(--glass-border);" alt="Pastor">
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--navy);">${branch.pastorName}</div>
+              <div style="font-size: 11.5px; color: var(--soft-text);">Branch Overseer</div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      currentRosterMembers = branch.members || [];
+      filterRosterTable();
+    }
+
+    function renderRosterTable(list) {
+      const tbody = document.getElementById("roster-table-body");
+      if (!tbody) return;
+      tbody.innerHTML = "";
+
+      if (list.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="4">
+              <div class="empty-state" style="padding: 30px 10px;">
+                <i class="fa-solid fa-users-slash" style="font-size: 30px;"></i>
+                <p>No members registered in this branch yet.</p>
+              </div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      list.forEach(m => {
+        const tr = document.createElement("tr");
+        tr.className = "fade-in";
+
+        let badgeClass = "badge-primary"; // youth
+        if (m.category === "senior") badgeClass = "badge-success";
+        else if (m.category === "toddlers") badgeClass = "badge-warning";
+
+        tr.innerHTML = `
+          <td style="font-weight: 700; color: var(--navy);">${m.name}</td>
+          <td style="font-weight: 500;">${m.position}</td>
+          <td><span class="badge ${badgeClass}" style="text-transform: capitalize;">${m.category}</span></td>
+          <td>
+            <button onclick="deleteBranchMember('${m.name}')" class="btn-icon btn-icon-delete" title="Delete Member">
+              <i class="fa-solid fa-user-minus"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterRosterTable() {
+      const searchInput = document.getElementById("member-search");
+      const q = searchInput ? searchInput.value.toLowerCase().trim() : "";
+      const filtered = currentRosterMembers.filter(m =>
+        m.name.toLowerCase().includes(q) ||
+        m.position.toLowerCase().includes(q) ||
+        m.category.toLowerCase().includes(q)
+      );
+      renderRosterTable(filtered);
+    }
+
+    function addBranchMember(e) {
+      e.preventDefault();
+      const select = document.getElementById("branch-select");
+      if (!select) return;
+
+      const branchId = select.value;
+      const name = document.getElementById("member-name").value.trim();
+      const position = document.getElementById("member-position").value.trim();
+      const category = document.getElementById("member-category").value;
+
+      if (!name || !position) return;
+
+      // Check if duplicate name
+      if (currentRosterMembers.some(m => m.name.toLowerCase() === name.toLowerCase())) {
+        showToast("A member with this name already exists in this chapter!", "danger");
+        return;
+      }
+
+      db.branches.addMember(branchId, { name, position, category });
+      showToast(`${name} added to branch roster successfully!`, "success");
+
+      // Reset inputs
+      document.getElementById("member-name").value = "";
+      document.getElementById("member-position").value = "";
+      document.getElementById("member-category").value = "youth";
+
+      onBranchChange();
+    }
+
+    function deleteBranchMember(memberName) {
+      const select = document.getElementById("branch-select");
+      if (!select) return;
+
+      const branchId = select.value;
+      if (confirm(`Are you sure you want to permanently remove ${memberName} from this chapter's ministry roster?`)) {
+        db.branches.deleteMember(branchId, memberName);
+        showToast(`${memberName} removed from branch roster successfully.`, "success");
+        onBranchChange();
+      }
+    }
+
+    function printRosterPDF() {
+      const select = document.getElementById("branch-select");
+      if (!select || !select.value) {
+        showToast("Please select a church chapter first.", "danger");
+        return;
+      }
+
+      const branchId = select.value;
+      const branch = db.branches.getById(branchId);
+      if (!branch) return;
+
+      const members = branch.members || [];
+      if (members.length === 0) {
+        showToast("No members registered in this chapter to print.", "warning");
+        return;
+      }
+
+      // Create printable page HTML
+      const printWindow = window.open("", "_blank", "width=850,height=700");
+      if (!printWindow) {
+        showToast("Popup blocked! Please allow popups to export the PDF roster.", "danger");
+        return;
+      }
+
+      let rowsHtml = "";
+      members.forEach((m, idx) => {
+        let categoryLabel = m.category === "youth" ? "Youth" : m.category === "senior" ? "Senior" : "Toddlers";
+        rowsHtml += `
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 10px; font-weight: bold; text-align: center; color: #55728d;">${idx + 1}</td>
+            <td style="border: 1px solid #ddd; padding: 10px; font-weight: bold; color: #081b2e;">${m.name}</td>
+            <td style="border: 1px solid #ddd; padding: 10px; color: #333;">${m.position}</td>
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;"><span style="display: inline-block; padding: 4px 10px; border-radius: 8px; font-size: 11.5px; font-weight: bold; text-transform: capitalize; background: ${m.category === 'youth' ? '#e3f2fd; color: #0d47a1;' : m.category === 'senior' ? '#e8f5e9; color: #1b5e20;' : '#fff3e0; color: #e65100;'}">${categoryLabel}</span></td>
+          </tr>
+        `;
+      });
+
+      const html = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>${branch.name} - Roster Report</title>
+          <style>
+            body { font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #102f4d; padding: 40px; margin: 0; background: #fff; }
+            .header { display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #1565ff; padding-bottom: 20px; margin-bottom: 30px; }
+            .logo-section { display: flex; align-items: center; gap: 15px; }
+            .logo-section img { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; }
+            .logo-section h1 { font-size: 20px; font-weight: 900; margin: 0; color: #081b2e; text-transform: uppercase; letter-spacing: 0.5px; }
+            .logo-section p { font-size: 12px; margin: 2px 0 0 0; color: #55728d; font-weight: 600; }
+            .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; background: #f4fbff; padding: 15px 20px; border-radius: 14px; border: 1px solid #dff6ff; font-size: 13.5px; line-height: 1.6; }
+            .meta-item strong { color: #081b2e; }
+            table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
+            th { background-color: #1565ff; color: white; text-align: left; padding: 12px 10px; border: 1px solid #1565ff; font-weight: bold; }
+            tr:nth-child(even) { background-color: #f8fdff; }
+            .footer { margin-top: 60px; border-top: 1px solid #eee; padding-top: 20px; text-align: center; font-size: 11.5px; color: #888; font-weight: 500; }
+            .no-print-btn { padding: 10px 22px; background: linear-gradient(135deg, #1565ff, #00d4ff); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 13px; box-shadow: 0 4px 10px rgba(21,101,255,0.25); transition: all 0.2s ease; }
+            .no-print-btn:hover { transform: translateY(-1px); }
+            @media print {
+              body { padding: 0; }
+              .no-print { display: none !important; }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="no-print" style="margin-bottom: 25px; display: flex; justify-content: flex-end;">
+            <button onclick="window.print()" class="no-print-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+              Print / Save as PDF
+            </button>
+          </div>
+          
+          <div class="header">
+            <div class="logo-section">
+              <img src="assets/images/logo.jpg" alt="Logo" onerror="this.src='https://images.unsplash.com/photo-1544427928-c49cd1e30921?auto=format&fit=crop&q=80&w=150'">
+              <div>
+                <h1>The Three Are One God Church</h1>
+                <p>Official Membership Ministry Roster</p>
+              </div>
+            </div>
+            <div style="text-align: right; font-size: 12px; color: #55728d; line-height: 1.5;">
+              <strong>Date Generated:</strong> ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}<br>
+              <strong>Status:</strong> Active & Verified
+            </div>
+          </div>
+
+          <div class="meta-grid">
+            <div class="meta-item">
+              <strong>Church Chapter:</strong> ${branch.name}<br>
+              <strong>Branch Location:</strong> ${branch.location}<br>
+              <strong>Established:</strong> ${branch.established}
+            </div>
+            <div class="meta-item" style="text-align: right;">
+              <strong>Lead Pastor/Overseer:</strong> ${branch.pastorName}<br>
+              <strong>Roster Record Count:</strong> ${members.length} members registered
+            </div>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 60px; text-align: center; border-radius: 8px 0 0 0;">No.</th>
+                <th>Member Full Name</th>
+                <th>Position / Ministry Role</th>
+                <th style="width: 140px; text-align: center; border-radius: 0 8px 0 0;">Category Group</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rowsHtml}
+            </tbody>
+          </table>
+
+          <div class="footer">
+            © ${new Date().getFullYear()} The Three Are One God Church. All rights reserved. This is an official system-generated roster.
+          </div>
+
+          <script>
+            // Auto trigger print prompt for convenience
+            window.addEventListener('DOMContentLoaded', () => {
+              setTimeout(() => {
+                window.print();
+              }, 600);
+            });
+          <\/script>
+        </body>
+        </html>
+      `;
+
+      printWindow.document.open();
+      printWindow.document.write(html);
+      printWindow.document.close();
+    }
+  </script>
+</body>
+
+</html>

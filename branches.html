@@ -1,0 +1,2736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>The Three Are One God Church | Branches</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #eef8ff;
+      color: #102f4d;
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 60px;
+      transition: 0.35s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(8, 25, 45, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 13px 60px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      font-size: 17px;
+      font-weight: 800;
+      color: #102f4d;
+      text-shadow: none;
+    }
+
+    .logo img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .navbar nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .navbar nav a {
+      margin-left: 22px;
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+      font-weight: 800;
+      transition: 0.3s ease;
+    }
+
+    .navbar nav a:hover,
+    .navbar nav a.current {
+      color: #6bd2ff;
+    }
+
+    /* ===== BURGER ===== */
+    .menu-btn {
+      width: 52px;
+      height: 52px;
+      background: #1565ff;
+      border-radius: 17px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(21, 101, 255, 0.35);
+    }
+
+    .menu-btn i {
+      color: white;
+      font-size: 22px;
+    }
+
+    /* ===== HERO ===== */
+    .page-header {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 150px 7% 130px;
+      color: white;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(2, 12, 24, 0.94), rgba(8, 25, 45, 0.76), rgba(2, 12, 24, 0.92)),
+        url("assets/images/church-bg.jpg") center/cover no-repeat;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 35%, rgba(107, 210, 255, 0.18), transparent 28%),
+        radial-gradient(circle at 85% 25%, rgba(21, 101, 255, 0.20), transparent 28%);
+      pointer-events: none;
+    }
+
+    .page-header::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 100%;
+      height: 110px;
+      background: #eef8ff;
+      clip-path: polygon(0 58%, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1050px;
+      animation: fadeUp 0.9s ease forwards;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(12px);
+      color: #8edfff;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .page-header h1 {
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: 1.05;
+      font-weight: 900;
+      margin-bottom: 22px;
+      text-shadow: 0 5px 25px rgba(0, 0, 0, 0.52);
+    }
+
+    .page-header p {
+      max-width: 860px;
+      margin: 0 auto;
+      font-size: clamp(15px, 1.5vw, 20px);
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.90);
+    }
+
+    .hero-actions {
+      margin-top: 32px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: 0.3s ease;
+    }
+
+    .hero-btn.primary {
+      background: #fff;
+      color: #102f4d;
+    }
+
+    .hero-btn.secondary {
+      color: #fff;
+      border: 1.5px solid rgba(255, 255, 255, 0.65);
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-4px);
+    }
+
+    /* ===== MAIN POWDER BLUE AREA ===== */
+    .main-area {
+      position: relative;
+      background:
+        radial-gradient(circle at 8% 12%, rgba(107, 210, 255, 0.26), transparent 28%),
+        radial-gradient(circle at 92% 22%, rgba(21, 101, 255, 0.12), transparent 26%),
+        linear-gradient(180deg, #eef8ff 0%, #ffffff 44%, #eaf7ff 100%);
+      padding: 120px 7% 110px;
+      overflow: hidden;
+    }
+
+    .main-area::before {
+      content: '';
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      border: 55px solid rgba(107, 210, 255, 0.12);
+      right: -160px;
+      top: 260px;
+    }
+
+    .main-area::after {
+      content: '✦';
+      position: absolute;
+      left: 6%;
+      top: 110px;
+      color: rgba(21, 101, 255, 0.07);
+      font-size: 110px;
+    }
+
+    /* ===== STATS ===== */
+    .stats {
+      max-width: 1180px;
+      margin: 0 auto 80px;
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(16, 47, 77, 0.08);
+      box-shadow: 0 18px 45px rgba(16, 47, 77, 0.12);
+      border-radius: 24px;
+      padding: 26px 20px;
+      text-align: center;
+      backdrop-filter: blur(14px);
+    }
+
+    .stat-card i {
+      color: #1565ff;
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+
+    .stat-card h3 {
+      font-size: 30px;
+      color: #102f4d;
+      margin-bottom: 4px;
+    }
+
+    .stat-card p {
+      color: #55728d;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* ===== SECTION HEADER ===== */
+    .section-header {
+      max-width: 780px;
+      margin: 0 auto 42px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: #1565ff;
+      margin-bottom: 10px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(32px, 4vw, 52px);
+      color: #102f4d;
+      line-height: 1.12;
+      margin-bottom: 15px;
+    }
+
+    .section-header p {
+      color: #55728d;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    /* ===== FEATURED BRANCH ===== */
+    .featured {
+      max-width: 1180px;
+      margin: 0 auto 80px;
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      align-items: center;
+      background: #fff;
+      border-radius: 32px;
+      padding: 24px;
+      box-shadow: 0 22px 65px rgba(16, 47, 77, 0.12);
+      border: 1px solid rgba(16, 47, 77, 0.07);
+    }
+
+    .featured-img {
+      min-height: 420px;
+      border-radius: 26px;
+      background:
+        linear-gradient(rgba(8, 25, 45, 0.25), rgba(8, 25, 45, 0.35)),
+        url("assets/images/branch-main.jpg") center/cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured-img::after {
+      content: 'Main Chapter';
+      position: absolute;
+      left: 22px;
+      bottom: 22px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.90);
+      color: #102f4d;
+      font-weight: 900;
+    }
+
+    .featured-content {
+      padding: 24px 20px;
+    }
+
+    .featured-content h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      color: #102f4d;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .featured-content p {
+      color: #55728d;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .featured-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .featured-item {
+      background: #eef8ff;
+      border: 1px solid rgba(16, 47, 77, 0.06);
+      border-radius: 18px;
+      padding: 16px;
+      color: #102f4d;
+      font-weight: 700;
+    }
+
+    .featured-item i {
+      color: #1565ff;
+      margin-right: 8px;
+    }
+
+    .featured-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      border: 0;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 800;
+      transition: 0.3s ease;
+    }
+
+    .action-btn.blue {
+      background: #1565ff;
+      color: white;
+    }
+
+    .action-btn.light {
+      background: #eef8ff;
+      color: #102f4d;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-4px);
+    }
+
+    /* ===== SEARCH + FILTER ===== */
+    .finder {
+      max-width: 1180px;
+      margin: 0 auto 38px;
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.80);
+      border: 1px solid rgba(16, 47, 77, 0.07);
+      box-shadow: 0 18px 45px rgba(16, 47, 77, 0.10);
+      border-radius: 26px;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      backdrop-filter: blur(14px);
+    }
+
+    .search-container {
+      width: 100%;
+      position: relative;
+    }
+
+    .search-container input {
+      width: 100%;
+      padding: 17px 58px 17px 22px;
+      border-radius: 18px;
+      border: 1px solid rgba(16, 47, 77, 0.10);
+      background: #fff;
+      color: #102f4d;
+      outline: none;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .search-container input::placeholder {
+      color: #7b93a9;
+    }
+
+    .search-container i {
+      position: absolute;
+      right: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #1565ff;
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      border: 0;
+      background: #eef8ff;
+      color: #102f4d;
+      padding: 14px 18px;
+      border-radius: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: #1565ff;
+      color: #fff;
+    }
+
+    /* ===== BRANCH CARDS ===== */
+    .branches {
+      max-width: 1180px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .branch-card {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(16, 47, 77, 0.08);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 18px 45px rgba(16, 47, 77, 0.11);
+      transition: 0.35s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .branch-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 28px 70px rgba(16, 47, 77, 0.18);
+    }
+
+    .branch-image {
+      min-height: 190px;
+      position: relative;
+      background:
+        linear-gradient(rgba(8, 25, 45, 0.20), rgba(8, 25, 45, 0.45)),
+        var(--img) center/cover no-repeat;
+      overflow: hidden;
+    }
+
+    .branch-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 30%, rgba(8, 25, 45, 0.72) 100%);
+    }
+
+    .branch-location {
+      position: absolute;
+      left: 20px;
+      bottom: 18px;
+      z-index: 2;
+      color: white;
+    }
+
+    .branch-location h3 {
+      font-size: 24px;
+      line-height: 1.15;
+      margin-bottom: 4px;
+    }
+
+    .branch-location p {
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 600;
+    }
+
+    .branch-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .branch-body>p {
+      color: #55728d;
+      line-height: 1.7;
+      margin-bottom: 18px;
+      font-size: 14.5px;
+    }
+
+    .branch-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .tag {
+      background: #eef8ff;
+      color: #1565ff;
+      border: 1px solid rgba(21, 101, 255, 0.08);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .branch-meta {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .branch-info {
+      color: #375775;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .branch-info i {
+      width: 22px;
+      color: #1565ff;
+    }
+
+    .branch-actions {
+      margin-top: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .branch-actions a,
+    .branch-actions button {
+      border: 0;
+      text-decoration: none;
+      cursor: pointer;
+      padding: 13px 12px;
+      border-radius: 14px;
+      font-weight: 800;
+      transition: 0.3s ease;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .view-btn {
+      background: #1565ff;
+      color: white;
+    }
+
+    .direction-btn {
+      background: #eef8ff;
+      color: #102f4d;
+    }
+
+    .branch-actions a:hover,
+    .branch-actions button:hover {
+      transform: translateY(-3px);
+    }
+
+    .no-result {
+      display: none;
+      text-align: center;
+      grid-column: 1 / -1;
+      color: #55728d;
+      font-size: 18px;
+      background: white;
+      padding: 35px;
+      border-radius: 24px;
+      box-shadow: 0 18px 45px rgba(16, 47, 77, 0.10);
+    }
+
+    /* ===== MAP SECTION ===== */
+    .map-section {
+      max-width: 1180px;
+      margin: 90px auto 0;
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .map-info {
+      background: #102f4d;
+      color: white;
+      border-radius: 30px;
+      padding: 42px 34px;
+      box-shadow: 0 22px 60px rgba(16, 47, 77, 0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-info::after {
+      content: '';
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(107, 210, 255, 0.13);
+      filter: blur(70px);
+      right: -100px;
+      top: -80px;
+    }
+
+    .map-info h2 {
+      font-size: clamp(28px, 3vw, 42px);
+      line-height: 1.15;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .map-info p {
+      color: rgba(255, 255, 255, 0.82);
+      line-height: 1.8;
+      margin-bottom: 26px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .map-placeholder {
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.78)),
+        repeating-linear-gradient(45deg, #dff4ff 0 12px, #eef8ff 12px 24px);
+      border: 1px solid rgba(16, 47, 77, 0.08);
+      border-radius: 30px;
+      min-height: 420px;
+      box-shadow: 0 22px 60px rgba(16, 47, 77, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-pin {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      background: #1565ff;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin: 0 auto 18px;
+      box-shadow: 0 18px 40px rgba(21, 101, 255, 0.25);
+    }
+
+    .map-placeholder h3 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .map-placeholder p {
+      color: #55728d;
+      line-height: 1.7;
+      max-width: 420px;
+    }
+
+    /* ===== CTA ===== */
+    .cta {
+      max-width: 1180px;
+      margin: 90px auto 0;
+      position: relative;
+      z-index: 2;
+      border-radius: 34px;
+      padding: 60px 30px;
+      text-align: center;
+      color: white;
+      background:
+        linear-gradient(135deg, rgba(8, 25, 45, 0.95), rgba(21, 101, 255, 0.78)),
+        url("assets/images/church-bg.jpg") center/cover no-repeat;
+      box-shadow: 0 22px 65px rgba(16, 47, 77, 0.18);
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background: rgba(107, 210, 255, 0.16);
+      filter: blur(90px);
+      left: -110px;
+      top: -120px;
+    }
+
+    .cta h2 {
+      font-size: clamp(30px, 4vw, 52px);
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta p {
+      max-width: 720px;
+      margin: 0 auto 28px;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.8;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta .hero-actions {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ===== MODAL ===== */
+    #membersModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.72);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: #ffffff;
+      color: #102f4d;
+      border-radius: 28px;
+      width: 100%;
+      max-width: 760px;
+      max-height: 86vh;
+      overflow-y: auto;
+      padding: 32px;
+      position: relative;
+      box-shadow: 0 30px 75px rgba(0, 0, 0, 0.35);
+      animation: modalPop 0.35s ease;
+    }
+
+    .close {
+      position: absolute;
+      top: 17px;
+      right: 24px;
+      font-size: 30px;
+      color: #102f4d;
+      cursor: pointer;
+    }
+
+    .modal-content h2 {
+      margin-bottom: 10px;
+      font-size: 30px;
+      padding-right: 35px;
+    }
+
+    .modal-content .modal-subtitle {
+      color: #55728d;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .modal-content .search-container {
+      margin-bottom: 22px;
+    }
+
+    .member-item {
+      background: #eef8ff;
+      border: 1px solid rgba(16, 47, 77, 0.07);
+      padding: 15px 16px;
+      border-radius: 16px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .member-name {
+      font-weight: 800;
+    }
+
+    .member-position {
+      color: #1565ff;
+      text-align: right;
+      font-weight: 700;
+    }
+
+    .member-details {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+
+    .member-pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .member-pagination button {
+      border: 0;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: #eef8ff;
+      color: #102f4d;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .member-pagination button.active,
+    .member-pagination button:hover {
+      background: linear-gradient(135deg, #1565ff, #69cfff);
+      color: #fff;
+    }
+
+    .member-pagination button:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .member-filter-wrap {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 0 0 18px;
+    }
+
+    .member-filter-btn {
+      border: 0;
+      padding: 11px 15px;
+      border-radius: 999px;
+      background: #eef8ff;
+      color: #102f4d;
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.3s ease;
+      font-size: 13px;
+    }
+
+    .member-filter-btn.active,
+    .member-filter-btn:hover {
+      background: linear-gradient(135deg, #1565ff, #69cfff);
+      color: #fff;
+      box-shadow: 0 12px 26px rgba(21, 101, 255, 0.18);
+    }
+
+    .member-count {
+      color: #55728d;
+      font-weight: 700;
+      font-size: 13px;
+      margin: -6px 0 14px;
+    }
+
+    /* ===== FOOTER ===== */
+    .main-footer {
+      background: #081b2e;
+      text-align: center;
+      padding: 30px 20px;
+      color: white;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(45px);
+      transition: 0.85s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes modalPop {
+      from {
+        opacity: 0;
+        transform: scale(0.94);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:1100px) {
+      .branches {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 0;
+      }
+
+      .featured,
+      .map-section {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-img,
+      .map-placeholder {
+        min-height: 340px;
+      }
+    }
+
+    @media(max-width:992px) {
+      .navbar {
+        padding: 18px 20px;
+      }
+
+      .navbar.scrolled {
+        padding: 15px 20px;
+      }
+
+      .menu-btn {
+        display: flex;
+      }
+
+      .navbar nav {
+        position: absolute;
+        top: 88px;
+        right: 20px;
+        width: 250px;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(15px);
+        border-radius: 24px;
+        padding: 25px;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+      }
+
+      .navbar nav.active {
+        display: flex;
+      }
+
+      .navbar nav a {
+        color: #102f4d;
+        font-size: 15px;
+        margin: 0;
+      }
+
+      .finder {
+        grid-template-columns: 1fr;
+      }
+
+      .filters {
+        justify-content: center;
+      }
+    }
+
+    @media(max-width:720px) {
+      .page-header {
+        min-height: 92vh;
+        padding: 140px 20px 120px;
+      }
+
+      .main-area {
+        padding: 70px 20px 85px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: -105px;
+        margin-bottom: 60px;
+      }
+
+      .stat-card {
+        padding: 22px 12px;
+      }
+
+      .stat-card h3 {
+        font-size: 24px;
+      }
+
+      .branches {
+        grid-template-columns: 1fr;
+      }
+
+      .featured {
+        padding: 16px;
+        border-radius: 26px;
+      }
+
+      .featured-content {
+        padding: 18px 8px 10px;
+      }
+
+      .featured-list {
+        grid-template-columns: 1fr;
+      }
+
+      .branch-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .map-info,
+      .cta {
+        padding: 38px 22px;
+      }
+
+      .hero-actions,
+      .featured-buttons {
+        flex-direction: column;
+      }
+
+      .hero-btn,
+      .action-btn {
+        width: 100%;
+      }
+    }
+
+    @media(max-width:480px) {
+      .logo {
+        font-size: 14px;
+        max-width: 220px;
+      }
+
+      .menu-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 15px;
+      }
+
+      .page-header h1 {
+        font-size: 38px;
+      }
+
+      .page-header p {
+        font-size: 14px;
+      }
+
+      .hero-badge {
+        font-size: 11px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .filters {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .filter-btn {
+        padding: 13px 10px;
+        font-size: 13px;
+      }
+
+      .branch-image {
+        min-height: 175px;
+      }
+
+      .modal-content {
+        padding: 28px 20px;
+      }
+
+      .member-item {
+        flex-direction: column;
+      }
+
+      .member-position {
+        text-align: left;
+      }
+
+      .member-details {
+        justify-content: flex-start;
+      }
+    }
+
+
+    /* =========================================================
+   PREMIUM ADDITIONS: SERVICE TIMES, VISIT GUIDE, MODAL GALLERY
+========================================================= */
+    .branch-schedule {
+      margin: 0 0 18px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .schedule-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #f8fdff, #eaf7ff);
+      border: 1px solid rgba(21, 101, 255, 0.08);
+      color: #102f4d;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .schedule-row i {
+      color: #1565ff;
+      margin-right: 6px;
+    }
+
+    .schedule-row span:last-child {
+      color: #55728d;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .visit-guide {
+      max-width: 1180px;
+      margin: 80px auto 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .visit-card {
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(16, 47, 77, 0.08);
+      border-radius: 26px;
+      padding: 28px 22px;
+      box-shadow: 0 18px 45px rgba(16, 47, 77, 0.10);
+      backdrop-filter: blur(14px);
+      transition: 0.35s ease;
+    }
+
+    .visit-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 70px rgba(16, 47, 77, 0.15);
+    }
+
+    .visit-card i {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1565ff, #6bd2ff);
+      color: white;
+      font-size: 24px;
+      margin-bottom: 18px;
+      box-shadow: 0 14px 30px rgba(21, 101, 255, 0.22);
+    }
+
+    .visit-card h3 {
+      color: #102f4d;
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
+
+    .visit-card p {
+      color: #55728d;
+      line-height: 1.7;
+      font-size: 14.5px;
+    }
+
+    .modal-branch-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 18px;
+      margin: 24px 0;
+    }
+
+    .pastor-card,
+    .modal-schedule-card {
+      background: #f3fbff;
+      border: 1px solid rgba(16, 47, 77, 0.08);
+      border-radius: 22px;
+      padding: 18px;
+    }
+
+    .pastor-photo {
+      width: 100%;
+      min-height: 190px;
+      border-radius: 18px;
+      background: linear-gradient(rgba(21, 101, 255, 0.08), rgba(8, 25, 45, 0.25)), var(--pastor-img) center/cover no-repeat;
+      margin-bottom: 14px;
+    }
+
+    .pastor-card h3,
+    .modal-schedule-card h3,
+    .modal-gallery h3 {
+      color: #102f4d;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .pastor-card p,
+    .modal-schedule-card p {
+      color: #55728d;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .modal-service-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .modal-service-list div {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 11px 12px;
+      border-radius: 14px;
+      background: white;
+      color: #102f4d;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .modal-service-list span:last-child {
+      color: #1565ff;
+      text-align: right;
+    }
+
+    .modal-gallery {
+      margin: 22px 0;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .gallery-img {
+      min-height: 120px;
+      border-radius: 18px;
+      background: linear-gradient(rgba(8, 25, 45, 0.08), rgba(8, 25, 45, 0.30)), var(--gallery-img) center/cover no-repeat;
+      box-shadow: 0 12px 28px rgba(16, 47, 77, 0.10);
+    }
+
+    .map-placeholder iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      border: 0;
+      border-radius: 30px;
+    }
+
+    .floating-prayer {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 1500;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #1565ff, #6bd2ff);
+      color: white;
+      text-decoration: none;
+      font-weight: 900;
+      box-shadow: 0 18px 42px rgba(21, 101, 255, 0.35);
+      transition: 0.3s ease;
+    }
+
+    .floating-prayer:hover {
+      transform: translateY(-5px);
+    }
+
+    @media(max-width:1100px) {
+      .visit-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width:720px) {
+
+      .visit-grid,
+      .modal-branch-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-prayer {
+        right: 16px;
+        left: 16px;
+        justify-content: center;
+        bottom: 16px;
+      }
+
+      .main-footer {
+        padding-bottom: 86px;
+      }
+    }
+
+
+
+    /* =========================================================
+   FINAL LIGHT THEME OVERRIDE
+   Powder-blue premium style: removes heavy black/dark areas
+   while keeping all features, modals, search, filters, and buttons working.
+========================================================= */
+    :root {
+      --light-bg: #f8fdff;
+      --light-blue: #eefbff;
+      --powder-blue: #dff6ff;
+      --soft-blue: #cfeeff;
+      --brand-blue: #1565ff;
+      --brand-sky: #69cfff;
+      --ink: #102f4d;
+      --soft-ink: #55728d;
+    }
+
+    body {
+      background: linear-gradient(180deg, #f8fdff 0%, #eefbff 45%, #ffffff 100%) !important;
+      color: var(--ink) !important;
+    }
+
+    /* Light glass navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.58) !important;
+      backdrop-filter: blur(18px) !important;
+      -webkit-backdrop-filter: blur(18px) !important;
+      border-bottom: 1px solid rgba(16, 47, 77, 0.08) !important;
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.90) !important;
+      box-shadow: 0 10px 28px rgba(16, 47, 77, 0.10) !important;
+      border-bottom: 1px solid rgba(16, 47, 77, 0.10) !important;
+    }
+
+    .logo,
+    .navbar nav a {
+      color: var(--ink) !important;
+      text-shadow: none !important;
+    }
+
+    .navbar nav a:hover,
+    .navbar nav a.current {
+      color: var(--brand-blue) !important;
+    }
+
+    .menu-btn {
+      background: linear-gradient(135deg, #1565ff, #69cfff) !important;
+    }
+
+    /* Light hero */
+    .page-header {
+      color: var(--ink) !important;
+      background:
+        radial-gradient(circle at 15% 18%, rgba(105, 207, 255, 0.36), transparent 28%),
+        radial-gradient(circle at 88% 22%, rgba(21, 101, 255, 0.14), transparent 24%),
+        linear-gradient(135deg, #ffffff 0%, #eefbff 46%, #dff6ff 100%) !important;
+    }
+
+    .page-header::before {
+      background:
+        radial-gradient(circle at 18% 35%, rgba(255, 255, 255, 0.82), transparent 22%),
+        radial-gradient(circle at 82% 25%, rgba(105, 207, 255, 0.30), transparent 28%) !important;
+    }
+
+    .page-header h1 {
+      color: var(--ink) !important;
+      text-shadow: none !important;
+    }
+
+    .page-header p {
+      color: var(--soft-ink) !important;
+    }
+
+    .hero-badge {
+      background: rgba(255, 255, 255, 0.78) !important;
+      border: 1px solid rgba(21, 101, 255, 0.14) !important;
+      color: var(--brand-blue) !important;
+      box-shadow: 0 12px 30px rgba(58, 129, 173, 0.12) !important;
+    }
+
+    .hero-btn.primary,
+    .action-btn.blue,
+    .view-btn {
+      background: linear-gradient(135deg, #1565ff, #69cfff) !important;
+      color: #fff !important;
+      box-shadow: 0 14px 30px rgba(21, 101, 255, 0.20) !important;
+    }
+
+    .hero-btn.secondary,
+    .action-btn.light,
+    .direction-btn {
+      background: rgba(255, 255, 255, 0.86) !important;
+      color: var(--ink) !important;
+      border: 1px solid rgba(21, 101, 255, 0.16) !important;
+    }
+
+    /* Light section backgrounds */
+    .main-area {
+      background:
+        radial-gradient(circle at 8% 12%, rgba(107, 210, 255, 0.26), transparent 28%),
+        radial-gradient(circle at 92% 22%, rgba(21, 101, 255, 0.10), transparent 26%),
+        linear-gradient(180deg, #eefbff 0%, #ffffff 44%, #eefbff 100%) !important;
+    }
+
+    /* Cards and panels */
+    .stat-card,
+    .featured,
+    .finder,
+    .branch-card,
+    .map-placeholder,
+    .expect-card,
+    .visit-card,
+    .modal-content {
+      background: rgba(255, 255, 255, 0.92) !important;
+      border: 1px solid rgba(16, 47, 77, 0.08) !important;
+      box-shadow: 0 20px 55px rgba(58, 129, 173, 0.12) !important;
+    }
+
+    .featured-img,
+    .branch-image {
+      background:
+        linear-gradient(180deg, rgba(21, 101, 255, 0.08), rgba(21, 101, 255, 0.30)),
+        var(--img, url("assets/images/branch-main.jpg")) center/cover no-repeat !important;
+    }
+
+    .featured-img::after {
+      background: rgba(255, 255, 255, 0.92) !important;
+      color: var(--ink) !important;
+    }
+
+    .branch-image::after {
+      background: linear-gradient(180deg, transparent 20%, rgba(16, 47, 77, 0.56) 100%) !important;
+    }
+
+    .branch-location h3,
+    .branch-location p {
+      color: #fff !important;
+      text-shadow: 0 4px 16px rgba(16, 47, 77, 0.35) !important;
+    }
+
+    .featured-item,
+    .tag,
+    .filter-btn,
+    .member-item,
+    .branch-schedule-item {
+      background: #eefbff !important;
+      border-color: rgba(21, 101, 255, 0.10) !important;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: linear-gradient(135deg, #1565ff, #69cfff) !important;
+      color: #fff !important;
+    }
+
+    /* Light map info panel */
+    .map-info {
+      background:
+        radial-gradient(circle at top right, rgba(105, 207, 255, 0.38), transparent 34%),
+        linear-gradient(135deg, #ffffff 0%, #eefbff 58%, #dff6ff 100%) !important;
+      color: var(--ink) !important;
+      border: 1px solid rgba(16, 47, 77, 0.08) !important;
+      box-shadow: 0 22px 60px rgba(58, 129, 173, 0.13) !important;
+    }
+
+    .map-info h2 {
+      color: var(--ink) !important;
+    }
+
+    .map-info p {
+      color: var(--soft-ink) !important;
+    }
+
+    .map-info .section-label {
+      color: var(--brand-blue) !important;
+    }
+
+    /* Light CTA */
+    .cta {
+      color: var(--ink) !important;
+      background:
+        radial-gradient(circle at top left, rgba(105, 207, 255, 0.36), transparent 30%),
+        linear-gradient(135deg, #ffffff 0%, #eefbff 48%, #dff6ff 100%) !important;
+      border: 1px solid rgba(16, 47, 77, 0.08) !important;
+      box-shadow: 0 24px 70px rgba(58, 129, 173, 0.14) !important;
+    }
+
+    .cta h2 {
+      color: var(--ink) !important;
+    }
+
+    .cta p {
+      color: var(--soft-ink) !important;
+    }
+
+    .cta .hero-btn.secondary {
+      background: #fff !important;
+    }
+
+    /* Floating prayer button light polish */
+    .floating-prayer,
+    .prayer-float {
+      background: linear-gradient(135deg, #1565ff, #69cfff) !important;
+      color: #fff !important;
+      box-shadow: 0 18px 40px rgba(21, 101, 255, 0.26) !important;
+    }
+
+    /* =========================
+   CTA + FOOTER
+========================= */
+    .home-cta {
+      padding: 0 7% 95px;
+      background: #eaf7ff;
+    }
+
+    .cta-card {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 44px;
+      border-radius: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(8, 27, 46, 0.94), rgba(21, 101, 255, 0.45)),
+        url("assets/images/event1.jpg") center/cover no-repeat;
+      box-shadow: 0 28px 70px rgba(16, 47, 77, 0.20);
+    }
+
+    .cta-card h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      margin-bottom: 10px;
+    }
+
+    .cta-card p {
+      color: rgba(255, 255, 255, 0.84);
+      line-height: 1.7;
+    }
+
+    .site-footer {
+      background:
+        radial-gradient(circle at top left, rgba(107, 210, 255, 0.16), transparent 32%),
+        #081b2e;
+      color: white;
+      padding: 70px 7% 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 34px;
+    }
+
+    .footer-brand h3 {
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+
+    .footer-brand p,
+    .footer-col p,
+    .footer-col a {
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 16px;
+      color: #8edfff;
+    }
+
+    .footer-col a {
+      display: block;
+      text-decoration: none;
+      margin-bottom: 9px;
+      transition: 0.3s ease;
+    }
+
+    .footer-col a:hover {
+      color: #8edfff;
+      transform: translateX(4px);
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .socials a {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .socials a:hover {
+      background: #8edfff;
+      color: #081b2e;
+      transform: translateY(-4px);
+    }
+
+    .footer-bottom {
+      max-width: 1180px;
+      margin: 35px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    /* Mobile nav stays clean */
+    @media(max-width:992px) {
+      .navbar nav {
+        background: rgba(255, 255, 255, 0.98) !important;
+        border: 1px solid rgba(16, 47, 77, 0.08) !important;
+      }
+
+      .navbar nav a {
+        color: var(--ink) !important;
+      }
+    }
+
+    @media(max-width:720px) {
+      .page-header {
+        min-height: 78vh !important;
+        padding-top: 130px !important;
+      }
+    }
+
+
+
+    /* =========================================================
+   ROTATING FAITH CIRCLE HERO DECORATION
+========================================================= */
+    .faith-circle {
+      position: absolute;
+      right: clamp(24px, 6vw, 90px);
+      top: clamp(110px, 18vh, 170px);
+      width: 158px;
+      height: 158px;
+      border-radius: 50%;
+      z-index: 4;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 18px 35px rgba(21, 101, 255, 0.14));
+    }
+
+    .faith-circle .circle-text {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      animation: faithSpin 18s linear infinite;
+    }
+
+    .faith-circle .circle-text span {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform-origin: 0 79px;
+      color: #1565ff;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .faith-circle .circle-center {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(21, 101, 255, 0.14);
+      box-shadow: 0 18px 38px rgba(58, 129, 173, 0.16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1565ff;
+      font-size: 22px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    @keyframes faithSpin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media(max-width:992px) {
+      .faith-circle {
+        width: 124px;
+        height: 124px;
+        right: 24px;
+        top: 105px;
+        opacity: .62;
+      }
+
+      .faith-circle .circle-text span {
+        transform-origin: 0 62px;
+        font-size: 8px;
+      }
+
+      .faith-circle .circle-center {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+      }
+    }
+
+    @media(max-width:620px) {
+      .faith-circle {
+        width: 98px;
+        height: 98px;
+        right: 14px;
+        top: 102px;
+        opacity: .42;
+      }
+
+      .faith-circle .circle-text span {
+        transform-origin: 0 49px;
+        font-size: 6.5px;
+      }
+
+      .faith-circle .circle-center {
+        width: 40px;
+        height: 40px;
+        font-size: 15px;
+      }
+    }
+
+
+    /* =========================================================
+   EASY IMAGE EDIT SYSTEM
+========================================================= */
+    .featured-img,
+    .branch-image,
+    .pastor-photo,
+    .gallery-img {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured-img img,
+    .branch-image img,
+    .pastor-photo img,
+    .gallery-img img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .featured-img::before,
+    .branch-image::after,
+    .gallery-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+    }
+
+    .featured-img::before {
+      background: linear-gradient(rgba(8, 25, 45, 0.25), rgba(8, 25, 45, 0.35));
+    }
+
+    .branch-image::after {
+      background: linear-gradient(180deg,
+          rgba(8, 25, 45, 0.10),
+          rgba(8, 25, 45, 0.65));
+    }
+
+    .gallery-img::after {
+      background: linear-gradient(rgba(8, 25, 45, 0.08), rgba(8, 25, 45, 0.30));
+    }
+
+
+    /* =========================================================
+   CLEAN BRANCH MANAGER CSS
+   Makes generated branch details easy to read and edit.
+========================================================= */
+
+    .branch-image,
+    .featured-img,
+    .pastor-photo,
+    .gallery-img {
+      position: relative !important;
+      overflow: hidden !important;
+      background: none !important;
+    }
+
+    .branch-image img,
+    .featured-img img,
+    .pastor-photo img,
+    .gallery-img img {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      z-index: 0 !important;
+    }
+
+    .branch-image::after {
+      content: '' !important;
+      position: absolute !important;
+      inset: 0 !important;
+      z-index: 1 !important;
+      background: linear-gradient(180deg, transparent 20%, rgba(16, 47, 77, 0.62) 100%) !important;
+    }
+
+    .branch-location {
+      z-index: 2 !important;
+    }
+
+    .branch-schedule {
+      margin: 0 0 18px !important;
+    }
+
+    .schedule-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
+      padding: 10px 12px !important;
+      border-radius: 14px !important;
+      background: linear-gradient(135deg, #f8fdff, #eaf7ff) !important;
+      border: 1px solid rgba(21, 101, 255, 0.08) !important;
+      color: #102f4d !important;
+      font-size: 13px !important;
+      font-weight: 800 !important;
+    }
+
+    .schedule-row span:last-child {
+      color: #55728d !important;
+      text-align: right !important;
+    }
+
+    .branch-edit-note {
+      color: #1565ff;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .gallery-img {
+      min-height: 120px !important;
+      border-radius: 18px !important;
+      box-shadow: 0 12px 28px rgba(16, 47, 77, 0.10) !important;
+    }
+
+    .gallery-img::after {
+      content: '' !important;
+      position: absolute !important;
+      inset: 0 !important;
+      background: linear-gradient(rgba(8, 25, 45, 0.08), rgba(8, 25, 45, 0.30)) !important;
+      z-index: 1 !important;
+    }
+
+    .pastor-photo {
+      min-height: 190px !important;
+      border-radius: 18px !important;
+      margin-bottom: 14px !important;
+    }
+
+    .modal-service-list div {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 11px 12px;
+      border-radius: 14px;
+      background: white;
+      color: #102f4d;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .modal-service-list span:last-child {
+      color: #1565ff;
+      text-align: right;
+    }
+
+
+    /* FIX: Generated branch cards must be visible immediately */
+    .branch-card.active {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="logo">
+      <img src="assets/images/logo.jpg" alt="Church Logo">
+      <span>The Three Are One God Church</span>
+    </div>
+
+    <div class="menu-btn" id="menu-btn">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <nav id="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="branches.html" class="current">Branches</a>
+      <a href="ministries.html">Ministries</a>
+      <a href="events.html">Events</a>
+      <a href="get-involved.html">Get Involved</a>
+      <a href="prayer.html">Prayer</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="page-header">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-location-dot"></i> Church Chapters</div>
+      <h1>Find Your Spiritual Home</h1>
+      <p>
+        Serving communities with faith and love. Explore our church chapters,
+        connect with a local family of believers, and grow with us in worship,
+        fellowship, and service.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#branchFinder" class="hero-btn primary">Find a Branch <i class="fa-solid fa-arrow-down"></i></a>
+        <a href="contact.html" class="hero-btn secondary">Contact Us</a>
+      </div>
+    </div>
+
+    <div class="faith-circle" aria-hidden="true">
+      <div class="circle-text" id="faithCircleText"></div>
+      <div class="circle-center"><i class="fa-solid fa-cross"></i></div>
+    </div>
+  </section>
+
+  <main class="main-area">
+
+    <section class="stats reveal">
+      <div class="stat-card">
+        <i class="fa-solid fa-church"></i>
+        <h3>9+</h3>
+        <p>Church Chapters</p>
+      </div>
+
+      <div class="stat-card">
+        <i class="fa-solid fa-users"></i>
+        <h3>500+</h3>
+        <p>Growing Members</p>
+      </div>
+
+      <div class="stat-card">
+        <i class="fa-solid fa-map-location-dot"></i>
+        <h3>4+</h3>
+        <p>Key Locations</p>
+      </div>
+
+      <div class="stat-card">
+        <i class="fa-solid fa-heart"></i>
+        <h3>1</h3>
+        <p>Church Family</p>
+      </div>
+    </section>
+
+    <section class="featured reveal">
+      <!-- FEATURED IMAGE -->
+      <div class="featured-img">
+        <img src="assets/images/branch-main.jpg" alt="Featured Branch">
+      </div>
+
+      <div class="featured-content">
+        <p class="section-label">Featured Chapter</p>
+        <h2>A Church Family Near You</h2>
+        <p>
+          Each chapter carries the same heart: to love God, love people, and serve
+          communities through worship, discipleship, prayer, and outreach.
+        </p>
+
+        <div class="featured-list">
+          <div class="featured-item"><i class="fa-solid fa-calendar-days"></i> Sunday Worship</div>
+          <div class="featured-item"><i class="fa-solid fa-hands-praying"></i> Prayer Gathering</div>
+          <div class="featured-item"><i class="fa-solid fa-people-group"></i> Fellowship</div>
+          <div class="featured-item"><i class="fa-solid fa-hand-holding-heart"></i> Outreach</div>
+        </div>
+
+        <div class="featured-buttons">
+          <a href="#branchFinder" class="action-btn blue">Browse Branches</a>
+          <a href="prayer.html" class="action-btn light">Request Prayer</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-header reveal" id="branchFinder">
+      <p class="section-label">Explore Our Locations</p>
+      <h2>Our Church Chapters</h2>
+      <p>
+        Search by chapter name or location. You can also filter by area to quickly
+        find the closest church community for you and your family.
+      </p>
+    </section>
+
+    <section class="finder reveal">
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search chapter or location...">
+        <i class="fas fa-search"></i>
+      </div>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="batangas">Batangas</button>
+        <button class="filter-btn" data-filter="quezon">Quezon</button>
+        <button class="filter-btn" data-filter="cavite">Cavite</button>
+        <button class="filter-btn" data-filter="manila">Metro Manila</button>
+      </div>
+    </section>
+
+    <section class="branches" id="branchList">
+      <!-- =====================================================
+         BRANCH CARDS AREA
+         Do not manually edit branch cards here.
+
+         All branch cards are generated automatically from
+         BRANCH_LIST in the JavaScript section below.
+
+         To edit:
+         - branch name
+         - location
+         - image
+         - pastor
+         - service schedule
+         - member list
+         - gallery
+         - Google Maps direction link
+
+         Scroll down to:
+         "EASY BRANCH MANAGER"
+    ====================================================== -->
+
+      <p class="no-result" id="noResult">No church chapter found.</p>
+    </section>
+
+
+
+    <section class="visit-guide reveal">
+      <div class="section-header">
+        <p class="section-label">First Time Visiting?</p>
+        <h2>What to expect in every branch</h2>
+        <p>Every chapter may have a different location, but the same heart welcomes you: worship, prayer, fellowship,
+          and care.</p>
+      </div>
+
+      <div class="visit-grid">
+        <div class="visit-card">
+          <i class="fa-solid fa-face-smile"></i>
+          <h3>Warm Welcome</h3>
+          <p>Our members and leaders will gladly guide you when you arrive.</p>
+        </div>
+        <div class="visit-card">
+          <i class="fa-solid fa-music"></i>
+          <h3>Worship Service</h3>
+          <p>Experience worship, prayer, and encouragement through God’s Word.</p>
+        </div>
+        <div class="visit-card">
+          <i class="fa-solid fa-hands-praying"></i>
+          <h3>Prayer Support</h3>
+          <p>You may ask for prayer before or after the service.</p>
+        </div>
+        <div class="visit-card">
+          <i class="fa-solid fa-people-group"></i>
+          <h3>Fellowship</h3>
+          <p>Connect with a local church family and grow together in faith.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="map-section reveal">
+      <div class="map-info">
+        <p class="section-label" style="color:#8edfff;">Find Us</p>
+        <h2>Looking for the nearest branch?</h2>
+        <p>
+          You can replace the map placeholder with your real Google Maps embed later.
+          This section helps visitors quickly understand that your church is active
+          in multiple communities.
+        </p>
+        <a href="contact.html" class="action-btn blue">Ask for Directions</a>
+      </div>
+
+      <div class="map-placeholder">
+        <iframe title="Church branches map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Batangas%20Philippines&output=embed">
+        </iframe>
+      </div>
+    </section>
+
+    <section class="cta reveal">
+      <h2>Become Part of Our Growing Church Family</h2>
+      <p>
+        Whether you are new, returning, or looking for a place to worship,
+        there is a chapter ready to welcome you.
+      </p>
+
+      <div class="hero-actions">
+        <a href="get-involved.html" class="hero-btn primary">Get Involved</a>
+        <a href="prayer.html" class="hero-btn secondary">Send Prayer Request</a>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="membersModal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalBranchName">Branch Details</h2>
+      <p class="modal-subtitle" id="modalBranchSubtitle">
+        View branch service times, pastor details, gallery, and ministry leaders.
+      </p>
+
+      <div class="modal-branch-grid">
+        <div class="pastor-card" id="modalPastorCard">
+          <!-- Pastor photo, pastor name, and pastor description are generated from BRANCH_LIST -->
+          <div class="pastor-photo" id="modalPastorPhoto">
+            <img id="modalPastorImg" src="assets/images/branch-pastor1.jpg" alt="Pastor">
+          </div>
+          <h4>Meet the Pastor</h4>
+          <h3 id="modalPastorName">Branch Pastor</h3>
+          <p id="modalPastorText">Our branch pastor and ministry leaders are ready to welcome and guide you.</p>
+        </div>
+
+        <div class="modal-schedule-card">
+          <h3>Service Schedule</h3>
+          <p>Join this branch for worship, prayer, and fellowship.</p>
+          <div class="modal-service-list" id="modalServiceList"></div>
+        </div>
+      </div>
+
+      <div class="modal-gallery">
+        <h3>Branch Gallery</h3>
+        <div class="gallery-grid" id="modalGallery"></div>
+      </div>
+
+      <div class="member-filter-wrap" id="memberFilterWrap">
+        <button class="member-filter-btn active" data-member-filter="all">All</button>
+        <button class="member-filter-btn" data-member-filter="youth">Youth</button>
+        <button class="member-filter-btn" data-member-filter="senior">Senior</button>
+        <button class="member-filter-btn" data-member-filter="toddlers">Toddlers</button>
+      </div>
+
+      <div class="member-count" id="memberCount"></div>
+
+      <div class="search-container">
+        <input type="text" id="memberSearch" placeholder="Search member by name or position...">
+        <i class="fas fa-search"></i>
+      </div>
+
+      <div id="memberList"></div>
+      <div class="member-pagination" id="memberPagination"></div>
+    </div>
+  </div>
+
+  <a href="prayer.html" class="floating-prayer"><i class="fa-solid fa-hands-praying"></i> Need Prayer?</a>
+
+  <!-- =========================
+     FOOTER
+========================= -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>The Three Are One God Church</h3>
+        <p>
+          A Christ-centered family dedicated to loving God, loving people,
+          and serving communities through worship, discipleship, and ministry.
+        </p>
+
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="branches.html">Branches</a>
+        <a href="ministries.html">Ministries</a>
+        <a href="events.html">Events</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="get-involved.html">Get Involved</a>
+        <a href="prayer.html">Prayer Request</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="branches.html">Find a Branch</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Service Info</h4>
+        <p>Sunday Worship</p>
+        <p>9:00 AM & 11:00 AM</p>
+        <p>Midweek Fellowship</p>
+        <p>Wednesday 5:00 PM</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 The Three Are One God Church. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/db.js"></script>
+  <script>
+    /* ===== NAVBAR GLASS ===== */
+    window.addEventListener("scroll", () => {
+      const navbar = document.querySelector(".navbar");
+
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+
+    /* ===== MOBILE MENU ===== */
+    const menuBtn = document.getElementById("menu-btn");
+    const navMenu = document.getElementById("nav-menu");
+
+    menuBtn.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+
+    document.querySelectorAll("#nav-menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+      });
+    });
+
+    /* ===== REVEAL ANIMATION ===== */
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+
+    /* =========================================================
+       EASY BRANCH MANAGER
+       ---------------------------------------------------------
+       Edit ALL branch information here only.
+    
+       You can edit:
+       - branch title/name
+       - province/location
+       - area/filter category
+       - picture
+       - description
+       - tags
+       - members count / established year
+       - service schedule and service time
+       - pastor name, pastor photo, pastor description
+       - branch gallery pictures
+       - member list
+       - Google Maps direction link
+    
+       AREA OPTIONS:
+       "batangas" = Batangas filter
+       "quezon"   = Quezon filter
+       "cavite"   = Cavite filter
+       "manila"   = Metro Manila filter
+    
+       MEMBER CATEGORY OPTIONS:
+       "youth"    = Youth filter
+       "senior"   = Senior filter
+       "toddlers" = Toddlers filter
+    ========================================================= */
+
+    const BRANCH_LIST = db.branches.getAll();
+
+
+    /* =========================================================
+       BRANCH CARD GENERATOR
+       This automatically creates the visible branch cards.
+    ========================================================= */
+
+    const branchList = document.getElementById("branchList");
+    // noResult is generated with the branch cards, so it is selected inside filterBranches().
+
+    function createBranchCard(branch) {
+      return `
+    <article class="branch-card active" data-id="${branch.id}" data-area="${branch.area}" data-name="${branch.searchKeywords}">
+      <!-- BRANCH IMAGE: edit this inside BRANCH_LIST > image -->
+      <div class="branch-image">
+        <img src="${branch.image}" alt="${branch.name}">
+        <div class="branch-location">
+          <h3>${branch.name}</h3>
+          <p>${branch.location}</p>
+        </div>
+      </div>
+
+      <div class="branch-body">
+        <div class="branch-edit-note">Branch Details</div>
+
+        <p>${branch.description}</p>
+
+        <div class="branch-tags">
+          ${branch.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}
+        </div>
+
+        <div class="branch-meta">
+          <div class="branch-info"><i class="fas fa-users"></i> ${branch.membersCount}</div>
+          <div class="branch-info"><i class="fas fa-clock"></i> ${branch.established}</div>
+          <div class="branch-info"><i class="fas fa-calendar"></i> ${branch.serviceSchedule[0].title}</div>
+        </div>
+
+        <div class="branch-schedule">
+          ${branch.serviceSchedule.slice(0, 2).map(service => `
+            <div class="schedule-row">
+              <span><i class="fa-solid fa-clock"></i> ${service.title}</span>
+              <span>${service.time}</span>
+            </div>
+          `).join("")}
+        </div>
+
+        <div class="branch-actions">
+          <button class="view-btn" type="button" data-id="${branch.id}">View Details</button>
+          <a class="direction-btn" href="${branch.directionsLink}" target="_blank">Directions</a>
+        </div>
+      </div>
+    </article>
+  `;
+    }
+
+
+    function renderBranchCards() {
+      const branchListEl = document.getElementById("branchList");
+      if (!branchListEl) return;
+
+      const currentBranches = db.branches.getAll();
+      const noResultHTML = `<p class="no-result" id="noResult">No church chapter found.</p>`;
+      const cardsHTML = currentBranches.map(createBranchCard).join("");
+
+      branchListEl.innerHTML = cardsHTML + noResultHTML;
+    }
+
+    renderBranchCards();
+
+
+    /* =========================================================
+       SEARCH AND FILTER
+    ========================================================= */
+
+    const searchInput = document.getElementById("searchInput");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    let activeFilter = "all";
+
+    function filterBranches() {
+      const chapterCards = document.querySelectorAll(".branch-card");
+      const noResultText = document.getElementById("noResult");
+      const value = searchInput.value.toLowerCase().trim();
+      let visibleCount = 0;
+
+      chapterCards.forEach(card => {
+        const searchableText = card.dataset.name.toLowerCase();
+        const area = card.dataset.area;
+
+        const matchesSearch = searchableText.includes(value);
+        const matchesFilter = activeFilter === "all" || area === activeFilter;
+
+        if (matchesSearch && matchesFilter) {
+          card.style.display = "flex";
+          visibleCount++;
+        } else {
+          card.style.display = "none";
+        }
+      });
+
+      noResultText.style.display = visibleCount === 0 ? "block" : "none";
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener("keyup", filterBranches);
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach(button => button.classList.remove("active"));
+        btn.classList.add("active");
+        activeFilter = btn.dataset.filter;
+        filterBranches();
+      });
+    });
+
+    filterBranches();
+
+
+    /* =========================================================
+       BRANCH DETAILS MODAL
+    ========================================================= */
+
+    const membersModal = document.getElementById("membersModal");
+    const memberListDiv = document.getElementById("memberList");
+    const memberPagination = document.getElementById("memberPagination");
+    const memberCount = document.getElementById("memberCount");
+    const memberFilterButtons = document.querySelectorAll(".member-filter-btn");
+    const modalBranchName = document.getElementById("modalBranchName");
+    const modalBranchSubtitle = document.getElementById("modalBranchSubtitle");
+    const memberSearch = document.getElementById("memberSearch");
+    const closeModal = document.querySelector(".close");
+
+    const modalPastorImg = document.getElementById("modalPastorImg");
+    const modalPastorName = document.getElementById("modalPastorName");
+    const modalPastorText = document.getElementById("modalPastorText");
+    const modalServiceList = document.getElementById("modalServiceList");
+    const modalGallery = document.getElementById("modalGallery");
+
+    const membersPerPage = 15;
+    let currentMembers = [];
+    let currentFilteredMembers = [];
+    let currentMemberPage = 1;
+    let activeMemberFilter = "all";
+
+    function getBranchById(branchId) {
+      return db.branches.getById(branchId);
+    }
+
+    function openBranchModal(branchId) {
+      const branch = getBranchById(branchId);
+      if (!branch) return;
+
+      modalBranchName.textContent = branch.name;
+      modalBranchSubtitle.textContent = branch.location + " • Service schedule, pastor, gallery, and ministry members";
+
+      modalPastorImg.src = branch.pastorImage;
+      modalPastorImg.alt = branch.pastorName;
+      modalPastorName.textContent = branch.pastorName;
+      modalPastorText.textContent = branch.pastorDescription;
+
+      modalServiceList.innerHTML = branch.serviceSchedule.map(service => `
+    <div>
+      <span>${service.title}</span>
+      <span>${service.time}</span>
+    </div>
+  `).join("");
+
+      modalGallery.innerHTML = branch.gallery.map(img => `
+    <div class="gallery-img">
+      <img src="${img}" alt="${branch.name} gallery">
+    </div>
+  `).join("");
+
+      currentMembers = branch.members || [];
+      currentFilteredMembers = currentMembers;
+      currentMemberPage = 1;
+      activeMemberFilter = "all";
+      memberSearch.value = "";
+
+      memberFilterButtons.forEach(button => button.classList.remove("active"));
+      document.querySelector('.member-filter-btn[data-member-filter="all"]').classList.add("active");
+
+      applyMemberFilters();
+      membersModal.style.display = "flex";
+    }
+
+    document.addEventListener("click", event => {
+      const button = event.target.closest(".view-btn");
+      if (!button) return;
+      openBranchModal(button.dataset.id);
+    });
+
+
+    /* =========================================================
+       MEMBER LIST, FILTER, SEARCH, AND PAGINATION
+    ========================================================= */
+
+    function renderMembers(members, page = 1) {
+      memberListDiv.innerHTML = "";
+      memberPagination.innerHTML = "";
+      currentFilteredMembers = members;
+      currentMemberPage = page;
+
+      if (members.length === 0) {
+        memberCount.textContent = "0 members found";
+        memberListDiv.innerHTML = "<p style='text-align:center;color:#55728d;'>No members found.</p>";
+        return;
+      }
+
+      memberCount.textContent = `${members.length} member${members.length === 1 ? "" : "s"} found`;
+
+      const totalPages = Math.ceil(members.length / membersPerPage);
+      const startIndex = (page - 1) * membersPerPage;
+      const endIndex = startIndex + membersPerPage;
+      const paginatedMembers = members.slice(startIndex, endIndex);
+
+      paginatedMembers.forEach(member => {
+        const div = document.createElement("div");
+        div.className = "member-item";
+        div.innerHTML = `
+      <span class="member-name">${member.name}</span>
+      <span class="member-details">
+        <span class="member-position">${member.position}</span>
+      </span>
+    `;
+        memberListDiv.appendChild(div);
+      });
+
+      renderMemberPagination(totalPages);
+    }
+
+    function renderMemberPagination(totalPages) {
+      memberPagination.innerHTML = "";
+      if (totalPages <= 1) return;
+
+      const prevBtn = document.createElement("button");
+      prevBtn.textContent = "Prev";
+      prevBtn.disabled = currentMemberPage === 1;
+      prevBtn.addEventListener("click", () => renderMembers(currentFilteredMembers, currentMemberPage - 1));
+      memberPagination.appendChild(prevBtn);
+
+      for (let i = 1; i <= totalPages; i++) {
+        const pageBtn = document.createElement("button");
+        pageBtn.textContent = i;
+
+        if (i === currentMemberPage) {
+          pageBtn.classList.add("active");
+        }
+
+        pageBtn.addEventListener("click", () => renderMembers(currentFilteredMembers, i));
+        memberPagination.appendChild(pageBtn);
+      }
+
+      const nextBtn = document.createElement("button");
+      nextBtn.textContent = "Next";
+      nextBtn.disabled = currentMemberPage === totalPages;
+      nextBtn.addEventListener("click", () => renderMembers(currentFilteredMembers, currentMemberPage + 1));
+      memberPagination.appendChild(nextBtn);
+    }
+
+    function applyMemberFilters() {
+      const value = memberSearch.value.toLowerCase().trim();
+
+      const filteredMembers = currentMembers.filter(member => {
+        const matchesSearch =
+          member.name.toLowerCase().includes(value) ||
+          member.position.toLowerCase().includes(value);
+
+        const matchesCategory =
+          activeMemberFilter === "all" || member.category === activeMemberFilter;
+
+        return matchesSearch && matchesCategory;
+      });
+
+      renderMembers(filteredMembers, 1);
+    }
+
+    memberFilterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        memberFilterButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+        activeMemberFilter = button.dataset.memberFilter;
+        applyMemberFilters();
+      });
+    });
+
+    memberSearch.addEventListener("keyup", applyMemberFilters);
+
+    closeModal.addEventListener("click", () => {
+      membersModal.style.display = "none";
+    });
+
+    window.addEventListener("click", e => {
+      if (e.target === membersModal) {
+        membersModal.style.display = "none";
+      }
+    });
+
+    window.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        membersModal.style.display = "none";
+      }
+    });
+
+
+    /* ===== ROTATING CIRCULAR TEXT ===== */
+    const faithCircleText = document.getElementById("faithCircleText");
+    if (faithCircleText) {
+      const phrase = "LET'S LIVE WITH FAITH • LET'S LIVE WITH FAITH • ";
+      const letters = phrase.split("");
+      const degree = 360 / letters.length;
+
+      faithCircleText.innerHTML = letters.map((letter, index) => {
+        return `<span style="transform:rotate(${index * degree}deg)">${letter}</span>`;
+      }).join("");
+    }
+
+  </script>
+
+</body>
+
+</html>

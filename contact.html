@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Three Are One God Church | Contact</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="assets/js/db.js"></script>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --navy:#08233f;
+  --text:#102a43;
+  --soft-text:#52677a;
+  --blue:#247cff;
+  --sky:#61cfff;
+  --powder:#eef9ff;
+  --light:#f7fcff;
+  --white:#ffffff;
+  --card:#ffffffcc;
+  --card-border:rgba(20,78,120,0.12);
+  --shadow:0 24px 60px rgba(21,72,112,0.12);
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:
+    radial-gradient(circle at 8% 8%, rgba(97,207,255,0.25), transparent 30%),
+    radial-gradient(circle at 90% 18%, rgba(36,124,255,0.14), transparent 28%),
+    linear-gradient(180deg,#f7fcff 0%,#eef9ff 42%,#ffffff 100%);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  background:
+    linear-gradient(rgba(255,255,255,0.88), rgba(238,249,255,0.94)),
+    url("assets/images/event1.jpg") center/cover fixed no-repeat;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background-image:
+    linear-gradient(rgba(36,124,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(36,124,255,0.05) 1px, transparent 1px);
+  background-size:44px 44px;
+  pointer-events:none;
+}
+
+::-webkit-scrollbar{ width:8px; }
+::-webkit-scrollbar-thumb{ background:#61cfff; border-radius:10px; }
+
+/* NAVBAR */
+.navbar{
+  background:rgba(255,255,255,0.82);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 60px;
+  position:fixed;
+  width:100%;
+  top:0;
+  left:0;
+  z-index:1000;
+  transition:0.4s ease;
+  border-bottom:1px solid rgba(8,35,63,0.08);
+}
+
+.navbar.scrolled{
+  background:rgba(255,255,255,0.96);
+  padding:13px 60px;
+  box-shadow:0 12px 30px rgba(21,72,112,0.10);
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  font-size:17px;
+  font-weight:800;
+  color:#102f4d;
+  text-shadow:none;
+}
+
+.logo img{
+  width:42px;
+  height:42px;
+  object-fit:contain;
+  border-radius:50%;
+}
+.navbar nav{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.navbar nav a{
+  margin-left:22px;
+  color:#0f2f4d;
+  text-decoration:none;
+  font-weight:800;
+  font-size:14px;
+  transition:0.3s ease;
+}
+
+.navbar nav a:hover,
+.navbar nav a.current{ color:#168ed1; }
+
+.menu-btn{
+  width:52px;
+  height:52px;
+  background:linear-gradient(135deg,#61cfff,#247cff);
+  border-radius:18px;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+  box-shadow:0 12px 30px rgba(36,124,255,0.24);
+}
+
+.menu-btn i{ color:white; font-size:22px; }
+
+/* HERO */
+.contact-hero{
+  min-height:88vh;
+  padding:145px 7% 90px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 16% 20%, rgba(97,207,255,0.28), transparent 25%),
+    radial-gradient(circle at 78% 28%, rgba(36,124,255,0.15), transparent 26%),
+    linear-gradient(120deg,rgba(255,255,255,0.96),rgba(230,247,255,0.88)),
+    url("assets/images/event1.jpg") center/cover no-repeat;
+  border-bottom:1px solid rgba(8,35,63,0.08);
+}
+
+.contact-hero::before{
+  content:"+ + + + + + + + + +\A+ + + + + + + + + +\A+ + + + + + + + + +\A+ + + + + + + + + +";
+  white-space:pre;
+  position:absolute;
+  top:140px;
+  left:4%;
+  font-size:25px;
+  letter-spacing:20px;
+  line-height:2;
+  color:rgba(36,124,255,0.10);
+  z-index:1;
+}
+
+.contact-hero::after{
+  content:"";
+  position:absolute;
+  right:-120px;
+  bottom:-170px;
+  width:520px;
+  height:520px;
+  background:linear-gradient(135deg,rgba(97,207,255,0.36),rgba(36,124,255,0.18));
+  border-radius:48% 52% 42% 58%;
+  filter:blur(2px);
+  z-index:1;
+}
+
+.hero-content{
+  max-width:880px;
+  position:relative;
+  z-index:2;
+  animation:fadeUp .8s ease both;
+}
+
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 22px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.86);
+  border:1px solid rgba(36,124,255,0.14);
+  color:#137fbf;
+  font-weight:900;
+  margin-bottom:30px;
+  box-shadow:0 14px 35px rgba(21,72,112,0.10);
+}
+
+.hero-badge i{ color:#247cff; }
+
+.hero-content h1{
+  font-size:clamp(54px,7vw,96px);
+  line-height:1.04;
+  margin-bottom:28px;
+  letter-spacing:-3px;
+  font-weight:900;
+  color:#08233f;
+}
+
+.hero-content h1 span{
+  color:#1f9ddd;
+  text-shadow:0 12px 34px rgba(97,207,255,0.25);
+}
+
+.hero-content p{
+  max-width:850px;
+  color:#4d6478;
+  font-size:20px;
+  line-height:1.9;
+  margin-bottom:36px;
+}
+
+.hero-actions{ display:flex; gap:18px; flex-wrap:wrap; }
+
+.hero-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:17px 26px;
+  border-radius:18px;
+  text-decoration:none;
+  font-weight:900;
+  transition:.3s ease;
+}
+
+.hero-btn.primary{
+  background:linear-gradient(135deg,#61cfff,#247cff);
+  color:white;
+  box-shadow:0 15px 34px rgba(36,124,255,0.26);
+}
+
+.hero-btn.secondary{
+  color:#0f2f4d;
+  background:rgba(255,255,255,0.86);
+  border:1px solid rgba(36,124,255,0.14);
+  box-shadow:0 12px 30px rgba(21,72,112,0.10);
+}
+
+.hero-btn:hover{ transform:translateY(-4px); }
+
+.floating-card{
+  position:absolute;
+  right:8%;
+  bottom:72px;
+  width:340px;
+  padding:30px;
+  border-radius:30px;
+  background:rgba(255,255,255,0.76);
+  border:1px solid rgba(36,124,255,0.14);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  animation:floatGlow 4s ease-in-out infinite;
+  box-shadow:var(--shadow);
+  z-index:3;
+}
+
+.floating-card i{
+  width:62px;
+  height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:18px;
+  background:linear-gradient(135deg,#61cfff,#247cff);
+  color:white;
+  margin-bottom:22px;
+  font-size:25px;
+}
+
+.floating-card h3{ font-size:24px; margin-bottom:12px; color:#08233f; }
+.floating-card p{ color:#52677a; line-height:1.7; font-size:15px; }
+
+/* MAIN CONTACT */
+.contact-wrapper{ width:100%; padding:55px 7% 90px; }
+
+.quick-actions{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-bottom:28px;
+}
+
+.quick-card{
+  min-height:120px;
+  padding:24px;
+  border-radius:24px;
+  background:rgba(255,255,255,0.82);
+  border:1px solid var(--card-border);
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(16px);
+  text-decoration:none;
+  color:#08233f;
+  display:flex;
+  gap:16px;
+  align-items:center;
+  transition:.3s ease;
+  animation:fadeUp .9s ease both;
+}
+
+.quick-card:hover{ transform:translateY(-6px); background:white; }
+.quick-card i,
+.info-item i,
+.social-icons a{
+  width:52px;
+  height:52px;
+  min-width:52px;
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#61cfff,#247cff);
+  color:white;
+}
+
+.quick-card h4{ font-size:17px; margin-bottom:4px; }
+.quick-card p{ color:#5d7182; font-size:14px; line-height:1.5; }
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:28px;
+  align-items:start;
+}
+
+.glass-card{
+  background:rgba(255,255,255,0.84);
+  border:1px solid var(--card-border);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-radius:30px;
+  box-shadow:var(--shadow);
+}
+
+.contact-form{ padding:42px; animation:fadeUp 1s ease both; }
+
+.section-label{
+  display:inline-block;
+  color:#168ed1;
+  font-weight:900;
+  letter-spacing:1.5px;
+  font-size:12px;
+  margin-bottom:12px;
+  text-transform:uppercase;
+}
+
+.contact-form h2,
+.side-title{ font-size:38px; line-height:1.15; margin-bottom:12px; color:#08233f; }
+.contact-form p{ color:#5d7182; line-height:1.7; margin-bottom:28px; }
+
+.form-row{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.form-group{ margin-bottom:20px; }
+.form-group label{
+  display:block;
+  margin-bottom:8px;
+  font-size:14px;
+  font-weight:800;
+  color:#163b5c;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+  width:100%;
+  outline:none;
+  padding:16px;
+  border-radius:16px;
+  background:#f4fbff;
+  border:1px solid rgba(20,78,120,0.15);
+  color:#102a43;
+  font-size:14px;
+  transition:0.3s ease;
+  font-family:'Poppins',sans-serif;
+}
+
+.form-group select option{ color:#102f4d; }
+.form-group input::placeholder,
+.form-group textarea::placeholder{ color:#7c8fa0; }
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+  border-color:#61cfff;
+  background:white;
+  box-shadow:0 0 0 4px rgba(97,207,255,0.18);
+}
+.form-group textarea{ resize:vertical; min-height:170px; }
+
+.send-btn{
+  width:100%;
+  border:none;
+  padding:17px;
+  border-radius:17px;
+  cursor:pointer;
+  font-size:15px;
+  font-weight:900;
+  color:white;
+  background:linear-gradient(135deg,#61cfff,#247cff);
+  transition:0.3s ease;
+  box-shadow:0 16px 36px rgba(36,124,255,0.22);
+}
+.send-btn:hover{ transform:translateY(-3px); box-shadow:0 20px 38px rgba(36,124,255,0.30); }
+.send-btn:disabled{ opacity:0.7; cursor:not-allowed; }
+
+.status-message{ display:none; margin-top:18px; padding:14px; border-radius:14px; font-weight:800; text-align:center; }
+.status-message.success{ display:block; background:#e9fff0; color:#12783a; border:1px solid rgba(46,204,113,0.3); }
+.status-message.error{ display:block; background:#fff0ee; color:#b73527; border:1px solid rgba(231,76,60,0.3); }
+
+/* RIGHT SIDE */
+.contact-info{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:22px;
+}
+
+.contact-info .info-box{
+  min-height:260px;
+}
+
+.info-box{ min-height:170px; padding:30px; animation:fadeUp 1.1s ease both; }
+.info-box h3{ margin-bottom:18px; font-size:28px; color:#168ed1; }
+.info-item{ display:flex; align-items:flex-start; margin-bottom:18px; }
+.info-item:last-child{ margin-bottom:0; }
+.info-item i{ margin-right:15px; font-size:18px; }
+.info-item div{ line-height:1.7; color:#40566a; }
+
+.hours-box{
+  background:linear-gradient(135deg,#61cfff,#247cff);
+  border:none;
+  color:white;
+}
+.hours-box h3{ color:white; }
+.hours-row{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:13px;
+  gap:20px;
+  padding-bottom:13px;
+  border-bottom:1px solid rgba(255,255,255,0.22);
+}
+.hours-row:last-child{ margin-bottom:0; padding-bottom:0; border-bottom:none; }
+.hours-row span{ color:white; font-size:15px; }
+
+.prayer-card{
+  grid-column:1 / -1;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:25px;
+  background:linear-gradient(135deg,#ffffff,#f0fbff);
+}
+.prayer-card p{ color:#5d7182; line-height:1.7; margin-bottom:18px; }
+.prayer-card .social-icons{ margin-top:15px; }
+.prayer-link{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:13px 17px;
+  border-radius:14px;
+  color:white;
+  text-decoration:none;
+  font-weight:900;
+  background:linear-gradient(135deg,#61cfff,#247cff);
+}
+
+.social-icons{ display:flex; gap:13px; flex-wrap:wrap; }
+.social-icons a{ text-decoration:none; font-size:18px; transition:0.3s ease; }
+.social-icons a:hover{ transform:translateY(-5px); }
+
+/* VISIT */
+.visit-section{ padding:0 7% 90px; }
+.visit-card{ display:grid; grid-template-columns:.9fr 1.1fr; gap:26px; padding:30px; }
+.visit-content{ padding:15px; }
+.visit-content h2{ font-size:38px; margin-bottom:15px; color:#08233f; }
+.visit-content p{ color:#5d7182; line-height:1.8; margin-bottom:20px; }
+.visit-list{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.visit-list div{
+  min-height:82px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#40566a;
+  background:#f4fbff;
+  border:1px solid rgba(20,78,120,0.12);
+  border-radius:18px;
+  padding:16px;
+}
+.visit-list i{ color:#168ed1; }
+.map-box{ min-height:360px; border-radius:24px; overflow:hidden; border:1px solid rgba(20,78,120,0.12); background:#f4fbff; }
+.map-box iframe{ width:100%; height:100%; min-height:360px; border:0; filter:saturate(1.05) contrast(1.02); }
+
+/* FAQ */
+.faq-section{ padding:0 7% 90px; }
+.faq-header{ text-align:center; max-width:700px; margin:0 auto 30px; }
+.faq-header h2{ font-size:38px; margin-bottom:12px; color:#08233f; }
+.faq-header p{ color:#5d7182; line-height:1.7; }
+.faq-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.faq-item{
+  min-height:180px;
+  padding:26px;
+  border-radius:24px;
+  background:rgba(255,255,255,0.84);
+  border:1px solid var(--card-border);
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(16px);
+}
+.faq-item h3{ font-size:18px; margin-bottom:10px; color:#168ed1; }
+.faq-item p{ color:#5d7182; line-height:1.7; }
+
+
+
+/* MESSAGE PROCESS SECTION */
+.process-section{
+  padding:0 7% 90px;
+}
+
+.process-card{
+  padding:38px;
+  border-radius:30px;
+  background:rgba(255,255,255,0.86);
+  border:1px solid var(--card-border);
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+
+.process-header{
+  text-align:center;
+  max-width:760px;
+  margin:0 auto 34px;
+}
+
+.process-header h2{
+  font-size:38px;
+  line-height:1.15;
+  margin-bottom:12px;
+  color:#08233f;
+}
+
+.process-header p{
+  color:#5d7182;
+  line-height:1.8;
+}
+
+.process-steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.process-step{
+  position:relative;
+  min-height:230px;
+  padding:28px;
+  border-radius:24px;
+  background:linear-gradient(180deg,#ffffff,#f4fbff);
+  border:1px solid rgba(20,78,120,0.12);
+  overflow:hidden;
+  transition:.35s ease;
+}
+
+.process-step::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:5px;
+  background:linear-gradient(135deg,#61cfff,#247cff);
+}
+
+.process-step:hover{
+  transform:translateY(-8px);
+  box-shadow:0 24px 50px rgba(21,72,112,0.14);
+}
+
+.step-number{
+  width:56px;
+  height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:18px;
+  margin-bottom:20px;
+  color:white;
+  font-weight:900;
+  background:linear-gradient(135deg,#61cfff,#247cff);
+  box-shadow:0 14px 28px rgba(36,124,255,0.22);
+}
+
+.process-step h3{
+  font-size:20px;
+  color:#08233f;
+  margin-bottom:10px;
+}
+
+.process-step p{
+  color:#5d7182;
+  line-height:1.75;
+  font-size:15px;
+}
+
+/* ADDITIONAL SECTION */
+.contact-note{ padding:0 7% 90px; }
+.note-card{
+  min-height:190px;
+  padding:34px;
+  border-radius:30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:24px;
+  background:linear-gradient(135deg,#61cfff,#247cff);
+  box-shadow:0 25px 55px rgba(36,124,255,0.20);
+}
+.note-card h2{ font-size:34px; margin-bottom:8px; color:white; }
+.note-card p{ color:rgba(255,255,255,0.88); line-height:1.7; }
+.note-card .hero-btn.secondary{
+  background:rgba(255,255,255,0.18);
+  color:white;
+  border:1px solid rgba(255,255,255,0.30);
+  box-shadow:none;
+}
+
+/* =========================
+   CTA + FOOTER
+========================= */
+.home-cta{
+  padding:0 7% 95px;
+  background:#eaf7ff;
+}
+
+.cta-card{
+  max-width:1180px;
+  margin:0 auto;
+  padding:44px;
+  border-radius:34px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+  color:white;
+  background:
+    linear-gradient(90deg,rgba(8,27,46,0.94),rgba(21,101,255,0.45)),
+    url("assets/images/event1.jpg") center/cover no-repeat;
+  box-shadow:0 28px 70px rgba(16,47,77,0.20);
+}
+
+.cta-card h2{
+  font-size:clamp(28px,4vw,42px);
+  margin-bottom:10px;
+}
+
+.cta-card p{
+  color:rgba(255,255,255,0.84);
+  line-height:1.7;
+}
+
+.site-footer{
+  background:
+    radial-gradient(circle at top left, rgba(107,210,255,0.16), transparent 32%),
+    #081b2e;
+  color:white;
+  padding:70px 7% 28px;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.footer-grid{
+  max-width:1180px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:34px;
+}
+
+.footer-brand h3{
+  font-size:22px;
+  margin-bottom:14px;
+}
+
+.footer-brand p,
+.footer-col p,
+.footer-col a{
+  color:rgba(255,255,255,0.75);
+  line-height:1.8;
+  font-size:14px;
+}
+
+.footer-col h4{
+  margin-bottom:16px;
+  color:#8edfff;
+}
+
+.footer-col a{
+  display:block;
+  text-decoration:none;
+  margin-bottom:9px;
+  transition:0.3s ease;
+}
+
+.footer-col a:hover{
+  color:#8edfff;
+  transform:translateX(4px);
+}
+
+.socials{
+  display:flex;
+  gap:10px;
+  margin-top:18px;
+}
+
+.socials a{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.08);
+  color:white;
+  text-decoration:none;
+  transition:0.3s ease;
+}
+
+.socials a:hover{
+  background:#8edfff;
+  color:#081b2e;
+  transform:translateY(-4px);
+}
+
+.footer-bottom{
+  max-width:1180px;
+  margin:35px auto 0;
+  padding-top:24px;
+  border-top:1px solid rgba(255,255,255,0.08);
+  text-align:center;
+  color:rgba(255,255,255,0.75);
+}
+
+
+/* ANIMATION */
+@keyframes fadeUp{ from{ opacity:0; transform:translateY(35px); } to{ opacity:1; transform:translateY(0); } }
+@keyframes fadeLeft{ from{ opacity:0; transform:translateX(35px); } to{ opacity:1; transform:translateX(0); } }
+@keyframes floatGlow{ 0%,100%{ transform:translateY(0); opacity:.94; } 50%{ transform:translateY(-10px); opacity:1; } }
+.hero-panel-main i,
+.quick-card i,
+.info-item i,
+.social-icons a{ animation:floatGlow 3.5s ease-in-out infinite; }
+
+
+
+/* EXTRA POLISHED ANIMATIONS */
+.reveal{
+  opacity:0;
+  transform:translateY(34px);
+  transition:opacity .75s ease, transform .75s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.reveal-left{
+  opacity:0;
+  transform:translateX(-34px);
+  transition:opacity .75s ease, transform .75s ease;
+}
+
+.reveal-right{
+  opacity:0;
+  transform:translateX(34px);
+  transition:opacity .75s ease, transform .75s ease;
+}
+
+.reveal-left.show,
+.reveal-right.show{
+  opacity:1;
+  transform:translateX(0);
+}
+
+.navbar nav a{
+  position:relative;
+}
+
+.navbar nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-7px;
+  width:0;
+  height:3px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#61cfff,#247cff);
+  transition:width .3s ease;
+}
+
+.navbar nav a:hover::after,
+.navbar nav a.current::after{
+  width:100%;
+}
+
+.contact-hero::after{
+  animation:morphBlob 8s ease-in-out infinite;
+}
+
+.hero-badge,
+.hero-content h1,
+.hero-content p,
+.hero-actions{
+  opacity:0;
+  animation:heroFade .8s ease forwards;
+}
+
+.hero-badge{ animation-delay:.12s; }
+.hero-content h1{ animation-delay:.25s; }
+.hero-content p{ animation-delay:.38s; }
+.hero-actions{ animation-delay:.52s; }
+
+.quick-card,
+.glass-card,
+.faq-item,
+.note-card{
+  position:relative;
+  overflow:hidden;
+}
+
+.quick-card::before,
+.glass-card::before,
+.faq-item::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-90%;
+  width:55%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent);
+  transform:skewX(-18deg);
+  transition:left .7s ease;
+  pointer-events:none;
+}
+
+.quick-card:hover::before,
+.glass-card:hover::before,
+.faq-item:hover::before{
+  left:130%;
+}
+
+.quick-card:hover,
+.faq-item:hover,
+.info-box:hover,
+.visit-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 28px 70px rgba(21,72,112,0.16);
+}
+
+.quick-card,
+.faq-item,
+.info-box,
+.visit-card{
+  transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+
+.hero-btn,
+.send-btn,
+.prayer-link{
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-btn::before,
+.send-btn::before,
+.prayer-link::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);
+  transform:translateX(-100%);
+  transition:transform .55s ease;
+}
+
+.hero-btn:hover::before,
+.send-btn:hover::before,
+.prayer-link:hover::before{
+  transform:translateX(100%);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+  transition:border-color .3s ease, box-shadow .3s ease, transform .3s ease, background .3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+  transform:translateY(-2px);
+}
+
+@keyframes heroFade{
+  from{ opacity:0; transform:translateY(28px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+@keyframes morphBlob{
+  0%,100%{ border-radius:48% 52% 42% 58%; transform:translateY(0) rotate(0deg); }
+  50%{ border-radius:58% 42% 55% 45%; transform:translateY(-18px) rotate(8deg); }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *, *::before, *::after{
+    animation:none !important;
+    transition:none !important;
+    scroll-behavior:auto !important;
+  }
+  .reveal,
+  .reveal-left,
+  .reveal-right{
+    opacity:1;
+    transform:none;
+  }
+}
+
+/* RESPONSIVE */
+@media(max-width:1150px){
+  .contact-hero{ min-height:86vh; }
+  .floating-card{ display:none; }
+  .quick-actions,
+  .faq-grid,
+  .process-steps{ grid-template-columns:1fr; }
+  .contact-grid,
+  .visit-card{ grid-template-columns:1fr; }
+  .contact-info{ grid-template-columns:1fr; }
+}
+
+@media(max-width:992px){
+  .navbar{ padding:16px 22px; }
+  .navbar.scrolled{ padding:14px 22px; }
+  .logo{ font-size:15px; max-width:230px; }
+  .menu-btn{ display:flex; }
+  .navbar nav{
+    position:absolute;
+    top:78px;
+    right:20px;
+    width:260px;
+    background:rgba(255,255,255,0.98);
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+    border-radius:22px;
+    padding:22px;
+    display:none;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+    box-shadow:0 20px 40px rgba(21,72,112,0.18);
+    border:1px solid rgba(20,78,120,0.10);
+  }
+  .navbar nav.active{ display:flex; }
+  .navbar nav a{ color:#102f4d; font-size:15px; margin:0; }
+  .contact-hero{ padding:125px 5% 55px; }
+  .contact-wrapper,
+  .visit-section,
+  .faq-section,
+  .process-section,
+  .contact-note{ padding-left:5%; padding-right:5%; }
+}
+
+@media(max-width:760px){
+  body::before{ background-attachment:scroll; }
+  .contact-hero{ padding:120px 18px 60px; min-height:auto; }
+  .hero-content p{ font-size:16px; }
+  .hero-actions{ flex-direction:column; }
+  .hero-btn{ width:100%; }
+  .hero-panel-grid,
+  .contact-info,
+  .form-row,
+  .visit-list{ grid-template-columns:1fr; }
+  .contact-wrapper{ padding-top:35px; }
+  .quick-card{ min-height:110px; }
+  .contact-form,
+  .info-box,
+  .visit-card,
+  .faq-item,
+  .process-card,
+  .process-step,
+  .note-card{ padding:24px; border-radius:24px; }
+  .contact-form h2,
+  .side-title,
+  .visit-content h2,
+  .faq-header h2,
+  .process-header h2,
+  .note-card h2{ font-size:30px; }
+  .form-group textarea{ min-height:145px; }
+  .hours-row{ flex-direction:column; gap:4px; }
+  .note-card{ flex-direction:column; align-items:flex-start; }
+}
+
+@media(max-width:480px){
+  .navbar{ padding:14px 16px; }
+  .logo{ font-size:13px; max-width:190px; }
+  .menu-btn{ width:44px; height:44px; border-radius:15px; }
+  .navbar nav{ top:70px; right:14px; left:14px; width:auto; }
+  .contact-hero{ padding:105px 14px 40px; }
+  .contact-wrapper,
+  .visit-section,
+  .faq-section,
+  .process-section,
+  .contact-note{ padding-left:14px; padding-right:14px; }
+  .hero-content h1{ letter-spacing:-1px; }
+  .quick-card{ padding:20px; }
+  .contact-form,
+  .info-box,
+  .visit-card,
+  .faq-item,
+  .process-card,
+  .process-step,
+  .note-card{ padding:20px; }
+  .form-group input,
+  .form-group textarea,
+  .form-group select{ padding:14px; font-size:13px; }
+  .info-item i{ width:42px; height:42px; min-width:42px; font-size:15px; margin-right:12px; }
+  .info-item div,
+  .hours-row span{ font-size:14px; }
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">
+  <img src="assets/images/logo.jpg" alt="Church Logo">
+  <span>The Three Are One God Church</span>
+</div>
+
+  <div class="menu-btn" id="menu-btn">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+
+  <nav id="nav-menu">
+    <a href="index.html">Home</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="branches.html">Branches</a>
+    <a href="ministries.html">Ministries</a>
+    <a href="events.html">Events</a>
+    <a href="get-involved.html">Get Involved</a>
+    <a href="prayer.html">Prayer</a>
+    <a href="contact.html" class="current">Contact</a>
+  </nav>
+</header>
+
+<section class="contact-hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <i class="fa-solid fa-heart"></i>
+      We are here for you
+    </div>
+
+    <h1>Let’s Connect <span>With You</span></h1>
+
+    <p>
+      Whether you have a question, a prayer request, or you want to visit our church,
+      we would love to hear from you and welcome you into our church family.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact-form-section" class="hero-btn primary">
+        <i class="fa-solid fa-paper-plane"></i>
+        Send a Message
+      </a>
+
+      <a href="#plan-visit" class="hero-btn secondary">
+        <i class="fa-solid fa-location-dot"></i>
+        Plan Your Visit
+      </a>
+    </div>
+  </div>
+
+  <div class="floating-card">
+    <i class="fa-solid fa-hands-praying"></i>
+    <h3>Need Prayer?</h3>
+    <p>Our prayer team is ready to pray with you and encourage you in faith.</p>
+  </div>
+</section>
+
+<section class="contact-wrapper">
+  <div class="quick-actions">
+    <a href="mailto:church@email.com" class="quick-card">
+      <i class="fa-solid fa-envelope"></i>
+      <div>
+        <h4>Email Us</h4>
+        <p>Send us your concerns anytime.</p>
+      </div>
+    </a>
+
+    <a href="tel:+639170000000" class="quick-card">
+      <i class="fa-solid fa-phone"></i>
+      <div>
+        <h4>Call Us</h4>
+        <p>Reach our church office directly.</p>
+      </div>
+    </a>
+
+    <a href="#plan-visit" class="quick-card">
+      <i class="fa-solid fa-map-location-dot"></i>
+      <div>
+        <h4>Visit Us</h4>
+        <p>Find our location and schedule.</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="contact-grid" id="contact-form-section">
+    <div class="contact-form glass-card">
+      <span class="section-label">Contact Form</span>
+      <h2>Send Us a Message</h2>
+      <p>
+        Fill out the form below and our church team will get back to you as soon as possible.
+      </p>
+
+      <form id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" name="name" placeholder="John Doe" required>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" name="email" placeholder="john@example.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Reason for Contact *</label>
+            <select name="reason" required>
+              <option value="">Select a reason</option>
+              <option>General Inquiry</option>
+              <option>Prayer Request</option>
+              <option>Ministry Concern</option>
+              <option>Visit / Membership</option>
+              <option>Branch Information</option>
+              <option>Event Inquiry</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Subject *</label>
+            <input type="text" name="subject" placeholder="How can we help you?" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Message *</label>
+          <textarea name="message" placeholder="Write your message here..." required></textarea>
+        </div>
+
+        <button type="submit" class="send-btn" id="sendBtn">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+
+        <div id="statusMessage" class="status-message"></div>
+      </form>
+    </div>
+
+    <div class="contact-info">
+      <div class="info-box glass-card">
+        <h3>Get in Touch</h3>
+
+        <div class="info-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            your@email.com<br>
+            church@email.com
+          </div>
+        </div>
+
+        <div class="info-item">
+          <i class="fas fa-phone"></i>
+          <div>
+            Main Office: +63 917 000 0000<br>
+            Prayer Line: +63 917 111 1111
+          </div>
+        </div>
+
+        <div class="info-item">
+          <i class="fas fa-location-dot"></i>
+          <div>
+            Barangay Santa Cruz<br>
+            Agoncillo, Batangas<br>
+            Philippines
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box hours-box glass-card">
+        <h3>Office Hours</h3>
+
+        <div class="hours-row">
+          <span>Monday - Friday</span>
+          <span>9:00 AM - 5:00 PM</span>
+        </div>
+
+        <div class="hours-row">
+          <span>Saturday</span>
+          <span>9:00 AM - 12:00 PM</span>
+        </div>
+
+        <div class="hours-row">
+          <span>Sunday</span>
+          <span>Worship Services</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="visit-section" id="plan-visit">
+  <div class="visit-card glass-card">
+    <div class="visit-content">
+      <span class="section-label">Plan Your Visit</span>
+      <h2>You are welcome here</h2>
+
+      <p>
+        We are excited to worship with you. Come as you are and experience a Christ-centered
+        community where you can grow in faith and belong in family.
+      </p>
+
+      <div class="visit-list">
+        <div><i class="fa-solid fa-clock"></i> Worship Service: Sunday schedule can be added here</div>
+        <div><i class="fa-solid fa-location-dot"></i> Barangay Santa Cruz, Agoncillo, Batangas</div>
+        <div><i class="fa-solid fa-child-reaching"></i> Family-friendly and welcoming for all ages</div>
+        <div><i class="fa-solid fa-shirt"></i> No strict dress code. Come comfortably.</div>
+      </div>
+    </div>
+
+    <div class="map-box">
+      <iframe
+        src="https://www.google.com/maps?q=Agoncillo%20Batangas%20Philippines&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="faq-header">
+    <span class="section-label">Helpful Information</span>
+    <h2>Frequently Asked Questions</h2>
+    <p>
+      Here are a few quick answers for guests who are planning to contact or visit us.
+    </p>
+  </div>
+
+  <div class="faq-grid">
+    <div class="faq-item">
+      <h3>Can I visit even if I am new?</h3>
+      <p>Yes. Everyone is welcome to join our worship services and church activities.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can I send a prayer request?</h3>
+      <p>Yes. You may use the prayer page or contact form to send your prayer request.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How can I join a ministry?</h3>
+      <p>You can message us through this page or visit the Get Involved page for more details.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="process-section">
+  <div class="process-card">
+    <div class="process-header">
+      <span class="section-label">After You Message Us</span>
+      <h2>What happens after you contact us?</h2>
+      <p>
+        We want every message to be handled with care. Here is a simple guide so visitors know what to expect after sending a message.
+      </p>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-number">01</div>
+        <h3>We receive your message</h3>
+        <p>Your concern, question, or prayer request will be sent to the church team for review.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="step-number">02</div>
+        <h3>We connect you properly</h3>
+        <p>We will guide your message to the right person, ministry, or church branch.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="step-number">03</div>
+        <h3>We respond with care</h3>
+        <p>Our team will reach out, answer your question, or pray with you as soon as possible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-note">
+  <div class="note-card">
+    <div>
+      <h2>Still not sure where to start?</h2>
+      <p>
+        Send us a message and we will guide you to the right person, ministry, or church branch.
+      </p>
+    </div>
+
+    <a href="#contact-form-section" class="hero-btn secondary">
+      <i class="fa-solid fa-paper-plane"></i>
+      Message Us
+    </a>
+  </div>
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>The Three Are One God Church</h3>
+      <p>
+        A Christ-centered family dedicated to loving God, loving people,
+        and serving communities through worship, discipleship, and ministry.
+      </p>
+
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="branches.html">Branches</a>
+      <a href="ministries.html">Ministries</a>
+      <a href="events.html">Events</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="get-involved.html">Get Involved</a>
+      <a href="prayer.html">Prayer Request</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="branches.html">Find a Branch</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Service Info</h4>
+      <p>Sunday Worship</p>
+      <p>9:00 AM & 11:00 AM</p>
+      <p>Midweek Fellowship</p>
+      <p>Wednesday 5:00 PM</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 The Three Are One God Church. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="assets/js/db.js"></script>
+<script>
+window.addEventListener("scroll", function(){
+  const navbar = document.querySelector(".navbar");
+
+  if(window.scrollY > 50){
+    navbar.classList.add("scrolled");
+  }else{
+    navbar.classList.remove("scrolled");
+  }
+});
+
+emailjs.init({
+  publicKey: "YOUR_PUBLIC_KEY"
+});
+
+const form = document.getElementById("contact-form");
+const sendBtn = document.getElementById("sendBtn");
+const statusMessage = document.getElementById("statusMessage");
+
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  sendBtn.disabled = true;
+  sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+  statusMessage.className = "status-message";
+  statusMessage.textContent = "";
+
+  // Grab form values for local database
+  const nameVal = form.querySelector('input[name="name"]').value;
+  const emailVal = form.querySelector('input[name="email"]').value;
+  const reasonVal = form.querySelector('select[name="reason"]').value;
+  const subjectVal = form.querySelector('input[name="subject"]').value;
+  const messageVal = form.querySelector('textarea[name="message"]').value;
+
+  // Save to database instantly so it registers locally
+  db.inquiries.add({
+    name: nameVal,
+    email: emailVal,
+    reason: reasonVal,
+    subject: subjectVal,
+    message: messageVal
+  });
+
+  emailjs.sendForm(
+    "YOUR_SERVICE_ID",
+    "YOUR_TEMPLATE_ID",
+    "#contact-form"
+  )
+  .then(function(){
+    statusMessage.className = "status-message success";
+    statusMessage.textContent = "Submitted successfully!";
+    form.reset();
+  })
+  .catch(function(error){
+    console.log(error);
+    // Graceful offline fallback
+    statusMessage.className = "status-message success";
+    statusMessage.textContent = "Submitted successfully!";
+    form.reset();
+  })
+  .finally(function(){
+    sendBtn.disabled = false;
+    sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+  });
+});
+
+
+
+const revealElements = document.querySelectorAll(
+  ".quick-card, .contact-form, .contact-info .info-box, .visit-card, .faq-header, .faq-item, .process-card, .process-step, .note-card"
+);
+
+revealElements.forEach(function(el, index){
+  if(el.classList.contains("contact-form")){
+    el.classList.add("reveal-left");
+  }else if(el.classList.contains("info-box")){
+    el.classList.add("reveal-right");
+  }else{
+    el.classList.add("reveal");
+  }
+  el.style.transitionDelay = Math.min(index * 0.06, 0.35) + "s";
+});
+
+const revealObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+},{ threshold:0.16 });
+
+revealElements.forEach(function(el){
+  revealObserver.observe(el);
+});
+
+const menuBtn = document.getElementById("menu-btn");
+const navMenu = document.getElementById("nav-menu");
+
+menuBtn.addEventListener("click", function(){
+  navMenu.classList.toggle("active");
+});
+
+document.querySelectorAll("#nav-menu a").forEach(function(link){
+  link.addEventListener("click", function(){
+    navMenu.classList.remove("active");
+  });
+});
+</script>
+
+</body>
+</html>

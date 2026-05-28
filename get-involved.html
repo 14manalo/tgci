@@ -1,0 +1,3145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Three Are One God Church | Get Involved</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+/* =========================
+   GLOBAL
+========================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --navy:#071d33;
+  --deep:#06172a;
+  --blue:#2f92ff;
+  --sky:#69cfff;
+  --powder:#dff6ff;
+  --soft:#f6fcff;
+  --text:#0b2a45;
+  --muted:#58708a;
+  --white:#ffffff;
+}
+
+html{ scroll-behavior:smooth; }
+
+body{
+  font-family:'Poppins',sans-serif;
+  overflow-x:hidden;
+  color:var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(105,207,255,0.35), transparent 32%),
+    linear-gradient(180deg,#f7fcff 0%,#eaf7ff 45%,#ffffff 100%);
+}
+
+img{ max-width:100%; display:block; }
+button,input,textarea{ font-family:inherit; }
+
+::-webkit-scrollbar{ width:8px; }
+::-webkit-scrollbar-thumb{ background:#69cfff; border-radius:10px; }
+
+/* ===== NAVBAR ===== */
+.navbar{
+  background:transparent;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 60px;
+  position:fixed;
+  width:100%;
+  top:0;
+  left:0;
+  z-index:1000;
+  transition:0.4s ease;
+}
+
+.navbar.scrolled{
+  background:rgba(8,25,45,0.75);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  padding:13px 60px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.25);
+  border-bottom:1px solid rgba(255,255,255,0.12);
+}
+
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  font-size:17px;
+  font-weight:800;
+  color:#102f4d;
+  text-shadow:none;
+}
+
+.logo img{
+  width:42px;
+  height:42px;
+  object-fit:contain;
+  border-radius:50%;
+}
+
+
+.navbar nav{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.navbar nav a{
+  margin-left:22px;
+  color:white;
+  text-decoration:none;
+  font-weight:800;
+  font-size:14px;
+  transition:0.3s ease;
+}
+
+.navbar nav a:hover,
+.navbar nav a.current{
+  color:#6bd2ff;
+}
+
+/* ===== BURGER BUTTON ===== */
+.menu-btn{
+  width:52px;
+  height:52px;
+  background:#1565ff;
+  border-radius:17px;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+  box-shadow:0 12px 30px rgba(21,101,255,0.35);
+}
+
+.menu-btn i{
+  color:white;
+  font-size:22px;
+}
+/* =========================
+   CLEAN SLIDESHOW HERO
+========================= */
+.hero-slider{
+  height:88vh;
+  min-height:560px;
+  max-height:680px;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,#06172a,#092744 58%,#eaf7ff 58%);
+  /* extra side padding keeps the arrow buttons outside the slide content */
+  padding:88px 96px 52px;
+  display:flex;
+  align-items:center;
+}
+
+.hero-slider::before{
+  content:'';
+  position:absolute;
+  width:620px;
+  height:620px;
+  border-radius:50%;
+  background:rgba(105,207,255,0.18);
+  filter:blur(90px);
+  top:-190px;
+  right:-120px;
+}
+
+.hero-slider::after{
+  content:'';
+  position:absolute;
+  width:360px;
+  height:360px;
+  border-radius:50%;
+  background:rgba(47,146,255,0.13);
+  filter:blur(75px);
+  left:-90px;
+  bottom:-110px;
+}
+
+.slide-stage{
+  width:100%;
+  max-width:1180px;
+  height:100%;
+  margin:0 auto;
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+}
+
+.slide{
+  display:none;
+  width:100%;
+  align-items:center;
+  gap:34px;
+  min-height:0;
+  animation:slideFade 0.55s ease both;
+}
+
+.slide.active{ display:grid; }
+
+/* Slide layouts are different but controlled, no overlapping */
+.slide.layout-split{ grid-template-columns:0.95fr 1.05fr; }
+.slide.layout-center{ grid-template-columns:1fr; text-align:center; }
+.slide.layout-cards{ grid-template-columns:1.05fr 0.95fr; }
+.slide.layout-ministry{ grid-template-columns:0.9fr 1.1fr; }
+
+@keyframes slideFade{
+  from{ opacity:0; transform:translateY(18px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+.slide-copy{
+  color:white;
+  position:relative;
+  z-index:2;
+}
+
+.slide.layout-center .slide-copy{
+  max-width:800px;
+  margin:0 auto;
+  padding:36px 28px;
+  border-radius:38px;
+  background:linear-gradient(135deg,rgba(7,29,51,0.72),rgba(47,146,255,0.22));
+  border:1px solid rgba(255,255,255,0.18);
+  backdrop-filter:blur(8px);
+}
+
+.slide-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 20px;
+  border-radius:999px;
+  background:rgba(223,246,255,0.16);
+  border:1px solid rgba(223,246,255,0.34);
+  color:#bfeeff;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:2px;
+  margin-bottom:20px;
+}
+
+.slide-copy h1{
+  font-size:clamp(2.15rem,4.45vw,4.15rem);
+  line-height:0.98;
+  letter-spacing:-3px;
+  font-weight:900;
+  margin-bottom:22px;
+}
+
+.slide-copy h1 span{ color:#8edfff; }
+
+.slide-copy p{
+  max-width:640px;
+  color:rgba(255,255,255,0.88);
+  line-height:1.75;
+  font-size:1rem;
+  margin-bottom:22px;
+}
+
+.slide.layout-center .slide-copy p{ margin-left:auto; margin-right:auto; }
+
+.slide-points{
+  display:grid;
+  gap:10px;
+  margin:0 0 24px;
+  max-width:600px;
+}
+
+.slide.layout-center .slide-points{
+  grid-template-columns:repeat(3,1fr);
+  max-width:850px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.slide-points div{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 15px;
+  border-radius:17px;
+  background:rgba(255,255,255,0.11);
+  border:1px solid rgba(255,255,255,0.16);
+  color:rgba(255,255,255,0.9);
+  font-weight:700;
+  text-align:left;
+}
+
+.slide-points i{ color:#8edfff; }
+
+.hero-actions{ display:flex; gap:14px; flex-wrap:wrap; }
+.slide.layout-center .hero-actions{ justify-content:center; }
+
+.primary-btn,
+.secondary-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  text-decoration:none;
+  border-radius:15px;
+  padding:13px 22px;
+  font-weight:900;
+  transition:0.3s ease;
+  border:none;
+}
+
+.primary-btn{
+  background:linear-gradient(135deg,#dff6ff,#69cfff);
+  color:#06213a;
+  box-shadow:0 18px 40px rgba(105,207,255,0.25);
+}
+
+.secondary-btn{
+  color:white;
+  border:1px solid rgba(255,255,255,0.25);
+  background:rgba(255,255,255,0.08);
+}
+
+.primary-btn:hover,
+.secondary-btn:hover{ transform:translateY(-4px); }
+
+.slide-visual{
+  position:relative;
+  min-height:340px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Slide 1: simple framed image */
+.image-frame{
+  width:100%;
+  max-width:520px;
+  height:330px;
+  border-radius:40px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 30px 90px rgba(0,0,0,0.28);
+  border:12px solid rgba(255,255,255,0.22);
+}
+
+.image-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.image-frame::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 45%,rgba(6,23,42,0.68));
+}
+
+.frame-note{
+  position:absolute;
+  left:24px;
+  right:24px;
+  bottom:24px;
+  z-index:2;
+  color:white;
+  padding:16px 18px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.13);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.18);
+}
+
+.frame-note strong{ display:block; font-size:1.2rem; }
+.frame-note span{ color:rgba(255,255,255,0.78); font-size:14px; }
+
+/* Slide 2: full background image */
+.slide.layout-center{
+  border-radius:42px;
+  overflow:hidden;
+  padding:25px;
+  background:
+    linear-gradient(180deg,rgba(6,23,42,0.62),rgba(6,23,42,0.76)),
+    url('assets/images/worship.jpg');
+  background-size:cover;
+  background-position:center;
+  box-shadow:0 30px 90px rgba(0,0,0,0.22);
+}
+
+/* Slide 3: safe collage */
+.collage-grid{
+  width:100%;
+  max-width:520px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.collage-img{
+  min-height:155px;
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:0 20px 55px rgba(7,29,51,0.18);
+  border:8px solid rgba(255,255,255,0.32);
+}
+
+.collage-img.tall{ min-height:330px; grid-row:span 2; }
+
+.collage-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.stat-card{
+  border-radius:30px;
+  min-height:155px;
+  padding:28px;
+  background:rgba(255,255,255,0.92);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  box-shadow:0 20px 55px rgba(7,29,51,0.14);
+}
+
+.stat-card strong{ font-size:2.6rem; color:#1565ff; line-height:1; }
+.stat-card span{ color:#58708a; font-weight:800; margin-top:8px; }
+
+/* Slide 4: ministry cards */
+.ministry-stack{
+  width:100%;
+  max-width:520px;
+  display:grid;
+  gap:18px;
+}
+
+.ministry-card{
+  display:grid;
+  grid-template-columns:85px 1fr;
+  gap:18px;
+  align-items:center;
+  padding:18px;
+  border-radius:28px;
+  background:rgba(255,255,255,0.93);
+  box-shadow:0 18px 45px rgba(7,29,51,0.14);
+}
+
+.ministry-card img{
+  width:85px;
+  height:85px;
+  border-radius:22px;
+  object-fit:cover;
+}
+
+.ministry-card h3{ color:#071d33; margin-bottom:4px; }
+.ministry-card p{ color:#58708a; font-size:14px; line-height:1.6; }
+
+/* Slider Controls */
+.slider-controls{
+  position:absolute;
+  inset:0;
+  width:100%;
+  z-index:20;
+  pointer-events:none;
+}
+
+.hero-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:58px;
+  height:58px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,0.98);
+  color:#1565ff;
+  cursor:pointer;
+  box-shadow:0 18px 42px rgba(7,29,51,0.24);
+  transition:0.25s ease;
+  pointer-events:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* arrows are placed in the side gutters, outside the hero content */
+.hero-arrow:first-child{ left:22px; }
+.hero-arrow:last-child{ right:22px; }
+
+.hero-arrow:hover{ background:#1565ff; color:white; transform:translateY(-50%) scale(1.07); }
+
+.hero-dots{
+  position:absolute;
+  left:50%;
+  bottom:26px;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:12px 16px;
+  border-radius:999px;
+  background:rgba(7,29,51,0.26);
+  border:1px solid rgba(255,255,255,0.18);
+  backdrop-filter:blur(14px);
+  pointer-events:auto;
+}
+.hero-dot{
+  width:10px;
+  height:10px;
+  border:none;
+  border-radius:999px;
+  background:rgba(255,255,255,0.55);
+  cursor:pointer;
+  transition:0.25s ease;
+}
+.hero-dot.active{ width:34px; background:#69cfff; }
+
+
+
+/* =========================
+   ENHANCED PER-SLIDE BACKGROUNDS + ANIMATIONS
+========================= */
+.hero-slider{
+  background:#06172a;
+  isolation:isolate;
+}
+
+.hero-slider::before,
+.hero-slider::after{
+  pointer-events:none;
+}
+
+.slide{
+  position:relative;
+  overflow:hidden;
+  border-radius:42px;
+  padding:28px;
+  min-height:470px;
+  box-shadow:0 30px 90px rgba(7,29,51,0.22);
+  isolation:isolate;
+}
+
+.slide::before,
+.slide::after{
+  content:'';
+  position:absolute;
+  pointer-events:none;
+  z-index:-1;
+}
+
+.slide::before{
+  inset:0;
+}
+
+.slide::after{
+  width:430px;
+  height:430px;
+  border-radius:50%;
+  filter:blur(65px);
+  opacity:.65;
+}
+
+/* Slide 1 - soft welcome gradient */
+.slide-1{
+  background:
+    radial-gradient(circle at 12% 15%, rgba(255,255,255,.95), transparent 18%),
+    radial-gradient(circle at 88% 20%, rgba(105,207,255,.55), transparent 26%),
+    linear-gradient(135deg,#eaf8ff 0%,#bdeeff 44%,#071d33 44%,#092744 100%);
+}
+.slide-1::before{
+  background:linear-gradient(90deg,rgba(7,29,51,.88),rgba(7,29,51,.58),rgba(255,255,255,.08));
+}
+.slide-1::after{
+  right:-130px;
+  bottom:-150px;
+  background:#69cfff;
+}
+
+/* Slide 2 - worship photo overlay */
+.slide-2{
+  background:
+    linear-gradient(120deg,rgba(6,23,42,.92),rgba(21,101,255,.50),rgba(6,23,42,.86)),
+    url('assets/images/worship.jpg');
+  background-size:cover;
+  background-position:center;
+}
+.slide-2::before{
+  background:
+    radial-gradient(circle at center, rgba(105,207,255,.22), transparent 35%),
+    linear-gradient(180deg,rgba(6,23,42,.10),rgba(6,23,42,.60));
+}
+.slide-2::after{
+  left:-110px;
+  top:-130px;
+  background:#2f92ff;
+}
+
+/* Slide 3 - energetic serve design */
+.slide-3{
+  background:
+    linear-gradient(115deg,#ffffff 0 28%,#dff6ff 28% 48%,#69cfff 48% 72%,#071d33 72% 100%);
+}
+.slide-3::before{
+  background:
+    radial-gradient(circle at 20% 80%, rgba(47,146,255,.22), transparent 28%),
+    linear-gradient(90deg,rgba(7,29,51,.86),rgba(7,29,51,.35),rgba(7,29,51,.05));
+}
+.slide-3::after{
+  right:18%;
+  top:-190px;
+  background:#ffffff;
+  opacity:.45;
+}
+
+/* Slide 4 - peaceful discipleship with image overlay */
+.slide-4{
+  background:
+    linear-gradient(135deg,rgba(6,23,42,.88),rgba(47,146,255,.38),rgba(223,246,255,.35)),
+    url('assets/images/baptism.jpg');
+  background-size:cover;
+  background-position:center;
+}
+.slide-4::before{
+  background:
+    radial-gradient(circle at 88% 15%, rgba(162,255,210,.24), transparent 25%),
+    linear-gradient(90deg,rgba(6,23,42,.82),rgba(7,29,51,.45),rgba(255,255,255,.08));
+}
+.slide-4::after{
+  right:-115px;
+  top:40px;
+  background:#a2ffd2;
+  opacity:.35;
+}
+
+/* Slide 5 - bright light welcome slide */
+.slide-5{
+  background:
+    radial-gradient(circle at 12% 18%, rgba(105,207,255,.35), transparent 28%),
+    radial-gradient(circle at 90% 12%, rgba(255,255,255,.95), transparent 24%),
+    linear-gradient(135deg,#ffffff 0%,#eefbff 42%,#dff6ff 72%,#bdeeff 100%);
+}
+.slide-5::before{
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.82),rgba(223,246,255,.38)),
+    repeating-linear-gradient(135deg,rgba(47,146,255,.08) 0 1px,transparent 1px 32px);
+}
+.slide-5::after{
+  right:-120px;
+  bottom:-130px;
+  background:#69cfff;
+  opacity:.55;
+}
+.slide-5 .slide-copy,
+.slide-5 .slide-copy p{
+  color:#0b2a45;
+}
+.slide-5 .slide-copy h1 span{
+  color:#1565ff;
+}
+.slide-5 .slide-tag{
+  background:rgba(47,146,255,.10);
+  border-color:rgba(47,146,255,.18);
+  color:#1565ff;
+}
+.slide-5 .slide-points div{
+  color:#0b2a45;
+  background:rgba(255,255,255,.76);
+  border-color:rgba(47,146,255,.16);
+  box-shadow:0 12px 30px rgba(58,129,173,.10);
+}
+.slide-5 .secondary-btn{
+  color:#0b2a45;
+  border-color:rgba(47,146,255,.20);
+  background:rgba(255,255,255,.62);
+}
+
+
+.slide.active .slide-copy{
+  animation:copyEnter .72s ease both;
+}
+.slide.active .slide-visual{
+  animation:visualEnter .78s ease both;
+}
+.slide.active .slide-points div{
+  animation:pointEnter .55s ease both;
+}
+.slide.active .slide-points div:nth-child(2){ animation-delay:.08s; }
+.slide.active .slide-points div:nth-child(3){ animation-delay:.16s; }
+
+@keyframes copyEnter{
+  from{opacity:0; transform:translateX(-26px);}
+  to{opacity:1; transform:translateX(0);}
+}
+@keyframes visualEnter{
+  from{opacity:0; transform:translateX(26px) scale(.98);}
+  to{opacity:1; transform:translateX(0) scale(1);}
+}
+@keyframes pointEnter{
+  from{opacity:0; transform:translateY(12px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+.image-frame,
+.collage-img,
+.stat-card,
+.ministry-card,
+.card-front,
+.why-card,
+.cta-card{
+  animation:softFloat 6s ease-in-out infinite;
+}
+.card-front,.why-card,.cta-card{ animation:none; }
+@keyframes softFloat{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-8px); }
+}
+
+.image-frame img,
+.collage-img img,
+.ministry-card img{
+  transition:transform .6s ease;
+}
+.image-frame:hover img,
+.collage-img:hover img,
+.ministry-card:hover img{
+  transform:scale(1.07);
+}
+
+.hero-arrow{
+  z-index:40;
+}
+
+
+@media (max-width:1100px){
+  .hero-slider{
+    padding-left:76px;
+    padding-right:76px;
+  }
+  .hero-arrow:first-child{ left:16px; }
+  .hero-arrow:last-child{ right:16px; }
+}
+@media (max-width:1100px){
+  .slide{
+    min-height:auto;
+    padding:32px;
+  }
+  .slide-1,
+  .slide-3{
+    background:linear-gradient(160deg,#06172a 0%,#092744 58%,#dff6ff 58%,#ffffff 100%);
+  }
+}
+
+@media (max-width:768px){
+  .slide{
+    border-radius:30px;
+    padding:24px 18px;
+  }
+  .slide-1,
+  .slide-2,
+  .slide-3,
+  .slide-4{
+    background:
+      linear-gradient(180deg,rgba(6,23,42,.90),rgba(21,101,255,.36),rgba(6,23,42,.82)),
+      url('assets/images/get-involved bg.jpg');
+    background-size:cover;
+    background-position:center;
+  }
+  .slide-2{ background-image:linear-gradient(180deg,rgba(6,23,42,.90),rgba(21,101,255,.38),rgba(6,23,42,.82)),url('assets/images/worship.jpg'); }
+  .slide-3{ background-image:linear-gradient(180deg,rgba(6,23,42,.88),rgba(105,207,255,.38),rgba(6,23,42,.82)),url('assets/images/volunteer.jpg'); }
+  .slide-5{
+    background:
+      radial-gradient(circle at top right, rgba(105,207,255,.35), transparent 30%),
+      linear-gradient(160deg,#ffffff 0%,#eefbff 55%,#dff6ff 100%);
+  }
+  .slide-4{ background-image:linear-gradient(180deg,rgba(6,23,42,.88),rgba(47,146,255,.36),rgba(6,23,42,.82)),url('assets/images/baptism.jpg'); }
+  .slide-copy{ text-align:center; }
+  .slide.active .slide-copy,
+  .slide.active .slide-visual{
+    animation:mobileEnter .65s ease both;
+  }
+  @keyframes mobileEnter{
+    from{opacity:0; transform:translateY(18px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;
+    transition-duration:.01ms !important;
+  }
+}
+
+/* =========================
+   SECTION HEADER
+========================= */
+.section-head{
+  text-align:center;
+  padding:80px 7% 35px;
+  background:white;
+}
+
+.section-label{
+  display:inline-block;
+  color:#2f92ff;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:3px;
+  margin-bottom:12px;
+}
+
+.section-head h2{
+  font-size:clamp(2rem,4vw,3.3rem);
+  color:#0b2a45;
+  line-height:1.15;
+}
+
+.section-head p{
+  max-width:720px;
+  margin:16px auto 0;
+  color:#58708a;
+  line-height:1.8;
+}
+
+/* =========================
+   CARDS
+========================= */
+.cards-container{
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+  padding:30px 7% 70px;
+  background:white;
+}
+
+.popup-card{ position:relative; }
+
+.card-front{
+  min-height:430px;
+  padding:35px 25px 25px;
+  text-align:center;
+  border-radius:28px;
+  background:linear-gradient(180deg,rgba(255,255,255,0.97),rgba(229,247,255,0.84));
+  border:1px solid rgba(105,207,255,0.28);
+  box-shadow:0 20px 60px rgba(58,129,173,0.14);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  position:relative;
+  overflow:hidden;
+  transition:0.35s ease;
+}
+
+.card-front::before{
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:105px;
+  background:linear-gradient(180deg,transparent,rgba(105,207,255,0.18));
+}
+
+.card-front:hover{
+  transform:translateY(-10px);
+  box-shadow:0 30px 75px rgba(58,129,173,0.24);
+  border-color:rgba(47,146,255,0.32);
+}
+
+.card-icon{
+  width:86px;
+  height:86px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2rem;
+  color:#2f92ff;
+  background:linear-gradient(135deg,#ffffff,#dff6ff);
+  border:1px solid rgba(105,207,255,0.34);
+  box-shadow:0 14px 35px rgba(58,129,173,0.16);
+  position:relative;
+  z-index:2;
+}
+
+.card-front h2{
+  font-size:1.75rem;
+  line-height:1.2;
+  color:#0b2a45;
+  margin:22px 0 12px;
+  position:relative;
+  z-index:2;
+}
+
+.card-front h2 span{ color:#2f92ff; }
+.card-front p{ color:#58708a; line-height:1.8; font-size:15px; position:relative; z-index:2; }
+
+.details-btn{
+  border:none;
+  padding:14px 24px;
+  border-radius:14px;
+  color:#06213a;
+  background:linear-gradient(135deg,#dff6ff,#69cfff);
+  font-weight:800;
+  cursor:pointer;
+  transition:0.3s ease;
+  position:relative;
+  z-index:2;
+  box-shadow:0 15px 30px rgba(105,207,255,0.22);
+}
+.details-btn:hover{ transform:translateY(-3px); }
+
+/* =========================
+   WHY SECTION
+========================= */
+.why-section{
+  padding:35px 7% 90px;
+  background:linear-gradient(180deg,#ffffff,#f1fbff);
+}
+
+.why-grid{
+  max-width:1180px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+
+.why-card{
+  padding:34px;
+  border-radius:30px;
+  background:rgba(255,255,255,0.9);
+  border:1px solid rgba(105,207,255,0.3);
+  box-shadow:0 20px 60px rgba(58,129,173,0.13);
+  transition:0.3s ease;
+}
+.why-card:hover{ transform:translateY(-8px); }
+.why-icon{
+  width:70px;
+  height:70px;
+  border-radius:22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.8rem;
+  color:#1565ff;
+  background:#dff6ff;
+  margin-bottom:20px;
+}
+.why-card h3{ color:#071d33; font-size:1.35rem; margin-bottom:12px; }
+.why-card p{ color:#58708a; line-height:1.8; }
+
+/* =========================
+   FAQ
+========================= */
+.faq-section{
+  padding:85px 7%;
+  background:#f1fbff;
+}
+
+.faq-wrap{
+  max-width:980px;
+  margin:0 auto;
+}
+
+.faq-item{
+  background:white;
+  border-radius:22px;
+  margin-bottom:14px;
+  border:1px solid rgba(105,207,255,0.28);
+  box-shadow:0 16px 38px rgba(58,129,173,0.11);
+  overflow:hidden;
+}
+
+.faq-question{
+  width:100%;
+  border:none;
+  background:white;
+  color:#071d33;
+  padding:22px 24px;
+  font-weight:900;
+  font-size:1rem;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  text-align:left;
+}
+
+.faq-question i{ color:#1565ff; transition:0.25s ease; }
+.faq-item.active .faq-question i{ transform:rotate(180deg); }
+
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.3s ease;
+}
+
+.faq-answer p{
+  padding:0 24px 24px;
+  color:#58708a;
+  line-height:1.8;
+}
+
+/* =========================
+   CTA
+========================= */
+.cta-section{
+  padding:0 7% 90px;
+  background:#f1fbff;
+}
+
+.cta-card{
+  max-width:1180px;
+  margin:0 auto;
+  min-height:230px;
+  border-radius:32px;
+  padding:42px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+  color:white;
+  background:
+    radial-gradient(circle at top right, rgba(105,207,255,0.38), transparent 33%),
+    linear-gradient(90deg,rgba(7,29,51,0.96),rgba(47,146,255,0.54)),
+    url('assets/images/get-involved bg.jpg');
+  background-size:cover;
+  background-position:center;
+  box-shadow:0 25px 70px rgba(7,29,51,0.22);
+}
+
+.cta-card h2{ font-size:2rem; margin-bottom:8px; }
+.cta-card p{ color:rgba(255,255,255,0.85); line-height:1.7; }
+
+/* =========================
+   POPUP
+========================= */
+.popup-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(2,13,24,0.78);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:2000;
+  opacity:0;
+  visibility:hidden;
+  transition:0.4s ease;
+}
+.popup-overlay.active{ opacity:1; visibility:visible; }
+
+.popup-content{
+  width:100%;
+  max-width:700px;
+  max-height:92vh;
+  overflow-y:auto;
+  background:rgba(255,255,255,0.98);
+  color:#0b2a45;
+  border-radius:35px;
+  border:1px solid rgba(105,207,255,0.35);
+  backdrop-filter:blur(20px);
+  padding:45px;
+  position:relative;
+  animation:popupShow 0.4s ease;
+  box-shadow:0 30px 90px rgba(0,0,0,0.28);
+}
+
+.close-btn{
+  position:absolute;
+  top:20px;
+  right:20px;
+  width:45px;
+  height:45px;
+  border:none;
+  border-radius:50%;
+  background:#eef9ff;
+  color:#0b2a45;
+  font-size:1rem;
+  cursor:pointer;
+  transition:0.3s ease;
+}
+.close-btn:hover{ background:#ff4d4d; color:white; transform:rotate(90deg); }
+.popup-top{ text-align:center; margin-bottom:25px; }
+.popup-icon{
+  width:100px;
+  height:100px;
+  border-radius:30px;
+  margin:auto auto 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2.5rem;
+  color:#2f92ff;
+  background:linear-gradient(135deg,#ffffff,#dff6ff);
+  border:1px solid rgba(105,207,255,0.35);
+  box-shadow:0 14px 35px rgba(58,129,173,0.14);
+}
+.popup-top h2{ font-size:2.3rem; }
+.popup-description{ text-align:center; line-height:1.9; color:#58708a; margin-bottom:35px; }
+.popup-features{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-bottom:35px; }
+.feature-box{ background:#f1fbff; padding:18px; border-radius:18px; display:flex; align-items:center; gap:12px; color:#0b2a45; font-weight:700; }
+.feature-box i{ color:#2f92ff; }
+.register-btn{ width:100%; display:flex; justify-content:center; align-items:center; text-decoration:none; padding:16px; border-radius:18px; color:#06213a; font-weight:800; background:linear-gradient(135deg,#dff6ff,#69cfff); transition:0.3s ease; }
+.register-btn:hover{ transform:translateY(-4px); box-shadow:0 15px 30px rgba(47,146,255,0.28); }
+
+/* =========================
+   FOOTER
+========================= */
+.site-footer{
+  background:radial-gradient(circle at top left, rgba(105,207,255,0.16), transparent 32%), #081b2e;
+  color:white;
+  padding:70px 7% 28px;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+.footer-grid{ max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:34px; }
+.footer-brand h3{ font-size:22px; margin-bottom:14px; }
+.footer-brand p,.footer-col p,.footer-col a{ color:rgba(255,255,255,0.75); line-height:1.8; font-size:14px; }
+.footer-col h4{ margin-bottom:16px; color:#8edfff; }
+.footer-col a{ display:block; text-decoration:none; margin-bottom:9px; transition:0.3s ease; }
+.footer-col a:hover{ color:#8edfff; transform:translateX(4px); }
+.socials{ display:flex; gap:10px; margin-top:18px; }
+.socials a{ width:42px; height:42px; border-radius:14px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.08); color:white; text-decoration:none; transition:0.3s ease; }
+.socials a:hover{ background:#8edfff; color:#081b2e; transform:translateY(-4px); }
+.footer-bottom{ max-width:1180px; margin:35px auto 0; padding-top:24px; border-top:1px solid rgba(255,255,255,0.08); text-align:center; color:rgba(255,255,255,0.75); }
+
+/* =========================
+   ANIMATIONS
+========================= */
+.reveal{
+  opacity:0;
+  transform:translateY(34px);
+  transition:0.75s ease;
+}
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@keyframes popupShow{ from{ opacity:0; transform:scale(0.86); } to{ opacity:1; transform:scale(1); } }
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width:1100px){
+  .slide.layout-split,
+  .slide.layout-cards,
+  .slide.layout-ministry{ grid-template-columns:1fr; }
+  .slide{ min-height:auto; gap:30px; }
+  .slide-copy{ text-align:center; }
+  .slide-copy p,.slide-points{ margin-left:auto; margin-right:auto; }
+  .hero-actions{ justify-content:center; }
+  .slide-visual{ min-height:auto; }
+  .image-frame{ height:330px; }
+  .cards-container{ grid-template-columns:repeat(2,1fr); }
+  .why-grid{ grid-template-columns:1fr; }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+}
+
+@media (max-width:992px){
+  .navbar{ padding:18px 20px; }
+  .navbar.scrolled{ padding:15px 20px; }
+  .menu-btn{ display:flex; }
+  .navbar nav{
+    position:absolute;
+    top:90px;
+    right:20px;
+    width:250px;
+    background:rgba(255,255,255,0.97);
+    backdrop-filter:blur(15px);
+    border-radius:24px;
+    padding:25px;
+    display:none;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:18px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.18);
+  }
+  .navbar nav.active{ display:flex; }
+  .navbar nav a{ color:#102f4d; font-size:15px; margin:0; }
+}
+
+@media (max-width:768px){
+  .hero-slider{
+    height:auto;
+    min-height:auto;
+    max-height:none;
+    padding:96px 22px 88px;
+    background:linear-gradient(180deg,#06172a 0%,#092744 72%,#eaf7ff 72%);
+  }
+  .slide-stage{ height:auto; }
+  .slide-copy h1{ letter-spacing:-2px; }
+  .slide-points,
+  .slide.layout-center .slide-points{ grid-template-columns:1fr; }
+  .slide.layout-center{ padding:18px; border-radius:30px; }
+  .slide.layout-center .slide-copy{ padding:36px 20px; border-radius:26px; }
+  .image-frame{ height:300px; border-radius:28px; border-width:7px; }
+  .collage-grid{ grid-template-columns:1fr; }
+  .collage-img,.collage-img.tall,.stat-card{ min-height:210px; grid-row:auto; }
+  .ministry-card{ grid-template-columns:70px 1fr; padding:14px; border-radius:22px; }
+  .ministry-card img{ width:70px; height:70px; }
+  .slider-controls{ width:calc(100vw - 20px); }
+  .hero-arrow{ width:44px; height:44px; }
+  .hero-arrow:first-child{ left:14px; }
+  .hero-arrow:last-child{ right:14px; }
+  .hero-dots{ bottom:18px; padding:10px 13px; }
+  .cards-container{ grid-template-columns:1fr; padding:25px 22px 60px; }
+  .section-head{ padding:65px 22px 25px; }
+  .why-section,.faq-section,.cta-section{ padding-left:22px; padding-right:22px; }
+  .cta-card{ flex-direction:column; align-items:flex-start; padding:30px 24px; }
+  .footer-grid{ grid-template-columns:1fr; }
+}
+
+@media (max-width:480px){
+  .hero-slider{
+    padding-left:50px;
+    padding-right:50px;
+  }
+  .hero-arrow{
+    width:38px;
+    height:38px;
+    font-size:0.85rem;
+  }
+  .hero-arrow:first-child{ left:6px; }
+  .hero-arrow:last-child{ right:6px; }
+  .logo{ font-size:14px; max-width:230px; }
+  .menu-btn{ width:48px; height:48px; }
+  .slide-copy h1{ font-size:2.25rem; }
+  .slide-copy p{ font-size:0.96rem; }
+  .primary-btn,.secondary-btn{ width:100%; padding:14px 18px; }
+  .hero-actions{ width:100%; }
+  .popup-content{ padding:35px 22px; }
+}
+
+
+/* =========================================================
+   FINAL FIX: HERO SIZE + NAVBAR SAFE SPACE + RESPONSIVE ARROWS
+   Added to prevent hero content/design from overlapping navbar.
+========================================================= */
+.navbar{
+  background:rgba(8,25,45,0.58);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,0.10);
+}
+
+.hero-slider{
+  height:auto !important;
+  min-height:620px !important;
+  max-height:none !important;
+  padding:112px 6.5% 54px !important;
+  align-items:center !important;
+}
+
+.slide-stage{
+  max-width:1180px !important;
+  height:auto !important;
+  min-height:440px !important;
+  align-items:center !important;
+}
+
+.slide{
+  min-height:430px !important;
+  max-height:500px !important;
+  padding:26px 34px !important;
+  gap:26px !important;
+  overflow:hidden !important;
+  align-items:center !important;
+}
+
+.slide-copy h1{
+  font-size:clamp(2rem,4vw,3.55rem) !important;
+  line-height:1.04 !important;
+  letter-spacing:-2px !important;
+  margin-bottom:14px !important;
+}
+
+.slide-copy p{
+  font-size:.96rem !important;
+  line-height:1.65 !important;
+  margin-bottom:16px !important;
+  max-width:560px !important;
+}
+
+.slide-tag{
+  padding:8px 16px !important;
+  font-size:12px !important;
+  margin-bottom:14px !important;
+}
+
+.slide-points{
+  gap:8px !important;
+  margin-bottom:18px !important;
+  max-width:540px !important;
+}
+
+.slide-points div{
+  padding:9px 13px !important;
+  border-radius:14px !important;
+  font-size:.88rem !important;
+}
+
+.primary-btn,
+.secondary-btn{
+  padding:11px 18px !important;
+  border-radius:13px !important;
+  font-size:.9rem !important;
+}
+
+.slide-visual{
+  min-height:320px !important;
+  max-height:385px !important;
+}
+
+.image-frame{
+  max-width:470px !important;
+  height:320px !important;
+  border-radius:30px !important;
+  border-width:8px !important;
+}
+
+.frame-note{
+  left:18px !important;
+  right:18px !important;
+  bottom:18px !important;
+  padding:12px 14px !important;
+  border-radius:16px !important;
+}
+
+.collage-grid{
+  max-width:450px !important;
+  gap:12px !important;
+}
+
+.collage-img{
+  min-height:145px !important;
+  border-radius:22px !important;
+  border-width:6px !important;
+}
+
+.collage-img.tall{
+  min-height:305px !important;
+}
+
+.stat-card{
+  min-height:145px !important;
+  padding:20px !important;
+  border-radius:22px !important;
+}
+
+.stat-card strong{
+  font-size:2.1rem !important;
+}
+
+.ministry-stack{
+  max-width:460px !important;
+  gap:12px !important;
+}
+
+.ministry-card{
+  grid-template-columns:64px 1fr !important;
+  gap:14px !important;
+  padding:13px 16px !important;
+  border-radius:22px !important;
+}
+
+.ministry-card img{
+  width:64px !important;
+  height:64px !important;
+  border-radius:17px !important;
+}
+
+.ministry-card h3{
+  font-size:1rem !important;
+}
+
+.ministry-card p{
+  font-size:.82rem !important;
+  line-height:1.45 !important;
+}
+
+.slide.layout-center .slide-copy{
+  padding:28px 24px !important;
+  max-width:760px !important;
+}
+
+.slide.layout-center .slide-points{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+}
+
+.slider-controls{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  left:0 !important;
+  transform:none !important;
+  pointer-events:none !important;
+  z-index:30 !important;
+}
+
+.hero-arrow{
+  width:50px !important;
+  height:50px !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  pointer-events:auto !important;
+}
+
+.hero-arrow:first-child{
+  left:16px !important;
+}
+
+.hero-arrow:last-child{
+  right:16px !important;
+}
+
+.hero-arrow:hover{
+  transform:translateY(-50%) scale(1.06) !important;
+}
+
+.hero-dots{
+  bottom:18px !important;
+}
+
+/* keep the light slide readable under the fixed nav */
+.slide-5{
+  background:
+    radial-gradient(circle at 12% 18%, rgba(105,207,255,.32), transparent 26%),
+    linear-gradient(135deg,#ffffff 0%,#f4fcff 45%,#dff6ff 100%) !important;
+}
+
+/* Laptop / smaller desktop */
+@media (max-width:1200px){
+  .navbar{
+    padding:15px 34px !important;
+  }
+
+  .navbar nav a{
+    margin-left:16px !important;
+    font-size:13px !important;
+  }
+
+  .hero-slider{
+    padding:104px 5.5% 50px !important;
+    min-height:600px !important;
+  }
+
+  .slide-stage{
+    min-height:420px !important;
+  }
+
+  .slide{
+    max-height:480px !important;
+    min-height:410px !important;
+  }
+}
+
+@media (max-width:1100px){
+  .hero-slider{
+    min-height:auto !important;
+    padding:110px 6% 70px !important;
+  }
+
+  .slide{
+    max-height:none !important;
+    min-height:auto !important;
+    padding:32px 28px !important;
+  }
+
+  .slide.active{
+    display:grid !important;
+  }
+
+  .slide.layout-split,
+  .slide.layout-cards,
+  .slide.layout-ministry{
+    grid-template-columns:1fr !important;
+  }
+
+  .slide-copy{
+    text-align:center !important;
+  }
+
+  .slide-copy p,
+  .slide-points{
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+
+  .hero-actions{
+    justify-content:center !important;
+  }
+
+  .slide-visual{
+    min-height:auto !important;
+    max-height:none !important;
+  }
+}
+
+@media (max-width:992px){
+  .navbar{
+    padding:14px 20px !important;
+  }
+
+  .navbar.scrolled{
+    padding:12px 20px !important;
+  }
+
+  .navbar nav{
+    top:78px !important;
+  }
+
+  .hero-slider{
+    padding:100px 22px 78px !important;
+  }
+}
+
+@media (max-width:768px){
+  .hero-slider{
+    padding:94px 18px 78px !important;
+  }
+
+  .slide{
+    padding:26px 18px !important;
+    border-radius:26px !important;
+  }
+
+  .slide-copy h1{
+    font-size:clamp(2rem,10vw,2.85rem) !important;
+    letter-spacing:-1.2px !important;
+  }
+
+  .slide.layout-center .slide-points{
+    grid-template-columns:1fr !important;
+  }
+
+  .image-frame{
+    height:250px !important;
+    border-radius:24px !important;
+  }
+
+  .collage-grid{
+    grid-template-columns:1fr !important;
+    max-width:100% !important;
+  }
+
+  .collage-img,
+  .collage-img.tall,
+  .stat-card{
+    min-height:180px !important;
+  }
+
+  .ministry-card{
+    grid-template-columns:58px 1fr !important;
+  }
+
+  .ministry-card img{
+    width:58px !important;
+    height:58px !important;
+  }
+
+  .hero-arrow{
+    width:42px !important;
+    height:42px !important;
+  }
+
+  .hero-arrow:first-child{
+    left:8px !important;
+  }
+
+  .hero-arrow:last-child{
+    right:8px !important;
+  }
+
+  .hero-dots{
+    bottom:14px !important;
+  }
+}
+
+@media (max-width:480px){
+  .hero-slider{
+    padding:90px 14px 74px !important;
+  }
+
+  .slide{
+    padding:24px 15px !important;
+  }
+
+  .slide-copy h1{
+    font-size:2.05rem !important;
+  }
+
+  .slide-copy p{
+    font-size:.92rem !important;
+  }
+
+  .slide-points div{
+    font-size:.82rem !important;
+  }
+
+  .primary-btn,
+  .secondary-btn{
+    width:100% !important;
+  }
+}
+
+
+
+/* =========================================================
+   ULTIMATE HERO SCREEN-FIT FIX
+   - hero fits desktop screen cleanly
+   - navbar no longer covers hero text
+   - arrows stay at center-left / center-right of viewport
+   - slide content stays inside safe area
+========================================================= */
+html, body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden !important;
+}
+
+.navbar{
+  height:76px !important;
+  padding:16px 56px !important;
+}
+
+.navbar.scrolled{
+  height:68px !important;
+  padding:12px 56px !important;
+}
+
+.hero-slider{
+  width:100% !important;
+  min-height:100vh !important;
+  min-height:100svh !important;
+  max-height:none !important;
+  padding:96px 92px 52px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+}
+
+.slide-stage{
+  width:100% !important;
+  max-width:1180px !important;
+  height:calc(100vh - 148px) !important;
+  height:calc(100svh - 148px) !important;
+  min-height:430px !important;
+  max-height:560px !important;
+  margin:0 auto !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  position:relative !important;
+}
+
+.slide{
+  width:100% !important;
+  height:100% !important;
+  min-height:0 !important;
+  max-height:none !important;
+  padding:28px 42px !important;
+  border-radius:34px !important;
+  overflow:hidden !important;
+  align-items:center !important;
+  box-sizing:border-box !important;
+}
+
+.slide.active.layout-split,
+.slide.active.layout-cards,
+.slide.active.layout-ministry{
+  display:grid !important;
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr) !important;
+}
+
+.slide.active.layout-center{
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  place-items:center !important;
+}
+
+.slide-copy,
+.slide-visual{
+  min-width:0 !important;
+}
+
+.slide-copy h1{
+  font-size:clamp(2.25rem,4.2vw,4.05rem) !important;
+  line-height:1.02 !important;
+  margin-bottom:14px !important;
+}
+
+.slide-copy p{
+  font-size:.96rem !important;
+  line-height:1.65 !important;
+  margin-bottom:15px !important;
+}
+
+.slide-points{
+  gap:8px !important;
+  margin-bottom:16px !important;
+}
+
+.slide-points div{
+  padding:9px 13px !important;
+  font-size:.86rem !important;
+}
+
+.slide-visual{
+  min-height:0 !important;
+  height:100% !important;
+  max-height:100% !important;
+}
+
+.image-frame{
+  width:100% !important;
+  max-width:470px !important;
+  height:min(330px,100%) !important;
+}
+
+.collage-grid{
+  max-width:460px !important;
+  max-height:100% !important;
+}
+
+.collage-img{
+  min-height:145px !important;
+}
+
+.collage-img.tall{
+  min-height:304px !important;
+}
+
+.stat-card{
+  min-height:145px !important;
+}
+
+.ministry-stack{
+  max-width:470px !important;
+  max-height:100% !important;
+  gap:12px !important;
+}
+
+.ministry-card{
+  grid-template-columns:62px 1fr !important;
+  padding:12px 16px !important;
+}
+
+.ministry-card img{
+  width:62px !important;
+  height:62px !important;
+}
+
+.slider-controls{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  left:0 !important;
+  right:0 !important;
+  transform:none !important;
+  pointer-events:none !important;
+  z-index:60 !important;
+}
+
+.hero-arrow{
+  position:absolute !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  width:54px !important;
+  height:54px !important;
+  pointer-events:auto !important;
+}
+
+.hero-arrow:first-child{
+  left:18px !important;
+}
+
+.hero-arrow:last-child{
+  right:18px !important;
+}
+
+.hero-arrow:hover{
+  transform:translateY(-50%) scale(1.06) !important;
+}
+
+.hero-dots{
+  bottom:18px !important;
+  z-index:70 !important;
+}
+
+@media (max-width:1200px){
+  .navbar{
+    padding:15px 34px !important;
+  }
+
+  .navbar.scrolled{
+    padding:12px 34px !important;
+  }
+
+  .navbar nav a{
+    margin-left:15px !important;
+    font-size:13px !important;
+  }
+
+  .hero-slider{
+    padding-left:78px !important;
+    padding-right:78px !important;
+  }
+
+  .slide{
+    padding:26px 34px !important;
+  }
+}
+
+@media (max-width:1100px){
+  .hero-slider{
+    min-height:auto !important;
+    padding:104px 62px 76px !important;
+  }
+
+  .slide-stage{
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+  }
+
+  .slide{
+    height:auto !important;
+    padding:34px 28px !important;
+  }
+
+  .slide.active.layout-split,
+  .slide.active.layout-cards,
+  .slide.active.layout-ministry{
+    grid-template-columns:1fr !important;
+  }
+
+  .slide-copy{
+    text-align:center !important;
+  }
+
+  .slide-copy p,
+  .slide-points{
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+
+  .hero-actions{
+    justify-content:center !important;
+  }
+
+  .slide-visual{
+    height:auto !important;
+  }
+}
+
+@media (max-width:992px){
+  .navbar{
+    height:auto !important;
+    padding:14px 20px !important;
+  }
+
+  .navbar.scrolled{
+    height:auto !important;
+    padding:12px 20px !important;
+  }
+
+  .hero-slider{
+    padding:96px 54px 76px !important;
+  }
+
+  .navbar nav{
+    top:78px !important;
+  }
+}
+
+@media (max-width:768px){
+  .hero-slider{
+    padding:92px 18px 84px !important;
+  }
+
+  .slide{
+    border-radius:26px !important;
+    padding:28px 18px !important;
+  }
+
+  .slide-copy h1{
+    font-size:clamp(2rem,10vw,2.8rem) !important;
+  }
+
+  .slide.layout-center .slide-points{
+    grid-template-columns:1fr !important;
+  }
+
+  .image-frame{
+    height:245px !important;
+  }
+
+  .collage-grid{
+    grid-template-columns:1fr !important;
+  }
+
+  .collage-img,
+  .collage-img.tall,
+  .stat-card{
+    min-height:175px !important;
+  }
+
+  .ministry-card{
+    grid-template-columns:58px 1fr !important;
+  }
+
+  .ministry-card img{
+    width:58px !important;
+    height:58px !important;
+  }
+
+  .hero-arrow{
+    width:42px !important;
+    height:42px !important;
+    top:auto !important;
+    bottom:24px !important;
+    transform:none !important;
+  }
+
+  .hero-arrow:hover{
+    transform:scale(1.04) !important;
+  }
+
+  .hero-arrow:first-child{
+    left:20px !important;
+  }
+
+  .hero-arrow:last-child{
+    right:20px !important;
+  }
+
+  .hero-dots{
+    bottom:24px !important;
+  }
+}
+
+@media (max-width:480px){
+  .hero-slider{
+    padding:88px 14px 82px !important;
+  }
+
+  .slide{
+    padding:25px 14px !important;
+  }
+
+  .slide-copy h1{
+    font-size:2.05rem !important;
+  }
+
+  .slide-copy p{
+    font-size:.92rem !important;
+  }
+
+  .hero-arrow:first-child{
+    left:14px !important;
+  }
+
+  .hero-arrow:last-child{
+    right:14px !important;
+  }
+}
+
+
+
+/* =========================================================
+   FINAL FIX: HERO FIT + ARROWS OUTSIDE HERO BOX
+   This override keeps the slider buttons on the far screen sides
+   so they no longer overlap the hero text, cards, or images.
+========================================================= */
+.hero-slider{
+  min-height:640px !important;
+  height:calc(100vh - 0px) !important;
+  max-height:760px !important;
+  padding:88px 7% 58px !important;
+  position:relative !important;
+  overflow:hidden !important;
+}
+
+.slide-stage{
+  max-width:1180px !important;
+  height:100% !important;
+  margin:0 auto !important;
+  position:relative !important;
+  z-index:5 !important;
+}
+
+.slide{
+  height:100% !important;
+  align-items:center !important;
+}
+
+.slide-copy h1{
+  font-size:clamp(2.25rem,4.4vw,4.2rem) !important;
+  line-height:1.03 !important;
+  margin-bottom:18px !important;
+}
+
+.slide-copy p{
+  font-size:clamp(.92rem,1.2vw,1.02rem) !important;
+  line-height:1.7 !important;
+  margin-bottom:18px !important;
+}
+
+.slide-points{
+  gap:9px !important;
+  margin-bottom:20px !important;
+}
+
+.slide-points div{
+  padding:11px 15px !important;
+  font-size:.94rem !important;
+}
+
+.image-frame{
+  max-width:500px !important;
+  height:345px !important;
+}
+
+.collage-grid,
+.ministry-stack{
+  max-width:500px !important;
+}
+
+.collage-img.tall{
+  min-height:340px !important;
+}
+
+.collage-img,
+.stat-card{
+  min-height:160px !important;
+}
+
+.ministry-card{
+  padding:16px !important;
+}
+
+/* arrows use the whole screen, not the hero card width */
+.slider-controls{
+  position:absolute !important;
+  inset:0 !important;
+  left:0 !important;
+  top:0 !important;
+  width:100% !important;
+  height:100% !important;
+  transform:none !important;
+  z-index:50 !important;
+  pointer-events:none !important;
+}
+
+.hero-arrow{
+  position:absolute !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  width:54px !important;
+  height:54px !important;
+  border-radius:50% !important;
+  background:rgba(255,255,255,.98) !important;
+  color:#1565ff !important;
+  box-shadow:0 18px 45px rgba(7,29,51,.28) !important;
+  pointer-events:auto !important;
+  z-index:60 !important;
+}
+
+.hero-arrow:first-child{
+  left:18px !important;
+}
+
+.hero-arrow:last-child{
+  right:18px !important;
+}
+
+.hero-arrow:hover{
+  background:#1565ff !important;
+  color:#fff !important;
+  transform:translateY(-50%) scale(1.08) !important;
+}
+
+.hero-dots{
+  bottom:18px !important;
+  z-index:55 !important;
+}
+
+@media (max-width:1200px){
+  .hero-slider{
+    padding-left:86px !important;
+    padding-right:86px !important;
+  }
+
+  .hero-arrow:first-child{
+    left:18px !important;
+  }
+
+  .hero-arrow:last-child{
+    right:18px !important;
+  }
+}
+
+@media (max-width:992px){
+  .hero-slider{
+    height:auto !important;
+    min-height:auto !important;
+    max-height:none !important;
+    padding:112px 72px 92px !important;
+  }
+
+  .slide-stage{
+    height:auto !important;
+  }
+
+  .slide{
+    height:auto !important;
+  }
+
+  .slide-copy h1{
+    font-size:clamp(2rem,7vw,3.2rem) !important;
+  }
+
+  .image-frame{
+    height:290px !important;
+  }
+
+  .hero-arrow{
+    width:46px !important;
+    height:46px !important;
+  }
+
+  .hero-arrow:first-child{
+    left:14px !important;
+  }
+
+  .hero-arrow:last-child{
+    right:14px !important;
+  }
+}
+
+@media (max-width:768px){
+  .hero-slider{
+    padding:105px 24px 95px !important;
+  }
+
+  .slider-controls{
+    position:absolute !important;
+  }
+
+  .hero-arrow{
+    top:auto !important;
+    bottom:28px !important;
+    transform:none !important;
+    width:44px !important;
+    height:44px !important;
+  }
+
+  .hero-arrow:hover{
+    transform:scale(1.06) !important;
+  }
+
+  .hero-arrow:first-child{
+    left:22px !important;
+  }
+
+  .hero-arrow:last-child{
+    right:22px !important;
+  }
+
+  .hero-dots{
+    bottom:32px !important;
+  }
+}
+
+@media (max-width:480px){
+  .hero-slider{
+    padding-left:18px !important;
+    padding-right:18px !important;
+  }
+
+  .hero-arrow{
+    width:40px !important;
+    height:40px !important;
+    bottom:24px !important;
+  }
+
+  .hero-arrow:first-child{
+    left:14px !important;
+  }
+
+  .hero-arrow:last-child{
+    right:14px !important;
+  }
+
+  .hero-dots{
+    bottom:29px !important;
+  }
+}
+
+
+/* =========================================================
+   FINAL LIGHT POWDER BLUE HERO THEME
+   - turns the hero from dark to light / powder blue
+   - keeps every slide different but brighter
+   - improves navbar readability on light hero
+   - keeps slider arrows outside the hero card
+========================================================= */
+body{
+  background:
+    radial-gradient(circle at top left, rgba(105,207,255,0.32), transparent 30%),
+    linear-gradient(180deg,#f8fdff 0%,#eaf8ff 48%,#ffffff 100%) !important;
+}
+
+.navbar{
+  background:rgba(255,255,255,0.72) !important;
+  backdrop-filter:blur(18px) !important;
+  -webkit-backdrop-filter:blur(18px) !important;
+  border-bottom:1px solid rgba(47,146,255,0.16) !important;
+  box-shadow:0 12px 35px rgba(58,129,173,0.10) !important;
+}
+
+.navbar.scrolled{
+  background:rgba(255,255,255,0.88) !important;
+  border-bottom:1px solid rgba(47,146,255,0.18) !important;
+  box-shadow:0 12px 35px rgba(58,129,173,0.15) !important;
+}
+
+.logo,
+.navbar nav a{
+  color:#0b2a45 !important;
+  text-shadow:none !important;
+}
+
+.navbar nav a:hover,
+.navbar nav a.current{
+  color:#1565ff !important;
+}
+
+.hero-slider{
+  background:
+    radial-gradient(circle at top right, rgba(105,207,255,0.45), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(223,246,255,0.95), transparent 34%),
+    linear-gradient(135deg,#f9fdff 0%,#eefbff 42%,#dff6ff 100%) !important;
+  min-height:640px !important;
+  color:#0b2a45 !important;
+}
+
+.hero-slider::before{
+  background:rgba(105,207,255,0.30) !important;
+  opacity:1 !important;
+}
+
+.hero-slider::after{
+  background:rgba(255,255,255,0.75) !important;
+  opacity:1 !important;
+}
+
+.slide{
+  border:1px solid rgba(47,146,255,0.16) !important;
+  box-shadow:0 28px 80px rgba(58,129,173,0.18) !important;
+}
+
+.slide-copy,
+.slide-copy p{
+  color:#0b2a45 !important;
+}
+
+.slide-copy h1{
+  color:#071d33 !important;
+}
+
+.slide-copy h1 span{
+  color:#1565ff !important;
+}
+
+.slide-tag{
+  color:#1565ff !important;
+  background:rgba(255,255,255,0.70) !important;
+  border:1px solid rgba(47,146,255,0.20) !important;
+  box-shadow:0 10px 28px rgba(58,129,173,0.10) !important;
+}
+
+.slide-points div{
+  color:#0b2a45 !important;
+  background:rgba(255,255,255,0.74) !important;
+  border:1px solid rgba(47,146,255,0.18) !important;
+  box-shadow:0 12px 28px rgba(58,129,173,0.10) !important;
+}
+
+.slide-points i{
+  color:#1565ff !important;
+}
+
+.secondary-btn{
+  color:#0b2a45 !important;
+  border:1px solid rgba(47,146,255,0.20) !important;
+  background:rgba(255,255,255,0.62) !important;
+  box-shadow:0 14px 32px rgba(58,129,173,0.10) !important;
+}
+
+.secondary-btn:hover{
+  background:#071d33 !important;
+  color:#ffffff !important;
+}
+
+/* Slide 1: clean welcome powder blue */
+.slide-1{
+  background:
+    radial-gradient(circle at 12% 12%, rgba(255,255,255,0.95), transparent 22%),
+    radial-gradient(circle at 84% 18%, rgba(105,207,255,0.42), transparent 28%),
+    linear-gradient(135deg,#ffffff 0%,#eefbff 38%,#dff6ff 72%,#c9f2ff 100%) !important;
+}
+.slide-1::before{
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.76),rgba(223,246,255,.20)),
+    repeating-linear-gradient(135deg,rgba(47,146,255,.07) 0 1px,transparent 1px 32px) !important;
+}
+.slide-1::after{
+  right:-130px !important;
+  bottom:-140px !important;
+  background:#69cfff !important;
+  opacity:.45 !important;
+}
+
+/* Slide 2: worship photo but with soft blue overlay, not dark */
+.slide-2,
+.slide.layout-center{
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.88),rgba(223,246,255,.78),rgba(105,207,255,.50)),
+    url('assets/images/worship.jpg') !important;
+  background-size:cover !important;
+  background-position:center !important;
+}
+.slide-2::before{
+  background:
+    radial-gradient(circle at center, rgba(255,255,255,.44), transparent 34%),
+    linear-gradient(180deg,rgba(255,255,255,.50),rgba(223,246,255,.46)) !important;
+}
+.slide.layout-center .slide-copy{
+  background:rgba(255,255,255,0.70) !important;
+  border:1px solid rgba(47,146,255,0.18) !important;
+  box-shadow:0 22px 55px rgba(58,129,173,0.16) !important;
+}
+
+/* Slide 3: energetic sky blue */
+.slide-3{
+  background:
+    radial-gradient(circle at 86% 18%, rgba(255,255,255,.90), transparent 22%),
+    linear-gradient(115deg,#ffffff 0%,#edfaff 35%,#bfeeff 68%,#69cfff 100%) !important;
+}
+.slide-3::before{
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.70),rgba(255,255,255,.15)),
+    repeating-linear-gradient(135deg,rgba(21,101,255,.08) 0 1px,transparent 1px 34px) !important;
+}
+.slide-3::after{
+  right:12% !important;
+  top:-180px !important;
+  background:#ffffff !important;
+  opacity:.55 !important;
+}
+
+/* Slide 4: peaceful growth theme with soft blue/photo overlay */
+.slide-4{
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.86),rgba(223,246,255,.76),rgba(105,207,255,.38)),
+    url('assets/images/baptism.jpg') !important;
+  background-size:cover !important;
+  background-position:center !important;
+}
+.slide-4::before{
+  background:
+    radial-gradient(circle at 88% 15%, rgba(162,255,210,.30), transparent 24%),
+    linear-gradient(90deg,rgba(255,255,255,.62),rgba(223,246,255,.44),rgba(255,255,255,.20)) !important;
+}
+.slide-4::after{
+  right:-115px !important;
+  top:40px !important;
+  background:#a2ffd2 !important;
+  opacity:.35 !important;
+}
+
+/* Slide 5: very light and airy */
+.slide-5{
+  background:
+    radial-gradient(circle at 12% 18%, rgba(105,207,255,.30), transparent 28%),
+    radial-gradient(circle at 90% 12%, rgba(255,255,255,.95), transparent 24%),
+    linear-gradient(135deg,#ffffff 0%,#f4fcff 42%,#dff6ff 78%,#bdeeff 100%) !important;
+}
+.slide-5::before{
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.82),rgba(223,246,255,.38)),
+    repeating-linear-gradient(135deg,rgba(47,146,255,.08) 0 1px,transparent 1px 32px) !important;
+}
+
+.frame-note{
+  background:rgba(255,255,255,0.78) !important;
+  border:1px solid rgba(47,146,255,0.18) !important;
+  color:#0b2a45 !important;
+  box-shadow:0 14px 35px rgba(58,129,173,0.12) !important;
+}
+
+.frame-note span{
+  color:#58708a !important;
+}
+
+.image-frame{
+  border-color:rgba(255,255,255,0.85) !important;
+  box-shadow:0 24px 70px rgba(58,129,173,0.18) !important;
+}
+
+.image-frame::after{
+  background:linear-gradient(180deg,transparent 42%,rgba(255,255,255,0.62)) !important;
+}
+
+.hero-dots{
+  background:rgba(255,255,255,0.66) !important;
+  border:1px solid rgba(47,146,255,0.18) !important;
+  box-shadow:0 12px 30px rgba(58,129,173,0.14) !important;
+}
+
+.hero-dot{
+  background:rgba(11,42,69,0.26) !important;
+}
+
+.hero-dot.active{
+  background:#2f92ff !important;
+}
+
+.hero-arrow{
+  background:rgba(255,255,255,0.96) !important;
+  color:#1565ff !important;
+  border:1px solid rgba(47,146,255,0.16) !important;
+}
+
+.hero-arrow:hover{
+  background:#1565ff !important;
+  color:#ffffff !important;
+}
+
+@media (max-width:992px){
+  .navbar nav{
+    background:rgba(255,255,255,0.97) !important;
+  }
+
+  .hero-slider{
+    background:
+      radial-gradient(circle at top right, rgba(105,207,255,0.40), transparent 30%),
+      linear-gradient(180deg,#ffffff 0%,#eefbff 55%,#dff6ff 100%) !important;
+  }
+}
+
+@media (max-width:768px){
+  .slide-1,
+  .slide-2,
+  .slide-3,
+  .slide-4,
+  .slide-5{
+    background:
+      radial-gradient(circle at top right, rgba(105,207,255,.35), transparent 30%),
+      linear-gradient(160deg,#ffffff 0%,#eefbff 56%,#dff6ff 100%) !important;
+  }
+
+  .slide-copy,
+  .slide-copy p,
+  .slide-copy h1{
+    color:#0b2a45 !important;
+  }
+}
+
+
+/* =========================================
+   GET INVOLVED ARROW DROPDOWN - FINAL FIX
+   Text stays inline. Arrow only opens submenu.
+========================================= */
+.navbar nav{
+  overflow:visible !important;
+}
+
+.nav-dropdown{
+  position:relative !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:5px !important;
+  margin-left:22px !important;
+  width:auto !important;
+  flex-direction:row !important;
+}
+
+.nav-dropdown > a{
+  margin-left:0 !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  white-space:nowrap !important;
+}
+
+.dropdown-arrow{
+  border:0 !important;
+  outline:0 !important;
+  background:transparent !important;
+  appearance:none !important;
+  -webkit-appearance:none !important;
+  box-shadow:none !important;
+
+  width:18px !important;
+  height:18px !important;
+  min-width:18px !important;
+
+  padding:0 !important;
+  margin:0 !important;
+
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  color:#0b2a45 !important;
+  cursor:pointer !important;
+  line-height:1 !important;
+  z-index:100000 !important;
+}
+
+.dropdown-arrow i{
+  font-size:10px !important;
+  line-height:1 !important;
+  pointer-events:none !important;
+  transition:0.25s ease !important;
+}
+
+.dropdown-arrow.active i{
+  transform:rotate(180deg) !important;
+}
+
+.dropdown-menu{
+  position:absolute !important;
+  top:32px !important;
+  left:0 !important;
+
+  width:170px !important;
+  background:#ffffff !important;
+  padding:10px 0 !important;
+
+  border-radius:0 !important;
+  box-shadow:0 16px 38px rgba(0,0,0,0.14) !important;
+
+  display:none !important;
+  z-index:100001 !important;
+}
+
+.dropdown-menu.show{
+  display:block !important;
+}
+
+.dropdown-menu a{
+  display:block !important;
+  margin:0 !important;
+  padding:11px 18px !important;
+
+  color:#0b2a45 !important;
+  font-size:14px !important;
+  font-weight:600 !important;
+  text-decoration:none !important;
+  white-space:nowrap !important;
+}
+
+.dropdown-menu a:hover{
+  background:#eef8ff !important;
+  color:#1565ff !important;
+}
+
+@media(max-width:992px){
+  .nav-dropdown{
+    width:100% !important;
+    margin-left:0 !important;
+    display:grid !important;
+    grid-template-columns:1fr auto !important;
+    align-items:center !important;
+    gap:8px !important;
+  }
+
+  .nav-dropdown > a{
+    width:auto !important;
+  }
+
+  .dropdown-arrow{
+    width:30px !important;
+    height:30px !important;
+    min-width:30px !important;
+    color:#0b2a45 !important;
+  }
+
+  .dropdown-menu{
+    position:static !important;
+    grid-column:1 / -1 !important;
+    width:100% !important;
+    background:transparent !important;
+    box-shadow:none !important;
+    padding:4px 0 0 14px !important;
+  }
+
+  .dropdown-menu a{
+    padding:9px 0 !important;
+    font-size:14px !important;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">
+  <img src="assets/images/logo.jpg" alt="Church Logo">
+  <span>The Three Are One God Church</span>
+</div>
+
+  <div class="menu-btn" id="menu-btn">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+
+  <nav id="nav-menu">
+    <a href="index.html">Home</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="branches.html">Branches</a>
+    <a href="ministries.html">Ministries</a>
+    <a href="events.html">Events</a>
+    <div class="nav-dropdown">
+      <a href="get-involved.html" class="current">Get Involved</a>
+
+      <button class="dropdown-arrow" type="button" aria-label="Open Get Involved submenu">
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+
+      <div class="dropdown-menu">
+        <a href="giving.html">Giving</a>
+      </div>
+    </div>
+    <a href="prayer.html">Prayer</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- =========================
+     SLIDESHOW HERO
+========================= -->
+<section class="hero-slider" id="top">
+  <div class="slide-stage">
+
+    <!-- SLIDE 1 -->
+    <div class="slide slide-1 layout-split active">
+      <div class="slide-copy">
+      
+        <h1>Life Change <span>Happens Here.</span></h1>
+        <p>Find your place, grow in faith, and become part of a church family that loves God and serves together.</p>
+
+        <div class="slide-points">
+          <div><i class="fa-solid fa-circle-check"></i> A welcoming church family</div>
+          <div><i class="fa-solid fa-circle-check"></i> Faith-centered community</div>
+          <div><i class="fa-solid fa-circle-check"></i> A place to belong and grow</div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#next-steps" class="primary-btn">Choose Your Next Step <i class="fa-solid fa-arrow-down"></i></a>
+          <a href="contact.html" class="secondary-btn">Contact Us <i class="fa-solid fa-message"></i></a>
+        </div>
+      </div>
+
+      <div class="slide-visual">
+        <div class="image-frame">
+          <img src="assets/images/get-involved bg.jpg" alt="Church community">
+          <div class="frame-note">
+            <strong>You are welcome here</strong>
+            <span>Grow with us as one family in Christ.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="slide slide-2 layout-center">
+      <div class="slide-copy">
+        <span class="slide-tag"><i class="fa-solid fa-music"></i> WORSHIP WITH US</span>
+        <h1>Encounter God <span>Through Worship.</span></h1>
+        <p>Join us in worship, prayer, and fellowship as we gather to honor God and encourage one another.</p>
+
+        <div class="slide-points">
+          <div><i class="fa-solid fa-church"></i> Sunday Worship Services</div>
+          <div><i class="fa-solid fa-hands-praying"></i> Prayer Gatherings</div>
+          <div><i class="fa-solid fa-people-group"></i> Fellowship Moments</div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="events.html" class="primary-btn">View Church Events <i class="fa-solid fa-calendar-days"></i></a>
+          <a href="prayer.html" class="secondary-btn">Send Prayer Request <i class="fa-solid fa-heart"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="slide slide-3 layout-cards">
+      <div class="slide-copy">
+        <span class="slide-tag"><i class="fa-solid fa-hand-holding-heart"></i> SERVE WITH PURPOSE</span>
+        <h1>Use Your Gifts <span>To Bless Others.</span></h1>
+        <p>There are many opportunities to serve through worship, media, outreach, hospitality, and church events.</p>
+
+        <div class="slide-points">
+          <div><i class="fa-solid fa-circle-check"></i> Join ministry teams</div>
+          <div><i class="fa-solid fa-circle-check"></i> Help in church activities</div>
+          <div><i class="fa-solid fa-circle-check"></i> Make an impact with your talents</div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#next-steps" class="primary-btn">Volunteer Now <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="slide-visual">
+        <div class="collage-grid">
+          <div class="collage-img tall"><img src="assets/images/volunteer.jpg" alt="Church volunteers"></div>
+          <div class="collage-img"><img src="assets/images/church-community.jpg" alt="Church fellowship"></div>
+          <div class="stat-card"><strong>4+</strong><span>Ways to get involved</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4 -->
+    <div class="slide slide-4 layout-ministry">
+      <div class="slide-copy">
+        <span class="slide-tag"><i class="fa-solid fa-seedling"></i> GROW TOGETHER</span>
+        <h1>Take Your <span>Next Step.</span></h1>
+        <p>Whether you want to become a member, get baptized, volunteer, or join discipleship, we are ready to walk with you.</p>
+
+        <div class="slide-points">
+          <div><i class="fa-solid fa-circle-check"></i> Membership support</div>
+          <div><i class="fa-solid fa-circle-check"></i> Baptism guidance</div>
+          <div><i class="fa-solid fa-circle-check"></i> Discipleship and mentoring</div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#next-steps" class="primary-btn">Start Today <i class="fa-solid fa-arrow-down"></i></a>
+        </div>
+      </div>
+
+      <div class="slide-visual">
+        <div class="ministry-stack">
+          <div class="ministry-card">
+            <img src="assets/images/member1.jpg" alt="Member">
+            <div><h3>Become a Member</h3><p>Be part of a loving church family.</p></div>
+          </div>
+          <div class="ministry-card">
+            <img src="assets/images/worship.jpg" alt="Worship ministry">
+            <div><h3>Join a Ministry</h3><p>Serve God using your gifts and skills.</p></div>
+          </div>
+          <div class="ministry-card">
+            <img src="assets/images/baptism.jpg" alt="Baptism">
+            <div><h3>Get Baptized</h3><p>Publicly declare your faith in Christ.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- SLIDE 5 - LIGHT THEME -->
+    <div class="slide slide-5 layout-split">
+      <div class="slide-copy">
+       
+        <h1>A Bright New <span>Beginning.</span></h1>
+        <p>Take one simple step today. Whether you are new, returning, or searching for a place to grow, our church family is ready to welcome you.</p>
+
+        <div class="slide-points">
+          <div><i class="fa-solid fa-circle-check"></i> Friendly guidance for newcomers</div>
+          <div><i class="fa-solid fa-circle-check"></i> Clear next steps to join</div>
+          <div><i class="fa-solid fa-circle-check"></i> A peaceful place to grow</div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#next-steps" class="primary-btn">Find My Place <i class="fa-solid fa-arrow-down"></i></a>
+          <a href="contact.html" class="secondary-btn">Ask for Guidance <i class="fa-solid fa-message"></i></a>
+        </div>
+      </div>
+
+      <div class="slide-visual">
+        <div class="image-frame">
+          <img src="assets/images/church-community.jpg" alt="Church family welcome">
+          <div class="frame-note">
+            <strong>Start with one step</strong>
+            <span>You do not have to walk alone.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slider-controls" aria-label="Hero slider controls">
+      <button class="hero-arrow" type="button" onclick="changeSlide(-1)" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
+      <div class="hero-dots">
+        <button class="hero-dot active" type="button" onclick="goToSlide(0)" aria-label="Slide 1"></button>
+        <button class="hero-dot" type="button" onclick="goToSlide(1)" aria-label="Slide 2"></button>
+        <button class="hero-dot" type="button" onclick="goToSlide(2)" aria-label="Slide 3"></button>
+        <button class="hero-dot" type="button" onclick="goToSlide(3)" aria-label="Slide 4"></button>
+        <button class="hero-dot" type="button" onclick="goToSlide(4)" aria-label="Slide 5"></button>
+      </div>
+      <button class="hero-arrow" type="button" onclick="changeSlide(1)" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<section class="section-head reveal" id="next-steps">
+  <span class="section-label">YOU CAN MAKE A DIFFERENCE</span>
+  <h2>There’s a place for you here</h2>
+  <p>Choose your next step and discover how you can grow in faith, build meaningful relationships, and serve with purpose.</p>
+</section>
+
+<section class="cards-container reveal">
+  <div class="popup-card member">
+    <div class="card-front">
+      <div>
+        <div class="card-icon"><i class="fa-solid fa-user-plus"></i></div>
+        <h2>Become a <span>Member</span></h2>
+        <p>Join our church family and grow spiritually with us through worship, discipleship, and fellowship.</p>
+      </div>
+      <button class="details-btn" onclick="openPopup('member-popup')">View Details <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+    <div class="popup-overlay" id="member-popup">
+      <div class="popup-content">
+        <button class="close-btn" onclick="closePopup('member-popup')"><i class="fa-solid fa-xmark"></i></button>
+        <div class="popup-top"><div class="popup-icon"><i class="fa-solid fa-user-plus"></i></div><h2>Become a Member</h2></div>
+        <p class="popup-description">Become part of our growing church family through worship, discipleship, and fellowship activities.</p>
+        <div class="popup-features">
+          <div class="feature-box"><i class="fa-solid fa-book-bible"></i><span>Bible Studies</span></div>
+          <div class="feature-box"><i class="fa-solid fa-users"></i><span>Member Fellowship</span></div>
+          <div class="feature-box"><i class="fa-solid fa-heart"></i><span>Spiritual Growth</span></div>
+          <div class="feature-box"><i class="fa-solid fa-crown"></i><span>Leadership Training</span></div>
+        </div>
+        <a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank" class="register-btn">Register Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup-card volunteer">
+    <div class="card-front">
+      <div>
+        <div class="card-icon"><i class="fa-solid fa-handshake"></i></div>
+        <h2><span>Volunteer</span></h2>
+        <p>Use your talents to serve and bless others through different ministry opportunities.</p>
+      </div>
+      <button class="details-btn" onclick="openPopup('volunteer-popup')">View Details <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+    <div class="popup-overlay" id="volunteer-popup">
+      <div class="popup-content">
+        <button class="close-btn" onclick="closePopup('volunteer-popup')"><i class="fa-solid fa-xmark"></i></button>
+        <div class="popup-top"><div class="popup-icon"><i class="fa-solid fa-handshake"></i></div><h2>Volunteer with Us</h2></div>
+        <p class="popup-description">Help through worship ministry, media, outreach, hospitality, and church activities.</p>
+        <div class="popup-features">
+          <div class="feature-box"><i class="fa-solid fa-calendar-days"></i><span>Flexible Schedule</span></div>
+          <div class="feature-box"><i class="fa-solid fa-graduation-cap"></i><span>Training Included</span></div>
+          <div class="feature-box"><i class="fa-solid fa-star"></i><span>Serve with Purpose</span></div>
+        </div>
+        <a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank" class="register-btn">Register Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup-card baptized">
+    <div class="card-front">
+      <div>
+        <div class="card-icon"><i class="fa-solid fa-droplet"></i></div>
+        <h2>Get <span>Baptized</span></h2>
+        <p>Publicly declare your faith in Christ and begin a new chapter in your walk with God.</p>
+      </div>
+      <button class="details-btn" onclick="openPopup('baptized-popup')">View Details <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+    <div class="popup-overlay" id="baptized-popup">
+      <div class="popup-content">
+        <button class="close-btn" onclick="closePopup('baptized-popup')"><i class="fa-solid fa-xmark"></i></button>
+        <div class="popup-top"><div class="popup-icon"><i class="fa-solid fa-droplet"></i></div><h2>Get Baptized</h2></div>
+        <p class="popup-description">Begin a new chapter in your spiritual journey through baptism and faith commitment.</p>
+        <div class="popup-features">
+          <div class="feature-box"><i class="fa-solid fa-book-open"></i><span>Baptism Classes</span></div>
+          <div class="feature-box"><i class="fa-solid fa-calendar-check"></i><span>Available Schedules</span></div>
+          <div class="feature-box"><i class="fa-solid fa-certificate"></i><span>Certificate Included</span></div>
+        </div>
+        <a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank" class="register-btn">Register Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup-card discipleship">
+    <div class="card-front">
+      <div>
+        <div class="card-icon"><i class="fa-solid fa-book"></i></div>
+        <h2>Be a <span>Disciple</span></h2>
+        <p>Deepen your relationship with God through Bible studies, mentorship, and growth groups.</p>
+      </div>
+      <button class="details-btn" onclick="openPopup('disciple-popup')">View Details <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+    <div class="popup-overlay" id="disciple-popup">
+      <div class="popup-content">
+        <button class="close-btn" onclick="closePopup('disciple-popup')"><i class="fa-solid fa-xmark"></i></button>
+        <div class="popup-top"><div class="popup-icon"><i class="fa-solid fa-book"></i></div><h2>Be a Disciple</h2></div>
+        <p class="popup-description">Grow through Bible studies, mentorship, and leadership development.</p>
+        <div class="popup-features">
+          <div class="feature-box"><i class="fa-solid fa-seedling"></i><span>New Believers Class</span></div>
+          <div class="feature-box"><i class="fa-solid fa-user-group"></i><span>Mentorship Support</span></div>
+          <div class="feature-box"><i class="fa-solid fa-user-tie"></i><span>Leadership Coaching</span></div>
+        </div>
+        <a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank" class="register-btn">Register Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-head reveal">
+  <span class="section-label">WHY GET INVOLVED</span>
+  <h2>Grow, belong, and serve with purpose</h2>
+  <p>Getting involved helps you build meaningful relationships while strengthening your faith and serving others.</p>
+</section>
+
+<section class="why-section reveal">
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon"><i class="fa-solid fa-book-bible"></i></div>
+      <h3>Grow in Faith</h3>
+      <p>Learn God’s Word, join Bible studies, and be guided through discipleship and spiritual formation.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><i class="fa-solid fa-people-roof"></i></div>
+      <h3>Build Community</h3>
+      <p>Meet people who will encourage you, pray with you, and walk with you in your journey with God.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+      <h3>Serve with Purpose</h3>
+      <p>Use your gifts in ministry, outreach, worship, media, and other opportunities to bless others.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section reveal">
+  <div class="faq-wrap">
+    <div class="section-head" style="padding:0 0 35px;background:transparent;">
+      <span class="section-label">QUESTIONS</span>
+      <h2>Frequently Asked Questions</h2>
+      <p>Here are simple answers for people who want to take their next step.</p>
+    </div>
+
+    <div class="faq-item active">
+      <button class="faq-question">How do I become a member? <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="faq-answer" style="max-height:120px;"><p>Click the membership details button, fill out the registration form, and our church team will guide you through the next steps.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Do I need experience to volunteer? <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="faq-answer"><p>No. You only need a willing heart. Training and guidance will be provided depending on the ministry you join.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">How can I get baptized? <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="faq-answer"><p>You can register through the baptism details popup. The church will inform you about classes, schedule, and preparation.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Can young people join ministries? <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="faq-answer"><p>Yes. Youth and young adults are welcome to join activities, discipleship, and ministry opportunities suitable for them.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section reveal">
+  <div class="cta-card">
+    <div>
+      <span class="section-label">READY TO START?</span>
+      <h2>Let’s help you find your next step.</h2>
+      <p>Whether you want to join, serve, get baptized, or grow through discipleship, we are here to guide you.</p>
+    </div>
+    <a href="#next-steps" class="primary-btn">Choose a Step <i class="fa-solid fa-arrow-up"></i></a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>The Three Are One God Church</h3>
+      <p>A Christ-centered family dedicated to loving God, loving people, and serving communities through worship, discipleship, and ministry.</p>
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="branches.html">Branches</a>
+      <a href="ministries.html">Ministries</a>
+      <a href="events.html">Events</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <a href="#next-steps">Become a Member</a>
+      <a href="#next-steps">Volunteer</a>
+      <a href="#next-steps">Get Baptized</a>
+      <a href="#next-steps">Be a Disciple</a>
+    </div>
+    <div class="footer-col">
+      <h4>Service Info</h4>
+      <p>Sunday Worship</p>
+      <p>9:00 AM & 11:00 AM</p>
+      <p>Midweek Fellowship</p>
+      <p>Wednesday 5:00 PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 The Three Are One God Church. All rights reserved.</p></div>
+</footer>
+
+<script>
+/* NAVBAR SCROLL */
+window.addEventListener("scroll", function(){
+  const navbar = document.querySelector(".navbar");
+  navbar.classList.toggle("scrolled", window.scrollY > 50);
+});
+
+/* MOBILE MENU */
+const menuBtn = document.getElementById("menu-btn");
+const navMenu = document.getElementById("nav-menu");
+
+menuBtn.addEventListener("click",()=>{
+  navMenu.classList.toggle("active");
+});
+
+document.querySelectorAll("#nav-menu a").forEach(link=>{
+  link.addEventListener("click",()=> navMenu.classList.remove("active"));
+});
+
+/* MANUAL HERO SLIDER */
+const slides = document.querySelectorAll(".slide");
+const heroDots = document.querySelectorAll(".hero-dot");
+let currentSlide = 0;
+
+function showSlide(index){
+  slides.forEach(slide => slide.classList.remove("active"));
+  heroDots.forEach(dot => dot.classList.remove("active"));
+
+  slides[index].classList.add("active");
+  heroDots[index].classList.add("active");
+}
+
+function changeSlide(direction){
+  currentSlide += direction;
+  if(currentSlide < 0) currentSlide = slides.length - 1;
+  if(currentSlide >= slides.length) currentSlide = 0;
+  showSlide(currentSlide);
+}
+
+function goToSlide(index){
+  currentSlide = index;
+  showSlide(currentSlide);
+}
+
+/* POPUPS */
+function openPopup(id){
+  document.getElementById(id).classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closePopup(id){
+  document.getElementById(id).classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+window.addEventListener("click", function(e){
+  document.querySelectorAll(".popup-overlay").forEach((popup)=>{
+    if(e.target === popup){
+      popup.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  });
+});
+
+window.addEventListener("keydown", function(e){
+  if(e.key === "Escape"){
+    document.querySelectorAll(".popup-overlay").forEach((popup)=> popup.classList.remove("active"));
+    document.body.style.overflow = "";
+  }
+});
+
+/* FAQ */
+document.querySelectorAll(".faq-question").forEach(button=>{
+  button.addEventListener("click",()=>{
+    const item = button.parentElement;
+    const answer = item.querySelector(".faq-answer");
+    const isActive = item.classList.contains("active");
+
+    document.querySelectorAll(".faq-item").forEach(faq=>{
+      faq.classList.remove("active");
+      faq.querySelector(".faq-answer").style.maxHeight = null;
+    });
+
+    if(!isActive){
+      item.classList.add("active");
+      answer.style.maxHeight = answer.scrollHeight + "px";
+    }
+  });
+});
+
+/* SCROLL REVEAL */
+const revealElements = document.querySelectorAll(".reveal");
+const revealObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+},{ threshold:0.12 });
+
+revealElements.forEach(el=> revealObserver.observe(el));
+</script>
+
+<script>
+/* GET INVOLVED DROPDOWN: arrow only */
+document.addEventListener("DOMContentLoaded", function(){
+  const dropdownArrow = document.querySelector(".dropdown-arrow");
+  const dropdownMenu = document.querySelector(".dropdown-menu");
+
+  if(dropdownArrow && dropdownMenu){
+    dropdownArrow.addEventListener("click", function(e){
+      e.preventDefault();
+      e.stopPropagation();
+
+      dropdownMenu.classList.toggle("show");
+      dropdownArrow.classList.toggle("active");
+    });
+
+    dropdownMenu.addEventListener("click", function(e){
+      e.stopPropagation();
+    });
+
+    document.addEventListener("click", function(){
+      dropdownMenu.classList.remove("show");
+      dropdownArrow.classList.remove("active");
+    });
+  }
+});
+</script>
+
+</body>
+</html>

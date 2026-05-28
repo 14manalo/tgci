@@ -1,0 +1,2837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Three Are One God Church | Events</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#eef8ff;
+  color:#102f4d;
+  overflow-x:hidden;
+}
+
+::-webkit-scrollbar{
+  width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#4fc3ff;
+  border-radius:20px;
+}
+
+/* ===== NAVBAR ===== */
+.navbar{
+  background:transparent;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 60px;
+  position:fixed;
+  width:100%;
+  top:0;
+  left:0;
+  z-index:1000;
+  transition:0.4s ease;
+}
+
+.navbar.scrolled{
+  background:rgba(8,25,45,0.75);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  padding:13px 60px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.25);
+  border-bottom:1px solid rgba(255,255,255,0.12);
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  font-size:17px;
+  font-weight:800;
+  color:#102f4d;
+  text-shadow:none;
+}
+
+.logo img{
+  width:42px;
+  height:42px;
+  object-fit:contain;
+  border-radius:50%;
+}
+
+.navbar nav{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.navbar nav a{
+  margin-left:22px;
+  color:white;
+  text-decoration:none;
+  font-weight:800;
+  font-size:14px;
+  transition:0.3s ease;
+}
+
+.navbar nav a:hover,
+.navbar nav a.current{
+  color:#6bd2ff;
+}
+
+/* ===== BURGER BUTTON ===== */
+.menu-btn{
+  width:52px;
+  height:52px;
+  background:#1565ff;
+  border-radius:17px;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+  box-shadow:0 12px 30px rgba(21,101,255,0.35);
+}
+
+.menu-btn i{
+  color:white;
+  font-size:22px;
+}
+
+/* ===== HERO ===== */
+.events-hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:145px 7% 130px;
+  position:relative;
+  color:white;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 14% 25%,rgba(107,210,255,0.22),transparent 30%),
+    radial-gradient(circle at 88% 30%,rgba(21,101,255,0.20),transparent 28%),
+    linear-gradient(135deg,#071320 0%,#0b263f 50%,#102f4d 100%);
+}
+
+.events-hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(8,25,45,0.60),rgba(8,25,45,0.82)),
+    url("assets/images/events-hero.jpg") center/cover no-repeat;
+  opacity:0.45;
+}
+
+.events-hero::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-1px;
+  width:100%;
+  height:105px;
+  background:#eef8ff;
+  clip-path:polygon(0 58%,100% 0,100% 100%,0 100%);
+}
+
+.hero-layout{
+  width:100%;
+  max-width:1180px;
+  display:grid;
+  grid-template-columns:0.95fr 1.05fr;
+  gap:54px;
+  align-items:center;
+  position:relative;
+  z-index:2;
+}
+
+.hero-content{
+  max-width:650px;
+  animation:fadeUp 1s ease;
+}
+
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+
+  width:auto !important;
+  max-width:max-content !important;
+
+  padding:10px 22px !important;
+
+  border-radius:999px;
+  background:rgba(255,255,255,0.78);
+  border:1px solid rgba(21,101,255,0.14);
+
+  color:#1565ff;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:1px;
+  text-transform:uppercase;
+
+  box-shadow:0 14px 35px rgba(16,47,77,0.08);
+
+  white-space:nowrap;
+}
+
+.events-hero h1{
+  font-size:clamp(42px,6vw,78px);
+  line-height:1.05;
+  font-weight:900;
+  margin-bottom:22px;
+  text-shadow:0 5px 25px rgba(0,0,0,0.52);
+}
+
+.events-hero p{
+  color:rgba(255,255,255,0.9);
+  line-height:1.8;
+  font-size:clamp(15px,1.5vw,19px);
+  margin-bottom:34px;
+}
+
+.hero-actions{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.hero-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:14px 28px;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:800;
+  transition:0.3s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-btn.primary{
+  background:white;
+  color:#102f4d;
+}
+
+.hero-btn.secondary{
+  border:1.5px solid rgba(255,255,255,0.65);
+  background:rgba(255,255,255,0.07);
+  color:white;
+  backdrop-filter:blur(10px);
+}
+
+.hero-btn:hover{
+  transform:translateY(-4px);
+}
+
+.hero-btn::after,
+.details-btn::after,
+.modal-register-btn::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:80%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.35),transparent);
+  transform:skewX(-20deg);
+  transition:0.55s ease;
+}
+
+.hero-btn:hover::after,
+.details-btn:hover::after,
+.modal-register-btn:hover::after{
+  left:130%;
+}
+
+/* ===== HERO EVENT FEATURE ===== */
+.hero-feature{
+  position:relative;
+  min-height:540px;
+}
+
+.event-orbit{
+  position:absolute;
+  inset:25px;
+  border:1px solid rgba(255,255,255,0.10);
+  border-radius:50%;
+  animation:slowSpin 24s linear infinite;
+}
+
+.feature-event-card{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:min(420px,100%);
+  border-radius:34px;
+  overflow:hidden;
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.16);
+  backdrop-filter:blur(18px);
+  box-shadow:0 28px 70px rgba(0,0,0,0.30);
+}
+
+.feature-img{
+  height:245px;
+  background:
+    linear-gradient(rgba(8,25,45,0.15),rgba(8,25,45,0.55)),
+    url("assets/images/event4.jpg") center/cover no-repeat;
+  position:relative;
+}
+
+.feature-date{
+  position:absolute;
+  left:22px;
+  top:22px;
+  width:78px;
+  height:78px;
+  border-radius:22px;
+  background:white;
+  color:#102f4d;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  box-shadow:0 12px 30px rgba(0,0,0,0.25);
+}
+
+.feature-date span{
+  color:#1565ff;
+  font-size:14px;
+}
+
+.feature-date strong{
+  font-size:26px;
+}
+
+.feature-body{
+  padding:26px;
+}
+
+.feature-body h3{
+  font-size:26px;
+  margin-bottom:10px;
+}
+
+.feature-body p{
+  font-size:14px;
+  margin-bottom:18px;
+  color:rgba(255,255,255,0.82);
+}
+
+.feature-meta{
+  display:grid;
+  gap:10px;
+  color:rgba(255,255,255,0.88);
+  font-weight:600;
+  font-size:14px;
+}
+
+.feature-meta i{
+  color:#8edfff;
+  width:20px;
+}
+
+.float-note{
+  position:absolute;
+  padding:18px 20px;
+  border-radius:22px;
+  background:rgba(255,255,255,0.10);
+  border:1px solid rgba(255,255,255,0.16);
+  backdrop-filter:blur(16px);
+  box-shadow:0 20px 45px rgba(0,0,0,0.24);
+  animation:floatY 4.8s ease-in-out infinite;
+}
+
+.float-note i{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:#1565ff;
+  color:white;
+  margin-right:10px;
+}
+
+.float-note.top{
+  top:40px;
+  right:0;
+}
+
+.float-note.bottom{
+  left:0;
+  bottom:60px;
+  animation-delay:.7s;
+}
+
+/* ===== MAIN POWDER BLUE AREA ===== */
+.events-main{
+  position:relative;
+  background:
+    radial-gradient(circle at 8% 12%,rgba(107,210,255,0.26),transparent 28%),
+    radial-gradient(circle at 92% 22%,rgba(21,101,255,0.12),transparent 26%),
+    linear-gradient(180deg,#eef8ff 0%,#ffffff 48%,#eaf7ff 100%);
+  padding:95px 7% 110px;
+  overflow:hidden;
+}
+
+.events-main::before{
+  content:'✦';
+  position:absolute;
+  top:90px;
+  left:7%;
+  font-size:110px;
+  color:rgba(21,101,255,0.07);
+}
+
+.events-main::after{
+  content:'';
+  position:absolute;
+  right:-160px;
+  top:360px;
+  width:420px;
+  height:420px;
+  border-radius:50%;
+  border:55px solid rgba(107,210,255,0.12);
+}
+
+/* ===== STATS ===== */
+.event-stats{
+  max-width:1180px;
+  margin:0 auto 80px;
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.stat-card{
+  background:rgba(255,255,255,0.88);
+  border:1px solid rgba(16,47,77,0.08);
+  box-shadow:0 18px 45px rgba(16,47,77,0.11);
+  border-radius:24px;
+  padding:28px 20px;
+  text-align:center;
+  backdrop-filter:blur(14px);
+  transition:0.35s ease;
+}
+
+.stat-card:hover{
+  transform:translateY(-8px);
+}
+
+.stat-card i{
+  color:#1565ff;
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+.stat-card h3{
+  font-size:30px;
+  color:#102f4d;
+  margin-bottom:4px;
+}
+
+.stat-card p{
+  color:#55728d;
+  font-size:14px;
+  font-weight:700;
+}
+
+/* ===== SECTION HEADER ===== */
+.section-header{
+  max-width:780px;
+  margin:0 auto 44px;
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+
+.section-label{
+  color:#1565ff;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:1.6px;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+.section-header h2{
+  font-size:clamp(32px,4vw,52px);
+  color:#102f4d;
+  line-height:1.12;
+  margin-bottom:15px;
+}
+
+.section-header p{
+  color:#55728d;
+  line-height:1.8;
+  font-size:16px;
+}
+
+/* ===== FEATURED UPCOMING ===== */
+.featured-event{
+  max-width:1180px;
+  margin:0 auto 80px;
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:34px;
+  align-items:center;
+  background:#fff;
+  border-radius:34px;
+  padding:24px;
+  box-shadow:0 22px 65px rgba(16,47,77,0.12);
+  border:1px solid rgba(16,47,77,0.07);
+}
+
+.featured-event-img{
+  min-height:420px;
+  border-radius:28px;
+  background:
+    linear-gradient(rgba(8,25,45,0.20),rgba(8,25,45,0.45)),
+    url("assets/images/event4.jpg") center/cover no-repeat;
+  position:relative;
+  overflow:hidden;
+}
+
+.featured-event-img .feature-date{
+  left:24px;
+  top:24px;
+}
+
+.featured-event-content{
+  padding:24px 20px;
+}
+
+.featured-event-content h2{
+  font-size:clamp(30px,4vw,48px);
+  line-height:1.12;
+  margin-bottom:18px;
+  color:#102f4d;
+}
+
+.featured-event-content p{
+  color:#55728d;
+  line-height:1.8;
+  margin-bottom:22px;
+}
+
+.feature-list{
+  display:grid;
+  gap:12px;
+  margin-bottom:26px;
+}
+
+.feature-list div{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px;
+  border-radius:18px;
+  background:#eef8ff;
+  color:#102f4d;
+  font-weight:800;
+}
+
+.feature-list i{
+  color:#1565ff;
+}
+
+/* ===== EVENTS SECTION ===== */
+.events-section{
+  max-width:1180px;
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+/* TABS */
+.event-tabs{
+  display:flex;
+  gap:14px;
+  margin-bottom:34px;
+  overflow-x:auto;
+  padding:18px;
+  border-radius:26px;
+  background:rgba(255,255,255,0.82);
+  border:1px solid rgba(16,47,77,0.07);
+  box-shadow:0 18px 45px rgba(16,47,77,0.10);
+  backdrop-filter:blur(14px);
+}
+
+.event-tabs a{
+  white-space:nowrap;
+  text-decoration:none;
+  color:#102f4d;
+  font-size:14px;
+  font-weight:900;
+  padding:13px 20px;
+  border-radius:18px;
+  background:#eef8ff;
+  border:1px solid rgba(16,47,77,0.07);
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+.event-tabs a.active,
+.event-tabs a:hover{
+  background:#1565ff;
+  color:white;
+}
+
+/* GRID */
+.event-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+}
+
+/* CARD */
+.event-card{
+  background:rgba(255,255,255,0.92);
+  border:1px solid rgba(16,47,77,0.08);
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 18px 45px rgba(16,47,77,0.11);
+  display:flex;
+  flex-direction:column;
+  transition:0.35s ease;
+}
+
+.event-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 28px 70px rgba(16,47,77,0.18);
+}
+
+.event-image{
+  position:relative;
+  height:210px;
+  overflow:hidden;
+}
+
+.event-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:0.5s ease;
+}
+
+.event-card:hover .event-image img{
+  transform:scale(1.08);
+}
+
+.event-image::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 35%,rgba(8,25,45,0.72));
+}
+
+.event-tag{
+  position:absolute;
+  top:16px;
+  right:16px;
+  background:white;
+  color:#1565ff;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:900;
+  z-index:2;
+}
+
+.event-date-card{
+  position:absolute;
+  left:16px;
+  bottom:16px;
+  width:68px;
+  height:68px;
+  border-radius:18px;
+  background:white;
+  z-index:2;
+  color:#102f4d;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  font-weight:900;
+}
+
+.event-date-card span{
+  color:#1565ff;
+  font-size:12px;
+}
+
+.event-date-card strong{
+  font-size:22px;
+}
+
+.event-content{
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+
+.event-content h3{
+  font-size:22px;
+  margin-bottom:12px;
+  color:#102f4d;
+}
+
+.event-content p{
+  color:#55728d;
+  font-size:14.5px;
+  line-height:1.7;
+  margin-bottom:18px;
+}
+
+.event-info{
+  color:#375775;
+  font-size:14px;
+  margin-bottom:10px;
+  font-weight:600;
+}
+
+.event-info i{
+  color:#1565ff;
+  margin-right:8px;
+  width:18px;
+}
+
+/* DETAILS BUTTON */
+.details-btn,
+.modal-register-btn{
+  margin-top:auto;
+  display:block;
+  width:100%;
+  border:none;
+  text-align:center;
+  text-decoration:none;
+  padding:14px;
+  border-radius:14px;
+  background:#1565ff;
+  color:white;
+  font-weight:900;
+  font-size:14px;
+  cursor:pointer;
+  transition:0.3s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+.details-btn:hover,
+.modal-register-btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 25px rgba(0,94,255,0.25);
+}
+
+.details-btn.ended{
+  background:#eef8ff;
+  color:#55728d;
+}
+
+/* ===== SCRIPTURE BANNER ===== */
+.scripture-banner{
+  max-width:1180px;
+  margin:90px auto 0;
+  position:relative;
+  z-index:2;
+  border-radius:34px;
+  padding:58px 34px;
+  text-align:center;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,0.92),rgba(238,248,255,0.92));
+  border:1px solid rgba(16,47,77,0.08);
+  box-shadow:0 22px 65px rgba(16,47,77,0.12);
+}
+
+.scripture-banner::before{
+  content:'';
+  position:absolute;
+  width:350px;
+  height:350px;
+  border-radius:50%;
+  background:rgba(107,210,255,0.22);
+  filter:blur(85px);
+  left:-90px;
+  top:-120px;
+}
+
+.scripture-icon{
+  width:78px;
+  height:78px;
+  margin:0 auto 22px;
+  border-radius:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#4facfe,#1565ff);
+  color:white;
+  font-size:32px;
+  box-shadow:0 18px 40px rgba(21,101,255,0.25);
+  position:relative;
+  z-index:2;
+}
+
+.scripture-banner h2{
+  max-width:880px;
+  margin:0 auto 15px;
+  color:#102f4d;
+  font-size:clamp(28px,4vw,46px);
+  line-height:1.25;
+  position:relative;
+  z-index:2;
+}
+
+.scripture-banner p{
+  color:#1565ff;
+  font-weight:900;
+  position:relative;
+  z-index:2;
+}
+
+/* ===== CTA ===== */
+.events-cta{
+  max-width:1180px;
+  margin:90px auto 0;
+  position:relative;
+  z-index:2;
+  border-radius:34px;
+  padding:60px 30px;
+  text-align:center;
+  color:white;
+  background:
+    linear-gradient(135deg,rgba(8,25,45,0.95),rgba(21,101,255,0.78)),
+    url("assets/images/events-hero.jpg") center/cover no-repeat;
+  box-shadow:0 22px 65px rgba(16,47,77,0.18);
+  overflow:hidden;
+}
+
+.events-cta::before{
+  content:'';
+  position:absolute;
+  width:350px;
+  height:350px;
+  border-radius:50%;
+  background:rgba(107,210,255,0.16);
+  filter:blur(90px);
+  left:-110px;
+  top:-120px;
+}
+
+.events-cta h2{
+  font-size:clamp(30px,4vw,52px);
+  margin-bottom:14px;
+  position:relative;
+  z-index:2;
+}
+
+.events-cta p{
+  max-width:720px;
+  margin:0 auto 28px;
+  color:rgba(255,255,255,0.85);
+  line-height:1.8;
+  position:relative;
+  z-index:2;
+}
+
+.events-cta .hero-actions{
+  justify-content:center;
+  position:relative;
+  z-index:2;
+}
+
+/* MODAL */
+.event-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.72);
+  backdrop-filter:blur(10px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
+  padding:20px;
+}
+
+.event-modal.active{
+  display:flex;
+}
+
+.modal-box{
+  width:100%;
+  max-width:650px;
+  max-height:86vh;
+  overflow-y:auto;
+  background:#ffffff;
+  color:#102f4d;
+  border-radius:30px;
+  padding:34px;
+  position:relative;
+  box-shadow:0 30px 75px rgba(0,0,0,0.35);
+  animation:modalPop 0.3s ease;
+}
+
+.close-modal{
+  position:absolute;
+  top:18px;
+  right:18px;
+  width:44px;
+  height:44px;
+  border:none;
+  border-radius:50%;
+  background:#eef8ff;
+  color:#102f4d;
+  font-size:26px;
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+.close-modal:hover{
+  background:#ff4d4d;
+  color:white;
+  transform:rotate(90deg);
+}
+
+.modal-box h2{
+  margin-bottom:15px;
+  padding-right:45px;
+  font-size:clamp(28px,4vw,38px);
+}
+
+.modal-box > p{
+  color:#55728d;
+  line-height:1.8;
+  margin-bottom:20px;
+}
+
+.modal-info{
+  margin-bottom:22px;
+  display:grid;
+  gap:10px;
+}
+
+.modal-info p{
+  color:#375775;
+  font-weight:700;
+}
+
+.modal-info i{
+  color:#1565ff;
+  margin-right:8px;
+  width:20px;
+}
+
+.modal-extra{
+  background:#eef8ff;
+  border:1px solid rgba(16,47,77,0.07);
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:24px;
+}
+
+.modal-extra h4{
+  margin-bottom:12px;
+  color:#1565ff;
+}
+
+.modal-extra ul{
+  padding-left:18px;
+}
+
+.modal-extra li{
+  margin-bottom:8px;
+  color:#55728d;
+  line-height:1.5;
+}
+
+/* ===== FOOTER ===== */
+.site-footer{
+  background:#081b2e;
+  color:white;
+  padding:70px 7% 28px;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.footer-grid{
+  max-width:1180px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:34px;
+}
+
+.footer-brand h3{
+  font-size:22px;
+  margin-bottom:14px;
+}
+
+.footer-brand p,
+.footer-col p,
+.footer-col a{
+  color:rgba(255,255,255,0.75);
+  line-height:1.8;
+  font-size:14px;
+}
+
+.footer-col h4{
+  margin-bottom:16px;
+  color:#8edfff;
+}
+
+.footer-col a{
+  display:block;
+  text-decoration:none;
+  margin-bottom:9px;
+  transition:0.3s ease;
+}
+
+.footer-col a:hover{
+  color:#8edfff;
+  transform:translateX(4px);
+}
+
+.socials{
+  display:flex;
+  gap:10px;
+  margin-top:18px;
+}
+
+.socials a{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.08);
+  color:white;
+  text-decoration:none;
+}
+
+.footer-bottom{
+  max-width:1180px;
+  margin:35px auto 0;
+  padding-top:24px;
+  border-top:1px solid rgba(255,255,255,0.08);
+  text-align:center;
+  color:rgba(255,255,255,0.75);
+}
+
+/* ANIMATIONS */
+.reveal{
+  opacity:0;
+  transform:translateY(45px);
+  transition:0.85s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes modalPop{
+  from{opacity:0;transform:scale(0.92);}
+  to{opacity:1;transform:scale(1);}
+}
+
+@keyframes floatY{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-14px);}
+}
+
+@keyframes slowSpin{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .hero-layout,
+  .featured-event{
+    grid-template-columns:1fr;
+  }
+
+  .hero-content{
+    max-width:850px;
+    text-align:center;
+    margin:0 auto;
+  }
+
+  .hero-actions{
+    justify-content:center;
+  }
+
+  .hero-feature{
+    min-height:560px;
+    max-width:650px;
+    width:100%;
+    margin:0 auto;
+  }
+
+  .event-stats,
+  .event-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:992px){
+  .navbar{
+    padding:18px 20px;
+  }
+
+  .navbar.scrolled{
+    padding:15px 20px;
+  }
+
+  .logo{
+    font-size:15px;
+    max-width:220px;
+    line-height:1.3;
+  }
+
+  .menu-btn{
+    display:flex;
+  }
+
+  .navbar nav{
+    position:absolute;
+    top:88px;
+    right:20px;
+    width:250px;
+    background:rgba(255,255,255,0.96);
+    backdrop-filter:blur(15px);
+    border-radius:24px;
+    padding:25px;
+    display:none;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:18px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.18);
+  }
+
+  .navbar nav.active{
+    display:flex;
+  }
+
+  .navbar nav a{
+    color:#102f4d;
+    font-size:15px;
+    margin:0;
+  }
+}
+
+@media(max-width:720px){
+  .events-hero{
+    min-height:auto;
+    padding:135px 20px 115px;
+  }
+
+  .events-main{
+    padding:70px 20px 85px;
+  }
+
+  .hero-feature{
+    min-height:auto;
+  }
+
+  .event-orbit{
+    display:none;
+  }
+
+  .feature-event-card{
+    position:relative;
+    left:auto;
+    top:auto;
+    transform:none;
+    width:100%;
+    margin-bottom:16px;
+  }
+
+  .float-note{
+    position:relative;
+    inset:auto !important;
+    width:100%;
+    margin-bottom:14px;
+  }
+
+  .event-stats{
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-bottom:60px;
+  }
+
+  .stat-card{
+    padding:22px 12px;
+  }
+
+  .stat-card h3{
+    font-size:24px;
+  }
+
+  .featured-event{
+    padding:16px;
+    border-radius:26px;
+  }
+
+  .featured-event-img{
+    min-height:320px;
+  }
+
+  .featured-event-content{
+    padding:18px 8px 10px;
+  }
+
+  .event-grid{
+    grid-template-columns:1fr;
+  }
+
+  .event-tabs{
+    gap:10px;
+    padding:14px;
+  }
+
+  .event-tabs a{
+    font-size:12px;
+    padding:11px 14px;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+  }
+
+  .hero-btn{
+    width:100%;
+  }
+
+  .scripture-banner,
+  .events-cta{
+    padding:42px 20px;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .site-footer{
+    padding:55px 20px 26px;
+  }
+}
+
+@media(max-width:500px){
+  .navbar{
+    padding:14px 16px;
+  }
+
+  .logo{
+    font-size:13px;
+    max-width:190px;
+  }
+
+  .menu-btn{
+    width:45px;
+    height:45px;
+    border-radius:14px;
+  }
+
+  .navbar nav{
+    top:75px;
+    left:14px;
+    right:14px;
+    width:auto;
+  }
+
+  .events-hero h1{
+    font-size:38px;
+  }
+
+  .events-hero p{
+    font-size:14px;
+  }
+
+  .hero-badge{
+    font-size:11px;
+  }
+
+  .feature-img{
+    height:220px;
+  }
+
+  .event-stats{
+    grid-template-columns:1fr;
+  }
+
+  .modal-box{
+    padding:30px 20px;
+  }
+}
+
+
+/* =========================================================
+   PREMIUM LIGHT EVENTS UPGRADE
+   - light powder-blue hero
+   - countdown timer
+   - search filter
+   - calendar-style event dates
+   - gallery slider
+   - soft animations
+========================================================= */
+.navbar{
+  background:rgba(255,255,255,0.52);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(16,47,77,0.08);
+}
+.navbar.scrolled{
+  background:rgba(255,255,255,0.88);
+  border-bottom:1px solid rgba(16,47,77,0.10);
+  box-shadow:0 10px 28px rgba(16,47,77,0.10);
+}
+.logo,
+.navbar nav a{ color:#102f4d; text-shadow:none; }
+.navbar nav a:hover,
+.navbar nav a.current{ color:#1565ff; }
+
+.events-hero{
+  color:#102f4d;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(107,210,255,0.34), transparent 28%),
+    radial-gradient(circle at 86% 20%, rgba(255,255,255,0.95), transparent 24%),
+    linear-gradient(135deg,#ffffff 0%,#f4fcff 38%,#dff6ff 100%) !important;
+  min-height:92vh;
+}
+.events-hero::before{
+  opacity:.26;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.88),rgba(223,246,255,.72)),
+    url("assets/images/events-hero.jpg") center/cover no-repeat;
+}
+.events-hero h1{
+  color:#102f4d;
+  text-shadow:none;
+}
+.events-hero p{ color:#55728d; }
+.hero-badge{
+  color:#1565ff;
+  background:rgba(255,255,255,0.70);
+  border:1px solid rgba(21,101,255,0.14);
+  box-shadow:0 14px 35px rgba(16,47,77,0.08);
+}
+.hero-btn.primary{
+  background:linear-gradient(135deg,#1565ff,#6bd2ff);
+  color:white;
+  box-shadow:0 18px 38px rgba(21,101,255,.20);
+}
+.hero-btn.secondary{
+  color:#102f4d;
+  border:1.5px solid rgba(21,101,255,0.16);
+  background:rgba(255,255,255,0.70);
+}
+.event-orbit{ border-color:rgba(21,101,255,.10); }
+.feature-event-card,
+.float-note{
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(21,101,255,.12);
+  color:#102f4d;
+  box-shadow:0 22px 60px rgba(16,47,77,.12);
+}
+.feature-body p,
+.feature-meta{ color:#55728d; }
+.feature-meta i{ color:#1565ff; }
+.float-note i{ background:linear-gradient(135deg,#1565ff,#6bd2ff); }
+
+.light-ray{
+  position:absolute;
+  width:260px;
+  height:520px;
+  background:linear-gradient(180deg,rgba(107,210,255,.16),transparent);
+  filter:blur(18px);
+  transform:rotate(28deg);
+  animation:rayMove 8s ease-in-out infinite alternate;
+  pointer-events:none;
+  z-index:1;
+}
+.light-ray.ray-one{ left:10%; top:18%; }
+.light-ray.ray-two{ right:15%; top:4%; animation-delay:1.4s; }
+@keyframes rayMove{
+  from{ opacity:.32; transform:rotate(24deg) translateY(0); }
+  to{ opacity:.72; transform:rotate(30deg) translateY(28px); }
+}
+
+.countdown-card{
+  max-width:1180px;
+  margin:0 auto 80px;
+  padding:32px;
+  border-radius:32px;
+  background:rgba(255,255,255,.86);
+  border:1px solid rgba(16,47,77,.08);
+  box-shadow:0 20px 60px rgba(16,47,77,.11);
+  backdrop-filter:blur(14px);
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:28px;
+  align-items:center;
+  position:relative;
+  z-index:2;
+}
+.countdown-card h3{ font-size:clamp(24px,3vw,36px); margin-bottom:8px; color:#102f4d; }
+.countdown-card p{ color:#55728d; line-height:1.7; }
+.countdown-boxes{ display:grid; grid-template-columns:repeat(4,88px); gap:12px; }
+.count-box{
+  background:linear-gradient(180deg,#ffffff,#eef8ff);
+  border:1px solid rgba(21,101,255,.10);
+  border-radius:22px;
+  padding:16px 10px;
+  text-align:center;
+  box-shadow:0 14px 34px rgba(16,47,77,.08);
+}
+.count-box strong{ display:block; color:#1565ff; font-size:28px; line-height:1; }
+.count-box span{ color:#55728d; font-size:11px; font-weight:900; letter-spacing:1px; }
+
+.event-search-wrap{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:14px;
+  align-items:center;
+  margin-bottom:22px;
+  padding:18px;
+  border-radius:24px;
+  background:rgba(255,255,255,.84);
+  border:1px solid rgba(16,47,77,.08);
+  box-shadow:0 16px 42px rgba(16,47,77,.09);
+}
+.event-search-box{ position:relative; }
+.event-search-box input{
+  width:100%;
+  padding:16px 48px 16px 18px;
+  border-radius:17px;
+  border:1px solid rgba(16,47,77,.10);
+  outline:none;
+  color:#102f4d;
+  font-weight:700;
+  background:white;
+}
+.event-search-box i{ position:absolute; right:18px; top:50%; transform:translateY(-50%); color:#1565ff; }
+.clear-search{
+  border:none;
+  background:#eef8ff;
+  color:#102f4d;
+  font-weight:900;
+  padding:15px 18px;
+  border-radius:16px;
+  cursor:pointer;
+}
+.no-events-found{
+  display:none;
+  grid-column:1/-1;
+  text-align:center;
+  background:white;
+  color:#55728d;
+  padding:35px;
+  border-radius:24px;
+  box-shadow:0 16px 42px rgba(16,47,77,.09);
+}
+
+.what-expect,
+.event-timeline-section,
+.gallery-slider-section{
+  max-width:1180px;
+  margin:90px auto 0;
+  position:relative;
+  z-index:2;
+}
+.expect-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+.expect-item{
+  background:rgba(255,255,255,.90);
+  border:1px solid rgba(16,47,77,.08);
+  border-radius:26px;
+  padding:26px 22px;
+  box-shadow:0 18px 45px rgba(16,47,77,.10);
+  transition:.35s ease;
+}
+.expect-item:hover{ transform:translateY(-8px); }
+.expect-item i{
+  width:62px;
+  height:62px;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#1565ff,#6bd2ff);
+  color:white;
+  font-size:25px;
+  margin-bottom:18px;
+}
+.expect-item h3{ margin-bottom:10px; color:#102f4d; }
+.expect-item p{ color:#55728d; line-height:1.7; font-size:14px; }
+
+.event-calendar{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  position:relative;
+}
+.calendar-card{
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(16,47,77,.08);
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 18px 45px rgba(16,47,77,.10);
+  transition:.35s ease;
+}
+.calendar-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 28px 70px rgba(16,47,77,.16);
+}
+.calendar-top{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:22px;
+  background:linear-gradient(135deg,#ffffff,#eefbff,#dff6ff);
+  border-bottom:1px solid rgba(16,47,77,.07);
+}
+.calendar-date{
+  width:82px;
+  height:92px;
+  border-radius:22px;
+  background:#1565ff;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 16px 34px rgba(21,101,255,.22);
+  flex:0 0 82px;
+}
+.calendar-date span{
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+.calendar-date strong{
+  font-size:27px;
+  line-height:1;
+}
+.calendar-date small{
+  font-size:10px;
+  font-weight:900;
+  opacity:.9;
+  margin-top:3px;
+}
+.calendar-title h3{
+  color:#102f4d;
+  font-size:20px;
+  line-height:1.2;
+  margin-bottom:6px;
+}
+.calendar-title p{
+  color:#1565ff;
+  font-weight:800;
+  font-size:13px;
+}
+.calendar-body{
+  padding:22px;
+}
+.calendar-body p{
+  color:#55728d;
+  line-height:1.7;
+  font-size:14.5px;
+  margin-bottom:16px;
+}
+.calendar-meta{
+  display:grid;
+  gap:9px;
+  color:#375775;
+  font-weight:700;
+  font-size:14px;
+}
+.calendar-meta i{
+  color:#1565ff;
+  width:20px;
+}
+
+.gallery-slider{
+  position:relative;
+  overflow:hidden;
+  border-radius:34px;
+  background:white;
+  border:1px solid rgba(16,47,77,.08);
+  box-shadow:0 22px 65px rgba(16,47,77,.12);
+}
+.gallery-track{
+  display:flex;
+  transition:transform .5s ease;
+}
+.gallery-slide{
+  min-width:100%;
+  min-height:430px;
+  position:relative;
+  background:linear-gradient(rgba(21,101,255,.12),rgba(8,25,45,.42)), var(--gallery-img) center/cover no-repeat;
+}
+.gallery-slide::after{
+  content:attr(data-title);
+  position:absolute;
+  left:28px;
+  bottom:26px;
+  color:white;
+  font-size:clamp(24px,3vw,40px);
+  font-weight:900;
+  text-shadow:0 8px 26px rgba(0,0,0,.35);
+}
+.gallery-controls{
+  position:absolute;
+  right:22px;
+  bottom:22px;
+  display:flex;
+  gap:10px;
+  z-index:3;
+}
+.gallery-controls button{
+  width:46px;
+  height:46px;
+  border:none;
+  border-radius:50%;
+  background:white;
+  color:#1565ff;
+  cursor:pointer;
+  box-shadow:0 12px 32px rgba(0,0,0,.16);
+}
+
+.events-cta{
+  color:#102f4d;
+  background:
+    radial-gradient(circle at top right,rgba(107,210,255,.34),transparent 28%),
+    linear-gradient(135deg,#ffffff,#eefbff,#dff6ff) !important;
+  border:1px solid rgba(16,47,77,.08);
+}
+.events-cta p{ color:#55728d; }
+.events-cta .hero-btn.secondary{
+  color:#102f4d;
+  border-color:rgba(21,101,255,.16);
+  background:rgba(255,255,255,.70);
+}
+
+@media(max-width:1100px){
+  .countdown-card{ grid-template-columns:1fr; text-align:center; }
+  .countdown-boxes{ justify-content:center; }
+  .expect-grid{ grid-template-columns:repeat(2,1fr); }
+  .event-calendar{ grid-template-columns:1fr; }
+}
+@media(max-width:720px){
+  .countdown-card{ padding:24px 18px; }
+  .countdown-boxes{ grid-template-columns:repeat(2,1fr); width:100%; }
+  .event-search-wrap{ grid-template-columns:1fr; }
+  .expect-grid{ grid-template-columns:1fr; }
+  .event-calendar{ grid-template-columns:1fr; }
+  .gallery-slide{ min-height:300px; }
+}
+
+
+
+/* =========================================================
+   FINAL HERO SCREEN-FIT FIX
+   - Removes the big gap in the hero
+   - Keeps the hero exactly within one desktop screen
+   - Keeps content centered and responsive
+========================================================= */
+.events-hero{
+  height:100vh !important;
+  height:100svh !important;
+  min-height:620px !important;
+  max-height:760px !important;
+  padding:86px 7% 46px !important;
+  align-items:center !important;
+}
+
+.events-hero::after{
+  height:62px !important;
+  clip-path:polygon(0 52%,100% 0,100% 100%,0 100%) !important;
+}
+
+.hero-layout{
+  height:100% !important;
+  max-height:600px !important;
+  align-items:center !important;
+  gap:38px !important;
+}
+
+.hero-content{
+  max-width:610px !important;
+}
+
+.events-hero h1{
+  font-size:clamp(2.45rem,5vw,4.85rem) !important;
+  line-height:1.02 !important;
+  margin-bottom:16px !important;
+}
+
+.events-hero p{
+  font-size:clamp(.95rem,1.15vw,1.08rem) !important;
+  line-height:1.65 !important;
+  margin-bottom:24px !important;
+}
+
+.hero-badge{
+  margin-bottom:16px !important;
+  padding:9px 17px !important;
+}
+
+.hero-feature{
+  min-height:0 !important;
+  height:100% !important;
+  max-height:500px !important;
+}
+
+.event-orbit{
+  inset:44px !important;
+}
+
+.feature-event-card{
+  width:min(365px,100%) !important;
+  border-radius:28px !important;
+}
+
+.feature-img{
+  height:190px !important;
+}
+
+.feature-date{
+  width:66px !important;
+  height:66px !important;
+  border-radius:18px !important;
+}
+
+.feature-date strong{
+  font-size:22px !important;
+}
+
+.feature-body{
+  padding:20px !important;
+}
+
+.feature-body h3{
+  font-size:22px !important;
+  margin-bottom:6px !important;
+}
+
+.feature-body p{
+  font-size:13px !important;
+  line-height:1.55 !important;
+  margin-bottom:12px !important;
+}
+
+.feature-meta{
+  gap:7px !important;
+  font-size:13px !important;
+}
+
+.float-note{
+  padding:13px 16px !important;
+  border-radius:18px !important;
+  font-size:13px !important;
+}
+
+.float-note i{
+  width:36px !important;
+  height:36px !important;
+  border-radius:12px !important;
+}
+
+.float-note.top{
+  top:24px !important;
+  right:18px !important;
+}
+
+.float-note.bottom{
+  left:18px !important;
+  bottom:28px !important;
+}
+
+.hero-btn{
+  padding:12px 22px !important;
+  border-radius:13px !important;
+  font-size:.92rem !important;
+}
+
+.light-ray{
+  height:380px !important;
+}
+
+@media(max-width:1100px){
+  .events-hero{
+    height:auto !important;
+    min-height:auto !important;
+    max-height:none !important;
+    padding:118px 7% 84px !important;
+  }
+
+  .hero-layout{
+    height:auto !important;
+    max-height:none !important;
+    gap:34px !important;
+  }
+
+  .hero-feature{
+    height:auto !important;
+    min-height:470px !important;
+    max-height:none !important;
+  }
+}
+
+@media(max-width:720px){
+  .events-hero{
+    padding:112px 20px 82px !important;
+  }
+
+  .events-hero::after{
+    height:48px !important;
+  }
+
+  .hero-feature{
+    min-height:auto !important;
+  }
+
+  .feature-event-card{
+    width:100% !important;
+  }
+
+  .feature-img{
+    height:210px !important;
+  }
+
+  .float-note{
+    font-size:14px !important;
+  }
+}
+
+@media(max-width:500px){
+  .events-hero{
+    padding:104px 16px 74px !important;
+  }
+
+  .events-hero h1{
+    font-size:2.25rem !important;
+  }
+}
+
+
+
+/* =========================================================
+   FINAL PREMIUM POLISH ADDITIONS
+   - Sticky next event banner
+   - Softer floating worship lights
+   - Calendar cards with month header style
+   - Curved divider polish
+========================================================= */
+.events-hero .hero-layout::before,
+.events-hero .hero-layout::after{
+  content:'';
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:-1;
+  filter:blur(40px);
+  animation:worshipGlow 7s ease-in-out infinite alternate;
+}
+
+.events-hero .hero-layout::before{
+  width:240px;
+  height:240px;
+  background:rgba(107,210,255,.34);
+  left:-70px;
+  top:12%;
+}
+
+.events-hero .hero-layout::after{
+  width:190px;
+  height:190px;
+  background:rgba(21,101,255,.18);
+  right:4%;
+  bottom:4%;
+  animation-delay:1.2s;
+}
+
+@keyframes worshipGlow{
+  from{ opacity:.35; transform:translateY(0) scale(.96); }
+  to{ opacity:.75; transform:translateY(22px) scale(1.04); }
+}
+
+.sticky-next-event{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  width:min(340px,calc(100vw - 44px));
+  z-index:1200;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px;
+  border-radius:24px;
+  background:rgba(255,255,255,.90);
+  border:1px solid rgba(21,101,255,.14);
+  box-shadow:0 20px 55px rgba(16,47,77,.18);
+  backdrop-filter:blur(18px);
+  transform:translateY(140%);
+  opacity:0;
+  transition:.45s ease;
+}
+
+.sticky-next-event.show{
+  transform:translateY(0);
+  opacity:1;
+}
+
+.sticky-date{
+  width:62px;
+  height:62px;
+  border-radius:19px;
+  background:linear-gradient(135deg,#1565ff,#6bd2ff);
+  color:white;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 62px;
+  font-weight:900;
+  box-shadow:0 14px 30px rgba(21,101,255,.22);
+}
+
+.sticky-date span{ font-size:11px; letter-spacing:1px; }
+.sticky-date strong{ font-size:24px; line-height:1; }
+
+.sticky-copy{ flex:1; min-width:0; }
+.sticky-copy small{ color:#1565ff; font-weight:900; letter-spacing:.6px; }
+.sticky-copy h4{ color:#102f4d; font-size:15px; line-height:1.2; margin:2px 0 4px; }
+.sticky-copy p{ color:#55728d; font-size:12px; font-weight:700; }
+
+.sticky-next-event a{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  background:#eef8ff;
+  color:#1565ff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  flex:0 0 42px;
+}
+
+.event-card,
+.calendar-card,
+.expect-item,
+.countdown-card,
+.gallery-slider{
+  position:relative;
+}
+
+.event-card::before,
+.calendar-card::before,
+.expect-item::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  border:1px solid transparent;
+  pointer-events:none;
+  transition:.35s ease;
+}
+
+.event-card:hover::before,
+.calendar-card:hover::before,
+.expect-item:hover::before{
+  border-color:rgba(21,101,255,.24);
+  box-shadow:0 0 0 5px rgba(107,210,255,.12);
+}
+
+.calendar-card{
+  isolation:isolate;
+}
+
+.calendar-top{
+  position:relative;
+  overflow:hidden;
+}
+
+.calendar-top::after{
+  content:'EVENT';
+  position:absolute;
+  right:18px;
+  top:14px;
+  color:rgba(21,101,255,.08);
+  font-size:44px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.events-main{
+  border-top-left-radius:45px;
+  border-top-right-radius:45px;
+  margin-top:-42px;
+  padding-top:120px !important;
+}
+
+.events-main > section{
+  scroll-margin-top:95px;
+}
+
+.gallery-slider::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(90deg,rgba(255,255,255,.18),transparent 18%,transparent 82%,rgba(255,255,255,.18));
+}
+
+@media(max-width:900px){
+  .sticky-next-event{
+    left:16px;
+    right:16px;
+    bottom:16px;
+    width:auto;
+  }
+  .event-calendar::before{ display:none; }
+}
+
+@media(max-width:520px){
+  .sticky-next-event{
+    padding:12px;
+    border-radius:20px;
+  }
+  .sticky-date{
+    width:54px;
+    height:54px;
+    flex-basis:54px;
+  }
+  .sticky-copy h4{ font-size:14px; }
+  .sticky-copy p{ display:none; }
+}
+
+
+.events-hero{
+  min-height:100svh !important;
+  height:100svh !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:88px 7% 40px !important;
+  overflow:hidden !important;
+}
+
+.hero-layout{
+  width:100% !important;
+  max-width:1180px !important;
+  min-height:calc(100svh - 128px) !important;
+  align-items:center !important;
+}
+
+.hero-content{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+@media(max-width:1100px){
+  .events-hero{
+    height:auto !important;
+    min-height:auto !important;
+    padding:120px 7% 80px !important;
+  }
+
+  .hero-layout{
+    min-height:auto !important;
+  }
+}
+
+@media(max-width:720px){
+  .events-hero{
+    padding:110px 20px 70px !important;
+  }
+}
+
+
+/* =========================================================
+   HERO GAP REMOVE FIX
+   - Removes the extra light-blue curved space under hero
+   - Keeps hero clean and screen-fitted
+========================================================= */
+.events-hero{
+  min-height:100vh !important;
+  min-height:100svh !important;
+  height:100vh !important;
+  height:100svh !important;
+  padding:88px 7% 0 !important;
+  margin-bottom:0 !important;
+  overflow:hidden !important;
+}
+
+/* This was creating the big curved gap below the hero */
+.events-hero::after{
+  display:none !important;
+}
+
+.hero-layout{
+  min-height:calc(100svh - 88px) !important;
+  padding-bottom:0 !important;
+}
+
+/* Remove the negative curved overlap from the next section */
+.events-main{
+  margin-top:0 !important;
+  border-top-left-radius:0 !important;
+  border-top-right-radius:0 !important;
+  padding-top:90px !important;
+}
+
+@media(max-width:1100px){
+  .events-hero{
+    height:auto !important;
+    min-height:auto !important;
+    padding:115px 7% 55px !important;
+  }
+
+  .hero-layout{
+    min-height:auto !important;
+  }
+}
+
+@media(max-width:720px){
+  .events-hero{
+    padding:105px 20px 50px !important;
+  }
+}
+
+@media(max-width:500px){
+  .events-hero{
+    padding:100px 16px 45px !important;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+   <div class="logo">
+  <img src="assets/images/logo.jpg" alt="Church Logo">
+  <span>The Three Are One God Church</span>
+</div>
+
+
+  <div class="menu-btn" id="menu-btn">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+
+  <nav id="nav-menu">
+    <a href="index.html">Home</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="branches.html">Branches</a>
+    <a href="ministries.html">Ministries</a>
+    <a href="events.html" class="current">Events</a>
+    <a href="get-involved.html">Get Involved</a>
+    <a href="prayer.html">Prayer</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<a class="sticky-next-event" id="stickyNextEvent" href="#eventsList" aria-label="Go to next event">
+  <div class="sticky-date"><span>FEB</span><strong>15</strong></div>
+  <div class="sticky-copy">
+    <small>NEXT EVENT</small>
+    <h4>Youth Camp 2026</h4>
+    <p>Feb 15–16 • Parañaque Branch</p>
+  </div>
+  <span><i class="fa-solid fa-arrow-right"></i></span>
+</a>
+
+<section class="events-hero">
+  <div class="light-ray ray-one" aria-hidden="true"></div>
+  <div class="light-ray ray-two" aria-hidden="true"></div>
+  <div class="hero-layout">
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fa-solid fa-calendar-days"></i>
+        Church Events & Gatherings
+      </div>
+
+      <h1>Gather. Worship. Grow Together.</h1>
+
+      <p>
+        Join our church events, fellowships, branch activities, and special
+        gatherings as we grow together in faith, service, and community.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#eventsList" class="hero-btn primary">View Events <i class="fa-solid fa-arrow-down"></i></a>
+        <a href="contact.html" class="hero-btn secondary">Ask About Events</a>
+      </div>
+    </div>
+
+    <div class="hero-feature" aria-hidden="true">
+      <div class="event-orbit"></div>
+
+      <div class="feature-event-card">
+        <div class="feature-img">
+          <div class="feature-date">
+            <span>FEB</span>
+            <strong>15</strong>
+          </div>
+        </div>
+
+        <div class="feature-body">
+          <h3>Youth Camp 2026</h3>
+          <p>A faith-filled youth camp with worship, team building, fellowship, and leadership activities.</p>
+
+          <div class="feature-meta">
+            <div><i class="fas fa-clock"></i> 9:00 AM - 5:00 PM</div>
+            <div><i class="fas fa-location-dot"></i> Parañaque Branch</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="float-note top">
+        <i class="fa-solid fa-church"></i>
+        Church-wide gatherings
+      </div>
+
+      <div class="float-note bottom">
+        <i class="fa-solid fa-users"></i>
+        Fellowship & community
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<main class="events-main">
+
+  <section class="countdown-card reveal">
+    <div>
+      <p class="section-label">Next Featured Event</p>
+      <h3>Youth Camp 2026 Countdown</h3>
+      <p>Get ready for worship, fellowship, prayer, and leadership moments with the youth family.</p>
+    </div>
+
+    <div class="countdown-boxes" id="countdown">
+      <div class="count-box"><strong id="days">00</strong><span>DAYS</span></div>
+      <div class="count-box"><strong id="hours">00</strong><span>HOURS</span></div>
+      <div class="count-box"><strong id="minutes">00</strong><span>MINUTES</span></div>
+      <div class="count-box"><strong id="seconds">00</strong><span>SECONDS</span></div>
+    </div>
+  </section>
+
+
+  <section class="event-stats reveal">
+    <div class="stat-card">
+      <i class="fa-solid fa-calendar-check"></i>
+      <h3>4+</h3>
+      <p>Church Events</p>
+    </div>
+
+    <div class="stat-card">
+      <i class="fa-solid fa-people-group"></i>
+      <h3>3</h3>
+      <p>Event Categories</p>
+    </div>
+
+    <div class="stat-card">
+      <i class="fa-solid fa-location-dot"></i>
+      <h3>All</h3>
+      <p>Branches Welcome</p>
+    </div>
+
+    <div class="stat-card">
+      <i class="fa-solid fa-heart"></i>
+      <h3>1</h3>
+      <p>Church Family</p>
+    </div>
+  </section>
+
+  <section class="featured-event reveal">
+<div class="featured-event-img"
+     style="background:
+     linear-gradient(rgba(8,25,45,0.20),rgba(8,25,45,0.45)),
+     url('assets/images/youth-camp.jpg') center/cover no-repeat;">
+
+      <div class="feature-date">
+        <span>April</span>
+        <strong>2-5</strong>
+      </div>
+    </div>
+
+    <div class="featured-event-content">
+      <p class="section-label">Featured Event</p>
+      <h2>Youth Camp 2026</h2>
+      <p>
+        A 4-day spiritual and leadership gathering for young people. It includes
+        worship, preaching, fellowship, group activities, prayer time, and youth
+        empowerment sessions.
+      </p>
+
+      <div class="feature-list">
+        <div><i class="fa-solid fa-music"></i> Worship and preaching sessions</div>
+        <div><i class="fa-solid fa-users"></i> Team building and fellowship</div>
+        <div><i class="fa-solid fa-hands-praying"></i> Prayer and reflection time</div>
+      </div>
+
+      <div class="hero-actions" style="justify-content:flex-start;">
+        <a href="#eventsList" class="hero-btn primary" style="background:#1565ff;color:white;">See Details</a>
+        <a href="get-involved.html" class="hero-btn secondary" style="color:#102f4d;border-color:rgba(16,47,77,0.12);background:#eef8ff;">Get Involved</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-header reveal" id="eventsList">
+    <p class="section-label">Event Calendar</p>
+    <h2>Upcoming Events</h2>
+    <p>
+      Choose a category to explore church-wide gatherings, branch events, and past
+      celebrations from our growing church family.
+    </p>
+  </section>
+
+  <section class="events-section reveal">
+
+    <div class="event-search-wrap">
+      <div class="event-search-box">
+        <input type="text" id="eventSearch" placeholder="Search events by title, category, location...">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <button class="clear-search" type="button" id="clearEventSearch">Clear</button>
+    </div>
+
+    <div class="event-tabs">
+      <a class="tab active" data-category="upcoming-events">Upcoming Events</a>
+      <a class="tab" data-category="church-wide">Church-wide</a>
+      <a class="tab" data-category="branch-events">Branch Events</a>
+      <a class="tab" data-category="past-events">Past Events</a>
+    </div>
+
+    <!-- =====================================================
+         EVENT CARDS AREA
+         Do not add event cards manually here.
+         All cards are created automatically from EVENT_LIST in JavaScript.
+    ====================================================== -->
+    <div class="event-grid" id="eventGrid">
+      <p class="no-events-found" id="noEventsFound">No events found. Try another keyword or category.</p>
+    </div>
+  </section>
+
+  <section class="what-expect reveal">
+    <div class="section-header">
+      <p class="section-label">First Time Joining?</p>
+      <h2>What To Expect</h2>
+      <p>Our gatherings are made to help every visitor feel welcomed, guided, and encouraged.</p>
+    </div>
+
+    <div class="expect-grid">
+      <div class="expect-item"><i class="fa-solid fa-music"></i><h3>Worship & Praise</h3><p>Experience meaningful worship moments with the church family.</p></div>
+      <div class="expect-item"><i class="fa-solid fa-book-bible"></i><h3>Teaching</h3><p>Receive encouragement and biblical teaching for spiritual growth.</p></div>
+      <div class="expect-item"><i class="fa-solid fa-users"></i><h3>Fellowship</h3><p>Meet new friends and connect with people from different branches.</p></div>
+      <div class="expect-item"><i class="fa-solid fa-hands-praying"></i><h3>Prayer Time</h3><p>Be prayed for and encouraged through faith-filled support.</p></div>
+    </div>
+  </section>
+
+  <section class="event-timeline-section reveal">
+    <div class="section-header">
+      <p class="section-label">Event Calendar</p>
+      <h2>Upcoming Dates</h2>
+      <p>A cleaner calendar-style view of the next gatherings and church moments.</p>
+    </div>
+
+    <!-- =====================================================
+         UPCOMING DATES / CALENDAR AREA
+         This is generated automatically from EVENT_LIST.
+         To edit the title, date, location, image, and form link,
+         scroll down to the EVENT_LIST section in JavaScript.
+    ====================================================== -->
+    <div class="event-calendar" id="eventCalendar"></div>
+  </section>
+
+  <section class="gallery-slider-section reveal">
+    <div class="section-header">
+      <p class="section-label">Event Memories</p>
+      <h2>Gallery Highlights</h2>
+      <p>Celebrate worship, fellowship, youth activities, and outreach moments with the church family.</p>
+    </div>
+
+    <div class="gallery-slider">
+      <div class="gallery-track" id="galleryTrack">
+        <div class="gallery-slide" data-title="Worship Night" style='--gallery-img:url("assets/images/worship-night.jpg")'></div>
+        <div class="gallery-slide" data-title="Youth Fellowship" style='--gallery-img:url("assets/images/youth-fellowship.jpg")'></div>
+        <div class="gallery-slide" data-title="Community Outreach" style='--gallery-img:url("assets/images/outreach-event.jpg")'></div>
+        <div class="gallery-slide" data-title="Community Outreach" style='--gallery-img:url("assets/images/outreach-event.jpg")'></div>
+        <div class="gallery-slide" data-title="Community Outreach" style='--gallery-img:url("assets/images/outreach-event.jpg")'></div>
+      </div>
+      <div class="gallery-controls">
+        <button type="button" id="galleryPrev" aria-label="Previous gallery image"><i class="fa-solid fa-chevron-left"></i></button>
+        <button type="button" id="galleryNext" aria-label="Next gallery image"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="scripture-banner reveal">
+    <div class="scripture-icon">
+      <i class="fa-solid fa-book-bible"></i>
+    </div>
+    <h2>“Let us consider how we may spur one another on toward love and good deeds.”</h2>
+    <p>Hebrews 10:24</p>
+  </section>
+
+  <section class="events-cta reveal">
+    <h2>Want to join our next gathering?</h2>
+    <p>
+      Be part of worship nights, youth events, fellowships, prayer gatherings,
+      and church-wide celebrations.
+    </p>
+
+    <div class="hero-actions">
+      <a href="get-involved.html" class="hero-btn primary">Get Involved</a>
+      <a href="contact.html" class="hero-btn secondary">Contact Us</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>The Three Are One God Church</h3>
+      <p>
+        A Christ-centered family dedicated to loving God, loving people,
+        and serving communities through worship, discipleship, and ministry.
+      </p>
+
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="branches.html">Branches</a>
+      <a href="ministries.html">Ministries</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Events</h4>
+      <a href="#eventsList">Upcoming Events</a>
+      <a href="#eventsList">Church-wide</a>
+      <a href="#eventsList">Branch Events</a>
+      <a href="#eventsList">Past Events</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Service Info</h4>
+      <p>Sunday Worship</p>
+      <p>9:00 AM & 11:00 AM</p>
+      <p>Midweek Fellowship</p>
+      <p>Wednesday 5:00 PM</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 The Three Are One God Church. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="event-modal" id="eventModal">
+  <div class="modal-box">
+    <button class="close-modal" id="closeModal">&times;</button>
+
+    <h2 id="modalTitle"></h2>
+    <p id="modalDescription"></p>
+
+    <div class="modal-info">
+      <p><i class="fas fa-calendar"></i> <span id="modalDate"></span></p>
+      <p><i class="fas fa-clock"></i> <span id="modalTime"></span></p>
+      <p><i class="fas fa-location-dot"></i> <span id="modalLocation"></span></p>
+    </div>
+
+    <div class="modal-extra">
+      <h4>Event Details</h4>
+      <ul id="modalExtra"></ul>
+    </div>
+
+    <!-- Google Form button: the link comes from formLink inside EVENT_LIST -->
+    <a href="#" target="_blank" class="modal-register-btn" id="modalRegister">
+      Register Now
+    </a></div>
+
+<script src="assets/js/db.js"></script>
+<script>
+const EVENT_LIST = db.events.getAll();
+
+/* CATEGORY LABELS */
+const CATEGORY_LABELS = {
+  "upcoming-events": "Upcoming Event",
+  "church-wide": "Church-wide",
+  "branch-events": "Branch Event",
+  "past-events": "Past Event"
+};
+
+/* PAGE ELEMENTS */
+const eventGrid = document.getElementById("eventGrid");
+const eventCalendar = document.getElementById("eventCalendar");
+const tabs = document.querySelectorAll(".event-tabs .tab");
+const eventSearch = document.getElementById("eventSearch");
+const clearEventSearch = document.getElementById("clearEventSearch");
+const noEventsFound = document.getElementById("noEventsFound");
+const stickyNextEvent = document.getElementById("stickyNextEvent");
+
+const eventModal = document.getElementById("eventModal");
+const closeModal = document.getElementById("closeModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalDescription = document.getElementById("modalDescription");
+const modalDate = document.getElementById("modalDate");
+const modalTime = document.getElementById("modalTime");
+const modalLocation = document.getElementById("modalLocation");
+const modalExtra = document.getElementById("modalExtra");
+const modalRegister = document.getElementById("modalRegister");
+
+let activeCategory = "upcoming-events";
+
+function escapeHTML(text){
+  return String(text).replace(/[&<>'"]/g, value => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    "'":"&#039;",
+    "\"":"&quot;"
+  }[value]));
+}
+
+function getUpcomingEvents(){
+  return EVENT_LIST
+    .filter(event => event.category !== "past-events")
+    .sort((a,b) => new Date(a.startDate) - new Date(b.startDate));
+}
+
+function getNextEvent(){
+  const now = new Date();
+  return EVENT_LIST
+    .filter(event => event.category !== "past-events" && new Date(event.startDate) >= now)
+    .sort((a,b) => new Date(a.startDate) - new Date(b.startDate))[0] || getUpcomingEvents()[0];
+}
+
+function renderEvents(){
+  if(!eventGrid) return;
+
+  const cardsHTML = EVENT_LIST.map((event, index) => `
+    <!-- ${CATEGORY_LABELS[event.category]}: ${escapeHTML(event.title)} -->
+    <div class="event-card" data-category="${event.category}" data-index="${index}">
+      <div class="event-image">
+        <img src="${escapeHTML(event.image)}" alt="${escapeHTML(event.title)}">
+        <span class="event-tag">${escapeHTML(event.tag)}</span>
+        <div class="event-date-card"><span>${escapeHTML(event.month)}</span><strong>${escapeHTML(event.day)}</strong></div>
+      </div>
+
+      <div class="event-content">
+        <h3>${escapeHTML(event.title)}</h3>
+        <p>${escapeHTML(event.shortDescription)}</p>
+        <div class="event-info"><i class="fas fa-calendar"></i> ${escapeHTML(event.fullDate)}</div>
+        <div class="event-info"><i class="fas fa-clock"></i> ${escapeHTML(event.time)}</div>
+        <div class="event-info"><i class="fas fa-location-dot"></i> ${escapeHTML(event.location)}</div>
+        <button class="details-btn ${event.category === "past-events" ? "ended" : ""}" data-index="${index}">Details</button>
+      </div>
+    </div>
+  `).join("");
+
+  eventGrid.innerHTML = cardsHTML + `<p class="no-events-found" id="noEventsFound">No events found. Try another keyword or category.</p>`;
+}
+
+function renderCalendar(){
+  if(!eventCalendar) return;
+
+  eventCalendar.innerHTML = getUpcomingEvents().map(event => `
+    <!-- Calendar: ${CATEGORY_LABELS[event.category]} -->
+    <div class="calendar-card">
+      <div class="calendar-top">
+        <div class="calendar-date"><span>${escapeHTML(event.month)}</span><strong>${escapeHTML(event.day)}</strong><small>${escapeHTML(event.smallDate)}</small></div>
+        <div class="calendar-title">
+          <h3>${escapeHTML(event.title)}</h3>
+          <p>${escapeHTML(event.location)}</p>
+        </div>
+      </div>
+      <div class="calendar-body">
+        <p>${escapeHTML(event.shortDescription)}</p>
+        <div class="calendar-meta">
+          <div><i class="fa-solid fa-clock"></i> ${escapeHTML(event.time)}</div>
+          <div><i class="fa-solid fa-tag"></i> ${escapeHTML(CATEGORY_LABELS[event.category])}</div>
+        </div>
+      </div>
+    </div>
+  `).join("");
+}
+
+function filterEventCards(){
+  const keyword = eventSearch ? eventSearch.value.toLowerCase().trim() : "";
+  const cards = document.querySelectorAll(".event-card");
+  const emptyMessage = document.getElementById("noEventsFound");
+  let visible = 0;
+
+  cards.forEach(card => {
+    const event = EVENT_LIST[Number(card.dataset.index)];
+    const searchText = [
+      event.title,
+      event.category,
+      event.tag,
+      event.fullDate,
+      event.time,
+      event.location,
+      event.shortDescription,
+      event.description,
+      event.details.join(" ")
+    ].join(" ").toLowerCase();
+
+    const categoryMatch = activeCategory === "upcoming-events"
+      ? event.category !== "past-events"
+      : event.category === activeCategory;
+
+    const searchMatch = searchText.includes(keyword);
+
+    if(categoryMatch && searchMatch){
+      card.style.display = "flex";
+      visible++;
+    }else{
+      card.style.display = "none";
+    }
+  });
+
+  if(emptyMessage){
+    emptyMessage.style.display = visible === 0 ? "block" : "none";
+  }
+}
+
+function openEventModal(event){
+  modalTitle.textContent = event.title;
+  modalDescription.textContent = event.description;
+  modalDate.textContent = event.fullDate;
+  modalTime.textContent = event.time;
+  modalLocation.textContent = event.location;
+  modalRegister.href = event.formLink;
+
+  modalExtra.innerHTML = "";
+  event.details.forEach(detail => {
+    const li = document.createElement("li");
+    li.textContent = detail;
+    modalExtra.appendChild(li);
+  });
+
+  modalRegister.style.display = event.formLink === "#" ? "none" : "block";
+  eventModal.classList.add("active");
+}
+
+function setupEventButtons(){
+  document.querySelectorAll(".details-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      openEventModal(EVENT_LIST[Number(button.dataset.index)]);
+    });
+  });
+}
+
+function setupTabs(){
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(item => item.classList.remove("active"));
+      tab.classList.add("active");
+      activeCategory = tab.dataset.category;
+      filterEventCards();
+    });
+  });
+}
+
+function setupSearch(){
+  if(eventSearch){
+    eventSearch.addEventListener("input", filterEventCards);
+  }
+
+  if(clearEventSearch){
+    clearEventSearch.addEventListener("click", () => {
+      eventSearch.value = "";
+      filterEventCards();
+    });
+  }
+}
+
+function setupCountdown(){
+  const nextEvent = getNextEvent();
+  if(!nextEvent) return;
+
+  const targetDate = new Date(nextEvent.startDate).getTime();
+
+  function updateCountdown(){
+    const now = new Date().getTime();
+    const distance = Math.max(0, targetDate - now);
+    const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((distance % (1000 * 60)) / 1000);
+    const pad = number => String(number).padStart(2,"0");
+
+    if(document.getElementById("days")){
+      document.getElementById("days").textContent = pad(d);
+      document.getElementById("hours").textContent = pad(h);
+      document.getElementById("minutes").textContent = pad(m);
+      document.getElementById("seconds").textContent = pad(s);
+    }
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
+
+function setupStickyNextEvent(){
+  const nextEvent = getNextEvent();
+  if(stickyNextEvent && nextEvent){
+    stickyNextEvent.innerHTML = `
+      <div class="sticky-date"><span>${escapeHTML(nextEvent.month)}</span><strong>${escapeHTML(nextEvent.day)}</strong></div>
+      <div class="sticky-copy">
+        <small>NEXT EVENT</small>
+        <h4>${escapeHTML(nextEvent.title)}</h4>
+        <p>${escapeHTML(nextEvent.fullDate)} • ${escapeHTML(nextEvent.location)}</p>
+      </div>
+      <span><i class="fa-solid fa-arrow-right"></i></span>
+    `;
+
+    window.addEventListener("scroll", () => {
+      stickyNextEvent.classList.toggle("show", window.scrollY > 420);
+    });
+  }
+}
+
+/* NAVBAR SCROLL */
+window.addEventListener("scroll", function(){
+  const navbar = document.querySelector(".navbar");
+  navbar.classList.toggle("scrolled", window.scrollY > 50);
+});
+
+/* MODAL CLOSE */
+if(closeModal){
+  closeModal.addEventListener("click", () => eventModal.classList.remove("active"));
+}
+
+if(eventModal){
+  eventModal.addEventListener("click", (e) => {
+    if(e.target === eventModal){
+      eventModal.classList.remove("active");
+    }
+  });
+}
+
+window.addEventListener("keydown", e => {
+  if(e.key === "Escape" && eventModal){
+    eventModal.classList.remove("active");
+  }
+});
+
+/* MOBILE MENU */
+const menuBtn = document.getElementById("menu-btn");
+const navMenu = document.getElementById("nav-menu");
+
+if(menuBtn && navMenu){
+  menuBtn.addEventListener("click", () => navMenu.classList.toggle("active"));
+
+  document.querySelectorAll("#nav-menu a").forEach(link => {
+    link.addEventListener("click", () => navMenu.classList.remove("active"));
+  });
+}
+
+/* REVEAL ANIMATION */
+const revealElements = document.querySelectorAll(".reveal");
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("active");
+    }
+  });
+},{threshold:0.12});
+revealElements.forEach(el => revealObserver.observe(el));
+
+/* GALLERY SLIDER */
+let galleryIndex = 0;
+const galleryTrack = document.getElementById("galleryTrack");
+const gallerySlides = document.querySelectorAll(".gallery-slide");
+const galleryPrev = document.getElementById("galleryPrev");
+const galleryNext = document.getElementById("galleryNext");
+
+function updateGallery(){
+  if(galleryTrack){
+    galleryTrack.style.transform = `translateX(-${galleryIndex * 100}%)`;
+  }
+}
+
+if(galleryPrev && galleryNext && gallerySlides.length){
+  galleryPrev.addEventListener("click", () => {
+    galleryIndex = (galleryIndex - 1 + gallerySlides.length) % gallerySlides.length;
+    updateGallery();
+  });
+
+  galleryNext.addEventListener("click", () => {
+    galleryIndex = (galleryIndex + 1) % gallerySlides.length;
+    updateGallery();
+  });
+}
+
+/* START PAGE */
+renderEvents();
+renderCalendar();
+setupEventButtons();
+setupTabs();
+setupSearch();
+setupCountdown();
+setupStickyNextEvent();
+filterEventCards();
+</script>
+
+</body>
+</html>

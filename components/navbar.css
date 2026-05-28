@@ -1,0 +1,49 @@
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 60px;
+  background: transparent;
+  transition: 0.4s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(8, 25, 45, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 13px 60px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.logo {
+  color: white;
+  font-weight: 800;
+  font-size: 17px;
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navbar nav a {
+  margin-left: 22px;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.navbar nav a:hover,
+.navbar nav a.current {
+  color: #6bd2ff;
+}
